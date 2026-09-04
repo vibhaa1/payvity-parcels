@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e0e0c">
+<meta name="description" content="Payvity Parcels — offizieller Amazon Hub Counter Partner. Werden Sie Amazon Abholpunkt und profitieren Sie von mehr Laufkundschaft und zusätzlichem Umsatz.">
+<title>Payvity Parcels — Ihr Standort als Amazon Hub Counter</title>
+<style>
+  :root{
+    /* Centralized Color Tokens */
+    --bg-page: #f7f4ec;
+    --bg-surface: #efeade;
+    --bg-surface-white: #ffffff;
+    --bg-nav: rgba(247,244,236,.82);
+    --nav-border: rgba(20,18,10,.07);
+    --nav-text: #0e0e0c;
+    --nav-text-muted: #54503f;
+    --ink: #0e0e0c;
+    --ink-soft: #17170f;
+    --stone: #7c7666;
+    --stone-dark: #54503f;
+    --accent: #c9974c;
+    --accent-soft: #e7c47f;
+    --accent-text: #0e0e0c;
+    --accent-glow: rgba(201,151,76,.35);
+    --hero-bg-top: #232319;
+    --hero-bg-bottom: #0e0e0c;
+    --hero-text: #f7f4ec;
+    --hero-text-muted: #c8c3b5;
+    --card-border: rgba(20,18,10,.08);
+    --border-subtle: rgba(20,18,10,.08);
+    --shadow-card: 0 4px 16px -6px rgba(20,18,10,.06);
+    --shadow-card-hover: 0 18px 36px -12px rgba(20,18,10,.14);
+
+    /* Layout & Geometry */
+    --r-xl: 40px;
+    --r-lg: 28px;
+    --r-md: 18px;
+    --r-sm: 12px;
+    --r-pill: 999px;
+    --max: 1200px;
+    --ease: cubic-bezier(.19,1,.22,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg-page);color:var(--ink);font-family:"Inter",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;transition:background-color .3s var(--ease),color .3s var(--ease);}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{margin:0 auto;max-width:var(--max);padding-left:6vw;padding-right:6vw;}
+  ::selection{background:var(--accent-soft);color:var(--accent-text);}
+
+  /* ---------- nav ---------- */
+  .nav-shell{position:sticky;top:0;z-index:50;padding-top:12px;}
+  .nav{
+    align-items:center;background:var(--bg-nav);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid var(--nav-border);border-radius:var(--r-pill);display:flex;gap:clamp(20px,3vw,42px);justify-content:flex-start;
+    margin:0 auto;max-width:calc(var(--max) - 40px);padding:8px 10px 8px 20px;transition:background .3s var(--ease),border-color .3s var(--ease),border-radius .3s var(--ease);
+  }
+  .brand{align-items:center;color:var(--nav-text);display:inline-flex;flex-shrink:0;gap:clamp(8px,1.2vw,13px);text-decoration:none;transition:opacity .2s var(--ease),color .3s var(--ease);}
+  .brand:hover{opacity:.88;}
+  .brand-speed-box{color:var(--nav-text);flex-shrink:0;height:24px;width:auto;transition:color .3s var(--ease);}
+  .brand-title{color:var(--nav-text);font-size:clamp(.88rem,1.25vw,1.04rem);font-weight:800;letter-spacing:.02em;line-height:1;white-space:nowrap;transition:color .3s var(--ease);}
+  .brand-flag{border-radius:2px;display:flex;flex-direction:column;flex-shrink:0;height:26px;overflow:hidden;width:3px;box-shadow:0 1px 2px rgba(0,0,0,.15);}
+  .flag-black{background:#0e0e0c;flex:1;}
+  .flag-red{background:#de2b2b;flex:1;}
+  .flag-gold{background:#e8b931;flex:1;}
+  .brand-partner{display:flex;flex-direction:column;justify-content:center;line-height:1;}
+  .partner-label{color:var(--nav-text-muted);font-size:.58rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1px;white-space:nowrap;transition:color .3s var(--ease);}
+  .partner-amazon{align-items:center;color:var(--nav-text);display:flex;transition:color .3s var(--ease);}
+  .amazon-wordmark{display:block;}
+  .amazon-smile-path{stroke:var(--accent);transition:stroke .3s var(--ease);}
+  @media (max-width:560px){
+    .brand-speed-box{height:20px;}
+    .brand-title{font-size:.82rem;}
+    .brand-flag{height:22px;}
+    .partner-label{font-size:.52rem;}
+    .amazon-wordmark{height:12px;width:38px;}
+  }
+  .nav-links{align-items:center;display:flex;gap:clamp(18px,2.6vw,32px);}
+  .nav-links button{background:none;border:none;color:var(--nav-text-muted);cursor:pointer;font-size:.86rem;padding:6px 2px;position:relative;text-decoration:none;transition:color .2s var(--ease);}
+  .nav-links button::after{background:var(--accent);border-radius:2px;bottom:0;content:"";height:2px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease),background .3s var(--ease);width:100%;}
+  .nav-links button:hover,.nav-links button:focus-visible,.nav-links button.active{color:var(--nav-text);}
+  .nav-links button.active::after{transform:scaleX(1);}
+  /* ---------- language toggle switch ---------- */
+  .switch {
+    --_switch-bg-clr: var(--border-subtle);
+    --_switch-padding: 3px;
+    --_slider-bg-clr: var(--ink);
+    --_slider-bg-clr-on: var(--ink);
+    --_slider-txt-clr: var(--bg-page);
+    --_label-padding: 5px 12px;
+    --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    line-height: 1.1;
+    color: var(--nav-text-muted);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+    isolation: isolate;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: border-color .3s var(--ease),color .3s var(--ease);
+  }
+  .switch input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .switch > span {
+    display: grid;
+    place-content: center;
+    transition: opacity 300ms ease-in-out 150ms, color 300ms ease-in-out;
+    padding: var(--_label-padding);
+    color: var(--nav-text-muted);
+    z-index: 1;
+  }
+  .switch::before,
+  .switch::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    transition: inset 150ms ease-in-out;
+  }
+  .switch::before {
+    background-color: var(--_slider-bg-clr);
+    inset: var(--_switch-padding) 50% var(--_switch-padding) var(--_switch-padding);
+    transition: inset 500ms var(--_switch-easing), background-color 500ms ease-in-out;
+    z-index: -1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  }
+  .switch::after {
+    background-color: var(--_switch-bg-clr);
+    inset: 0;
+    z-index: -2;
+  }
+  .switch:focus-within::after {
+    inset: -0.25rem;
+  }
+  .switch:focus-visible,
+  .switch:has(input:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .switch:has(input:checked):hover > span:first-of-type,
+  .switch:has(input:not(:checked)):hover > span:last-of-type {
+    color: var(--nav-text);
+    opacity: 1;
+    transition-delay: 0ms;
+    transition-duration: 100ms;
+  }
+  .switch:has(input:checked):hover::before {
+    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 45%;
+  }
+  .switch:has(input:not(:checked)):hover::before {
+    inset: var(--_switch-padding) 45% var(--_switch-padding) var(--_switch-padding);
+  }
+  .switch:has(input:checked)::before {
+    background-color: var(--_slider-bg-clr-on);
+    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 50%;
+  }
+  .switch > span:first-of-type {
+    color: var(--_slider-txt-clr);
+    opacity: 1;
+  }
+  .switch > span:last-of-type,
+  .switch > input:checked + span:first-of-type {
+    color: var(--nav-text-muted);
+    opacity: 0.75;
+  }
+  .switch > input:checked ~ span:last-of-type {
+    color: var(--_slider-txt-clr);
+    opacity: 1;
+  }
+  .mobile-switch-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px 0 6px;
+    padding: 12px 10px 6px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .nav-cta{
+    background:var(--accent);border:none;border-radius:var(--r-pill);color:var(--accent-text);
+    cursor:pointer;display:inline-flex;font-size:.86rem;font-weight:650;padding:11px 20px;
+    text-decoration:none;transition:background .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),color .25s var(--ease);
+  }
+  .nav-cta:hover,.nav-cta:focus-visible{background:var(--accent-soft);box-shadow:0 10px 24px -8px var(--accent-glow);transform:translateY(-1px);}
+  .nav-toggle{background:none;border:none;cursor:pointer;display:none;height:38px;padding:8px;width:38px;}
+  .nav-toggle span{background:var(--nav-text);border-radius:2px;display:block;height:2px;margin:6px 0;transition:transform .3s var(--ease),opacity .3s var(--ease),background .3s var(--ease);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  .mobile-panel{background:var(--bg-page);border-radius:0 0 24px 24px;display:none;flex-direction:column;gap:2px;margin:0 auto;max-width:calc(var(--max) - 40px);overflow:hidden;padding:0 8px;border:1px solid var(--border-subtle);border-top:none;}
+  .mobile-panel.open{display:flex;}
+  .mobile-panel button{background:none;border:none;border-top:1px solid var(--border-subtle);color:var(--ink);cursor:pointer;font-size:.98rem;padding:16px 10px;text-align:left;transition:color .2s var(--ease);}
+  @media (max-width:920px){.nav-links{gap:14px;}.nav{gap:16px;}.nav-cta{padding-left:15px;padding-right:15px;}}
+  @media (max-width:820px){.nav-links,.nav-cta,.nav > .switch{display:none;}.nav-toggle{display:block;}}
+
+  /* ---------- hero ---------- */
+  .hero-shell{padding:12px 0 16px;}
+  .hero{
+    background:radial-gradient(120% 100% at 50% 0%, var(--hero-bg-top) 0%, var(--hero-bg-bottom) 62%);
+    border-radius:var(--r-xl);
+    color:var(--hero-text);
+    isolation:isolate;
+    height:calc(100vh - 88px);
+    min-height:580px;
+    overflow:hidden;
+    padding:clamp(28px,4vh,50px) clamp(24px,5vw,60px) clamp(16px,2.5vh,28px);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-sizing:border-box;
+    transition:background .35s var(--ease);
+  }
+  .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.68));content:"";inset:0;pointer-events:none;position:absolute;z-index:-1;}
+  .hero-video{height:100%;inset:0;object-fit:cover;position:absolute;width:100%;z-index:-2;}
+  .hero-glow{background:radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 68%);border-radius:50%;height:640px;left:var(--gx,50%);opacity:0;pointer-events:none;position:absolute;top:var(--gy,10%);transform:translate3d(-50%,-50%,0);transition:opacity .5s ease;width:640px;}
+  .hero:hover .hero-glow{opacity:1;}
+  .hero-inner{margin:auto auto;max-width:800px;position:relative;text-align:center;z-index:1;}
+  .eyebrow{color:var(--accent-soft);font-size:.84rem;font-weight:500;transition:color .3s var(--ease);}
+  h1{font-size:clamp(2.4rem,4.8vw,4.2rem);font-weight:650;letter-spacing:-.045em;line-height:1.04;margin:12px 0 18px;}
+  .hero-copy p{color:var(--hero-text-muted);font-size:clamp(.98rem,1.4vw,1.14rem);line-height:1.55;margin:0 auto 26px;max-width:540px;transition:color .3s var(--ease);}
+  .hero-actions{align-items:center;display:flex;gap:12px;justify-content:center;}
+  .button{background:var(--accent);border:none;border-radius:var(--r-pill);color:var(--accent-text);cursor:pointer;display:inline-flex;font-size:.94rem;font-weight:650;padding:14px 28px;text-decoration:none;transition:background .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),color .25s var(--ease);}
+  .button:hover,.button:focus-visible{background:var(--accent-soft);box-shadow:0 14px 34px -12px var(--accent-glow);transform:translateY(-2px);}
+  .button.ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--hero-text);}
+  .button.ghost:hover{background:rgba(255,255,255,.08);box-shadow:none;}
+  .hero-art{display:none;}
+  @media (prefers-reduced-motion:reduce){.hero-video{display:none;}}
+
+  /* ---------- stats (inside hero card) ---------- */
+  .stats{
+    background:transparent;
+    border:none;
+    color:var(--hero-text);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    padding:0 0 clamp(4px,1vh,12px);
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .stat{cursor:pointer;padding:0 20px;position:relative;text-align:center;text-shadow:0 2px 18px rgba(0,0,0,.5);border:none;}
+  .stat::before{background:radial-gradient(ellipse, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);content:"";height:140px;left:50%;opacity:0;pointer-events:none;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .35s var(--ease);width:220px;z-index:-1;}
+  .stat:hover::before,.stat:focus-visible::before{opacity:1;}
+  .stat + .stat{border:none;}
+  .stat-number{color:var(--accent-soft);display:block;font-size:clamp(2.1rem,4vw,3.4rem);font-weight:650;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;transition:color .3s var(--ease);}
+  .stat-label{color:var(--hero-text-muted);display:block;font-size:.84rem;margin-top:6px;transition:color .3s var(--ease);}
+  @media (max-width:760px){
+    .hero{height:auto;min-height:calc(100vh - 88px);padding:40px 20px 28px;gap:32px;}
+    .stats{grid-template-columns:1fr;gap:20px 0;padding-top:10px;}
+    .stat + .stat{border:none;padding-top:0;}
+  }
+
+  /* ---------- section shell ---------- */
+  .section{padding-bottom:56px;padding-top:56px;}
+  .section-head{margin-bottom:26px;max-width:620px;}
+  .section-kicker{color:var(--accent);font-size:.86rem;font-weight:600;transition:color .3s var(--ease);}
+  h2{color:var(--ink);font-size:clamp(2rem,4.4vw,3.2rem);font-weight:650;letter-spacing:-.04em;line-height:1.08;margin:14px 0 0;transition:color .3s var(--ease);}
+  .section-head p{color:var(--stone);font-size:1.02rem;line-height:1.6;margin:16px 0 0;max-width:500px;transition:color .3s var(--ease);}
+
+
+
+  /* ---------- advantage cards (premium feature cards) ---------- */
+  .cards{display:grid;gap:20px;grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:var(--bg-surface);
+    border:1px solid var(--card-border);
+    border-radius:var(--r-lg);
+    box-shadow:var(--shadow-card);
+    display:flex;
+    flex-direction:column;
+    padding:28px 24px;
+    position:relative;
+    text-align:left;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+    overflow:hidden;
+  }
+  .card::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+    background:linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity:0;
+    transition:opacity .35s var(--ease);
+  }
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow-card-hover);
+    border-color:var(--accent);
+  }
+  .card:hover::after{
+    opacity:1;
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+  }
+  .card-icon{
+    align-items:center;
+    background:var(--ink);
+    border-radius:12px;
+    color:var(--accent-soft);
+    display:inline-flex;
+    height:44px;
+    justify-content:center;
+    width:44px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    transition:background .3s var(--ease),color .3s var(--ease);
+  }
+  .card-index{
+    color:var(--accent);
+    font-size:.92rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    background:var(--accent-glow);
+    padding:4px 10px;
+    border-radius:var(--r-pill);
+    font-variant-numeric:tabular-nums;
+    transition:color .3s var(--ease),background .3s var(--ease);
+  }
+  .card h3{
+    font-size:1.15rem;
+    font-weight:650;
+    letter-spacing:-.02em;
+    line-height:1.25;
+    margin:0 0 10px;
+    color:var(--ink);
+    transition:color .3s var(--ease);
+  }
+  .card p{
+    color:var(--stone);
+    font-size:.92rem;
+    line-height:1.55;
+    margin:0;
+    transition:color .3s var(--ease);
+  }
+  @media (max-width:960px){.cards{grid-template-columns:1fr 1fr;}}
+  @media (max-width:580px){.cards{grid-template-columns:1fr;}}
+
+  /* ---------- process (interactive stepper) ---------- */
+  .stepper{display:flex;gap:16px;align-items:stretch;}
+  .step-btn{background:var(--bg-surface);border:1px solid transparent;border-radius:var(--r-md);cursor:pointer;display:flex;flex:1;flex-direction:column;min-height:240px;padding:34px 28px;text-align:left;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
+  .step-btn:hover{transform:translateY(-3px);}
+  .step-btn.active{background:var(--bg-surface-white);border-color:var(--accent);box-shadow:0 20px 40px -26px rgba(0,0,0,.25);}
+  .step-number{color:var(--accent);font-size:1.5rem;font-weight:650;letter-spacing:-.03em;transition:color .3s var(--ease);}
+  .step-btn h3{color:var(--ink);font-size:1.02rem;font-weight:650;letter-spacing:-.01em;margin:28px 0 10px;transition:color .3s var(--ease);}
+  .step-btn p{color:var(--stone);font-size:.9rem;line-height:1.55;margin:0;max-height:0;opacity:0;overflow:hidden;transition:max-height .35s var(--ease),opacity .3s var(--ease),color .3s var(--ease);}
+  .step-btn.active p{max-height:150px;opacity:1;}
+  @media (max-width:800px){.stepper{flex-direction:column;}}
+
+  /* ---------- why us (expand rows) ---------- */
+  .why-list{border-top:1px solid var(--border-subtle);transition:border-color .3s var(--ease);}
+  .why-row{border-bottom:1px solid var(--border-subtle);cursor:pointer;padding:22px 2px;transition:border-color .3s var(--ease);}
+  .why-row-head{align-items:center;display:flex;gap:18px;justify-content:space-between;}
+  .why-row-left{align-items:center;display:flex;gap:18px;}
+  .why-index{color:var(--accent);font-size:.9rem;font-weight:650;min-width:22px;transition:color .3s var(--ease);}
+  .why-row h3{color:var(--ink);font-size:1.06rem;font-weight:600;margin:0;transition:color .3s var(--ease);}
+  .why-plus{align-items:center;background:var(--bg-surface);border-radius:50%;color:var(--ink);display:flex;flex:none;font-size:1rem;height:30px;justify-content:center;transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease);width:30px;}
+  .why-row.open .why-plus{transform:rotate(45deg);}
+  .why-row p{color:var(--stone);line-height:1.6;margin:0;max-height:0;opacity:0;overflow:hidden;padding-left:40px;transition:max-height .35s var(--ease),opacity .3s var(--ease),margin .35s var(--ease),color .3s var(--ease);}
+  .why-row.open p{margin-top:12px;max-height:120px;opacity:1;}
+
+  /* ---------- faq ---------- */
+  .faq{max-width:760px;}
+  .faq-item{background:var(--bg-surface);border-radius:var(--r-md);margin-bottom:10px;overflow:hidden;transition:background .25s var(--ease);}
+  .faq-item.open{background:var(--bg-surface-white);}
+  .faq-q{align-items:center;background:none;border:none;color:var(--ink);cursor:pointer;display:flex;font-size:1rem;font-weight:600;justify-content:space-between;padding:20px 26px;text-align:left;width:100%;transition:color .3s var(--ease);}
+  .faq-plus{align-items:center;background:var(--bg-page);border-radius:50%;color:var(--ink);display:flex;flex:none;font-size:1.05rem;height:28px;justify-content:center;transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease);width:28px;}
+  .faq-item.open .faq-plus{transform:rotate(45deg);}
+  .faq-a{color:var(--stone);line-height:1.6;max-height:0;overflow:hidden;padding:0 26px;transition:max-height .35s var(--ease),padding .3s var(--ease),color .3s var(--ease);}
+  .faq-item.open .faq-a{max-height:160px;padding:0 26px 22px;}
+
+  /* ---------- final cta ---------- */
+  .final-shell{padding:0 6vw;}
+  .final-cta{background:radial-gradient(120% 140% at 50% 0%, var(--hero-bg-top) 0%, var(--hero-bg-bottom) 60%);border-radius:var(--r-xl);color:var(--hero-text);padding:clamp(60px,8vw,96px) clamp(24px,6vw,60px);text-align:center;position:relative;overflow:hidden;isolation:isolate;transition:background .35s var(--ease);}
+  .final-cta:hover .hero-glow{opacity:1;}
+  .final-cta h2{color:var(--hero-text);margin:14px auto 16px;max-width:600px;position:relative;z-index:1;}
+  .final-cta .section-kicker{color:var(--accent);position:relative;z-index:1;}
+  .final-cta p{color:var(--hero-text-muted);margin:0 auto 30px;max-width:440px;position:relative;z-index:1;}
+  .newsletter{display:flex;gap:8px;justify-content:center;margin:0 auto 8px;max-width:420px;position:relative;z-index:1;}
+  .newsletter input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-pill);color:var(--hero-text);flex:1;font-size:.92rem;padding:13px 18px;}
+  .newsletter input::placeholder{color:var(--hero-text-muted);}
+  .newsletter input:focus-visible{outline:2px solid var(--accent);}
+  .newsletter button{background:var(--accent);border:none;border-radius:var(--r-pill);color:var(--accent-text);cursor:pointer;flex:none;font-size:.92rem;font-weight:650;padding:13px 22px;transition:background .25s var(--ease),color .25s var(--ease);}
+  .newsletter button:hover{background:var(--accent-soft);}
+  .newsletter-note{color:var(--hero-text-muted);font-size:.76rem;min-height:18px;position:relative;z-index:1;}
+  @media (max-width:520px){.newsletter{flex-direction:column;}}
+
+  footer{color:var(--stone);font-size:.84rem;padding:36px 0 46px;transition:color .3s var(--ease);}
+  footer .wrap{align-items:center;display:flex;justify-content:space-between;}
+  footer .foot-links{display:flex;gap:18px;}
+  footer .foot-links a{text-decoration:none;transition:color .2s var(--ease);}
+  footer .foot-links a:hover{color:var(--ink);}
+  @media (max-width:600px){footer .wrap{align-items:flex-start;flex-direction:column;gap:10px;}}
+
+  /* ---------- Theme Studio Widget ---------- */
+  .theme-fab{
+    position:fixed;bottom:24px;right:24px;z-index:900;
+    display:flex;align-items:center;gap:9px;
+    background:var(--ink);color:var(--bg-page);
+    border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);
+    padding:11px 20px;font-size:.86rem;font-weight:650;
+    box-shadow:0 12px 32px rgba(0,0,0,.28);cursor:pointer;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);
+  }
+  .theme-fab:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.38);}
+  .theme-fab-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 10px var(--accent);}
+
+  .theme-drawer-overlay{
+    position:fixed;inset:0;background:rgba(14,14,12,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+  }
+  .theme-drawer-overlay.open{opacity:1;pointer-events:auto;}
+
+  .theme-drawer{
+    position:fixed;top:0;right:0;bottom:0;width:min(450px, 94vw);
+    background:var(--bg-page);color:var(--ink);
+    border-left:1px solid var(--border-subtle);
+    box-shadow:-12px 0 45px rgba(0,0,0,.25);
+    z-index:1001;display:flex;flex-direction:column;
+    transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s var(--ease);
+    overflow:hidden;
+  }
+  .theme-drawer.open{transform:translateX(0);}
+
+  .theme-drawer-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 24px;border-bottom:1px solid var(--border-subtle);background:var(--bg-surface);
+  }
+  .theme-drawer-title{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--ink);}
+  .theme-drawer-close{
+    background:none;border:none;cursor:pointer;font-size:1.3rem;
+    width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:var(--stone-dark);transition:background .2s,color .2s;
+  }
+  .theme-drawer-close:hover{background:var(--border-subtle);color:var(--ink);}
+
+  .theme-drawer-body{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:24px;}
+  .theme-section-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--stone);margin-bottom:12px;}
+
+  /* Preset cards */
+  .theme-presets-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .theme-preset-card{
+    background:var(--bg-surface);border:2px solid transparent;border-radius:var(--r-md);
+    padding:12px;cursor:pointer;text-align:left;transition:all .2s var(--ease);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .theme-preset-card:hover{transform:translateY(-2px);border-color:var(--border-subtle);}
+  .theme-preset-card.active{border-color:var(--accent);box-shadow:0 4px 14px var(--accent-glow);}
+  .theme-preset-header{display:flex;align-items:center;justify-content:space-between;font-size:.84rem;font-weight:700;color:var(--ink);}
+  .theme-swatches{display:flex;gap:3px;height:16px;border-radius:var(--r-pill);overflow:hidden;border:1px solid rgba(0,0,0,.15);padding:1px;background:rgba(0,0,0,.05);}
+  .theme-swatch{flex:1;height:100%;border-radius:2px;}
+  .theme-preset-desc{font-size:.72rem;color:var(--stone);line-height:1.3;}
+
+  /* Individual Color Pickers */
+  .theme-pickers-list{display:flex;flex-direction:column;gap:10px;}
+  .theme-picker-row{
+    display:flex;align-items:center;justify-content:space-between;
+    background:var(--bg-surface);padding:10px 14px;border-radius:var(--r-md);
+    border:1px solid var(--border-subtle);transition:border-color .2s;
+  }
+  .theme-picker-row:hover{border-color:var(--accent);}
+  .theme-picker-info{display:flex;flex-direction:column;gap:2px;}
+  .theme-picker-label{font-size:.82rem;font-weight:650;color:var(--ink);}
+  .theme-picker-token{font-size:.68rem;font-family:monospace;color:var(--stone);}
+  .theme-picker-controls{display:flex;align-items:center;gap:8px;}
+  .theme-picker-hex{
+    font-size:.76rem;font-family:monospace;padding:5px 8px;width:72px;text-align:center;
+    border:1px solid var(--border-subtle);border-radius:6px;background:var(--bg-page);color:var(--ink);
+  }
+  .theme-color-input{
+    -webkit-appearance:none;appearance:none;border:none;width:30px;height:30px;border-radius:50%;
+    cursor:pointer;padding:0;background:none;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.25);
+  }
+  .theme-color-input::-webkit-color-swatch-wrapper{padding:0;}
+  .theme-color-input::-webkit-color-swatch{border:none;border-radius:50%;}
+
+  /* Drawer footer actions */
+  .theme-drawer-footer{
+    padding:16px 24px;border-top:1px solid var(--border-subtle);background:var(--bg-surface);
+    display:flex;gap:10px;
+  }
+  .theme-btn{
+    flex:1;padding:11px 14px;border-radius:var(--r-pill);font-size:.82rem;font-weight:650;
+    cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    transition:all .2s var(--ease);
+  }
+  .theme-btn-primary{background:var(--accent);color:var(--accent-text);border:none;}
+  .theme-btn-primary:hover{background:var(--accent-soft);}
+  .theme-btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--border-subtle);}
+  .theme-btn-secondary:hover{background:var(--bg-page);}
+
+  .theme-toast{
+    position:fixed;bottom:84px;right:24px;z-index:1100;
+    background:var(--ink);color:var(--bg-page);padding:10px 18px;border-radius:var(--r-pill);
+    font-size:.82rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.35);
+    opacity:0;transform:translateY(10px);pointer-events:none;transition:all .25s var(--ease);
+  }
+  .theme-toast.show{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="nav-shell wrap">
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="brand" href="#top" aria-label="Payvity Parcels">
+      <svg class="brand-speed-box" width="36" height="26" viewBox="0 0 38 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="2" y1="9" x2="11" y2="9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="0" y1="13.5" x2="13" y2="13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="3" y1="18" x2="10" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="1" y1="22.5" x2="8" y2="22.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M16 10L25 5L34 10L25 15L16 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M16 10V18.5L25 23.5V15" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M25 23.5L34 18.5V10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M20.5 7.5L29.5 12.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M25 15V19.5" stroke="currentColor" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-title">PAYVITY PARCELS</span>
+      <div class="brand-flag" aria-hidden="true">
+        <span class="flag-black"></span>
+        <span class="flag-red"></span>
+        <span class="flag-gold"></span>
+      </div>
+      <div class="brand-partner">
+        <span class="partner-label">Offizieller Partner von</span>
+        <span class="partner-amazon">
+          <svg class="amazon-wordmark" width="48" height="16" viewBox="0 0 54 18" fill="currentColor" aria-label="Amazon">
+            <text x="0" y="11" font-family="'Inter', -apple-system, sans-serif" font-size="12.5" font-weight="700" letter-spacing="-0.03em" fill="currentColor">amazon</text>
+            <path d="M4 14.5C12 17.5 28 17.5 40 13.5M37.5 11.5L41.5 13.5L39 16" stroke="#c9974c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <button data-target="warum-uns">Warum uns</button>
+      <button data-target="so-funktionierts">Ablauf</button>
+      <button data-target="faq">FAQ</button>
+    </div>
+    <label class="switch" aria-label="Sprache wählen">
+      <input type="checkbox" id="langToggle" aria-label="Sprache wählen (DE / EN)">
+      <span>DE</span>
+      <span>EN</span>
+    </label>
+    <a class="nav-cta" href="#kontakt">Partner werden</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-panel" id="mobilePanel">
+    <button data-target="warum-uns">Warum uns</button>
+    <button data-target="so-funktionierts">Ablauf</button>
+    <button data-target="faq">FAQ</button>
+    <button data-target="kontakt">Partner werden</button>
+    <div class="mobile-switch-wrap">
+      <label class="switch mobile-switch" aria-label="Sprache wählen">
+        <input type="checkbox" id="langToggleMobile" aria-label="Sprache wählen (DE / EN)">
+        <span>DE</span>
+        <span>EN</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+  <section class="hero-shell wrap">
+    <div class="hero" id="hero">
+      <div class="hero-glow" id="heroGlow"></div>
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Payvity Paketabholung">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Amazon Hub Counter Partnerprogramm</div>
+          <h1>Ihr Standort als Amazon Hub Counter.</h1>
+          <p>Mehr Laufkundschaft für Ihr Geschäft, ohne zusätzlichen Aufwand. Wir übernehmen Einrichtung, Schulung und Betrieb.</p>
+          <div class="hero-actions">
+            <a class="button" href="#kontakt">Jetzt starten</a>
+            <a class="button ghost" href="#warum-uns">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+      <div class="stats" id="stats">
+        <div class="stat" tabindex="0">
+          <span class="stat-number" data-target="5000" data-suffix="+">5000+</span>
+          <span class="stat-label">Pakete abgeholt</span>
+        </div>
+        <div class="stat" tabindex="0">
+          <span class="stat-number" data-target="350" data-suffix="+">350+</span>
+          <span class="stat-label">Partner</span>
+        </div>
+        <div class="stat" tabindex="0">
+          <span class="stat-number" data-target="105" data-suffix="+">105+</span>
+          <span class="stat-label">Standorte deutschlandweit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="warum-uns">
+    <div class="section-head">
+      <div class="section-kicker">Warum uns</div>
+      <h2>Ihr Geschäft, unser Netzwerk.</h2>
+      <p>Payvity verbindet lokale Geschäfte mit Amazon-Kunden in der Umgebung. Sie stellen den Platz, wir übernehmen den Rest, von der Einrichtung bis zur laufenden Betreuung.</p>
+    </div>
+    <div class="cards" id="advantageCards">
+      <div class="card">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 17V7l8-4 8 4v10l-8 4-8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+        </div>
+        <h3>Provision pro Paket</h3>
+        <p>Sie erhalten eine feste Vergütung für jede Abholung, ganz ohne versteckte Kosten oder Mindestmengen.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20c1.6-4 4.4-6 8-6s6.4 2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+        </div>
+        <h3>Mehr Laufkundschaft</h3>
+        <p>Amazon Kunden kommen automatisch in Ihr Geschäft, viele davon kaufen zusätzlich ein.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 14h16" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+        </div>
+        <h3>Freie Fläche nutzen</h3>
+        <p>Schon wenige Quadratmeter genügen, um ungenutzten Platz in eine neue Einnahmequelle zu verwandeln.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 20c0-3 2.5-5 5-5s5 2 5 5M12 20c0-3 2.5-5 5-5s5 2 5 5" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+        </div>
+        <h3>Starkes Netzwerk</h3>
+        <p>Als zertifizierter Amazon Hub Partner wachsen Sie mit einem etablierten, bundesweiten Netzwerk.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="so-funktionierts">
+    <div class="section-head">
+      <div class="section-kicker">Ablauf</div>
+      <h2>In 3 Schritten zum Amazon Hub Partner</h2>
+    </div>
+    <div class="stepper" id="stepper">
+      <button class="step-btn active" data-step="1">
+        <span class="step-number">01</span>
+        <h3>Kontakt aufnehmen</h3>
+        <p>Bewerben Sie sich mit Ihrem Standort, wir prüfen die Eignung innerhalb weniger Tage.</p>
+      </button>
+      <button class="step-btn" data-step="2">
+        <span class="step-number">02</span>
+        <h3>Unterlagen senden und Vertrag unterschreiben</h3>
+        <p>Nach der Prüfung Ihres Standorts reichen Sie die erforderlichen Unterlagen ein und unterschreiben den Partnerschaftsvertrag.</p>
+      </button>
+      <button class="step-btn" data-step="3">
+        <span class="step-number">03</span>
+        <h3>Starten Sie durch</h3>
+        <p>Wir richten alles ein und schulen Ihr Team. Sie profitieren ab dem ersten Tag.</p>
+      </button>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:0;">
+    <div class="section-head">
+      <div class="section-kicker">Vertrauen</div>
+      <h2>Warum Kunden uns vertrauen</h2>
+      <p>Zusätzliches Einkommen und mehr Laufkundschaft, mit einem Partner, der den technischen und organisatorischen Aufwand übernimmt.</p>
+    </div>
+    <div class="why-list" id="whyList">
+      <div class="why-row open">
+        <div class="why-row-head"><div class="why-row-left"><span class="why-index">01</span><h3>Offizieller Amazon Partner</h3></div><span class="why-plus">+</span></div>
+        <p>Zertifizierter Hub Counter Status, sichtbar für Millionen Amazon Kunden beim Checkout.</p>
+      </div>
+      <div class="why-row">
+        <div class="why-row-head"><div class="why-row-left"><span class="why-index">02</span><h3>Schneller Ablauf</h3></div><span class="why-plus">+</span></div>
+        <p>Vom Erstgespräch bis zur Einrichtung vergehen oft nur wenige Tage.</p>
+      </div>
+      <div class="why-row">
+        <div class="why-row-head"><div class="why-row-left"><span class="why-index">03</span><h3>Transparente Preise</h3></div><span class="why-plus">+</span></div>
+        <p>Feste, faire Vergütung pro Paket, ohne versteckte Gebühren.</p>
+      </div>
+      <div class="why-row">
+        <div class="why-row-head"><div class="why-row-left"><span class="why-index">04</span><h3>Mehr Kundschaft im Laden</h3></div><span class="why-plus">+</span></div>
+        <p>Auch abends und am Wochenende sorgt die Abholung für zusätzlichen Umsatz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="faq">
+    <div class="section-head">
+      <div class="section-kicker">FAQ</div>
+      <h2>Häufig gestellte Fragen</h2>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Was ist ein Amazon Hub Counter?<span class="faq-plus">+</span></button>
+        <div class="faq-a"><p>Eine Abholstation in Partnergeschäften, an der Kunden ihre Amazon-Bestellungen sicher und flexibel abholen oder zurücksenden können.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Wie werde ich Partnershop?<span class="faq-plus">+</span></button>
+        <div class="faq-a"><p>Senden Sie uns Ihre Standortdaten über das Kontaktformular. Nach der Prüfung melden wir uns mit den nächsten Schritten.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Was verdiene ich als Partner?<span class="faq-plus">+</span></button>
+        <div class="faq-a"><p>Sie erhalten eine feste Vergütung pro abgeholtem Paket. Die genauen Konditionen besprechen wir im persönlichen Gespräch.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Welche Voraussetzungen gelten?<span class="faq-plus">+</span></button>
+        <div class="faq-a"><p>Ein bestehendes Geschäft mit guter Erreichbarkeit, regelmäßigen Öffnungszeiten und etwas Platz für Pakete.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Welche Unterstützung erhalte ich?<span class="faq-plus">+</span></button>
+        <div class="faq-a"><p>Training, technische Einrichtung und laufenden persönlichen Support während der gesamten Partnerschaft.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-shell section" id="kontakt">
+    <div class="final-cta" id="finalCta">
+      <div class="hero-glow"></div>
+      <div class="section-kicker">Der nächste Schritt</div>
+      <h2>Bereit, Amazon Hub Partner zu werden?</h2>
+<p>Tragen Sie Ihre E-Mail ein, wir melden uns mit den nächsten Schritten für Ihren Standort.</p>
+      <form class="newsletter" id="leadForm">
+        <input type="email" required placeholder="ihre@email.de" aria-label="E-Mail-Adresse">
+        <button type="submit">Anfrage senden</button>
+      </form>
+      <div class="newsletter-note" id="leadNote"></div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span>© 2026 Payvity Parcels — Offizieller Amazon Hub Counter Partner in Frankfurt.</span>
+    <div class="foot-links">
+      <a href="mailto:partner@payvityparcels.de">Kontakt</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">Impressum</a>
+    </div>
+  </footer>
+
+</main>
+
+<!-- Floating Theme Studio Trigger -->
+<button class="theme-fab" id="themeFab" aria-label="Open Theme Studio">
+  <span class="theme-fab-dot" id="themeFabDot"></span>
+  <span>🎨 Color Studio</span>
+</button>
+
+<!-- Theme Studio Drawer -->
+<div class="theme-drawer-overlay" id="themeOverlay"></div>
+<aside class="theme-drawer" id="themeDrawer" aria-label="Theme & Color Studio">
+  <div class="theme-drawer-head">
+    <div class="theme-drawer-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+      <span>Color & Theme Studio</span>
+    </div>
+    <button class="theme-drawer-close" id="themeClose" aria-label="Close Theme Studio">✕</button>
+  </div>
+  <div class="theme-drawer-body">
+    <div>
+      <div class="theme-section-title">Curated Palettes</div>
+      <div class="theme-presets-grid" id="themePresetsGrid"></div>
+    </div>
+    <div>
+      <div class="theme-section-title">Fine-Tune Individual Colors</div>
+      <div class="theme-pickers-list" id="themePickersList"></div>
+    </div>
+  </div>
+  <div class="theme-drawer-footer">
+    <button class="theme-btn theme-btn-secondary" id="themeResetBtn">Reset to Default</button>
+    <button class="theme-btn theme-btn-primary" id="themeCopyBtn">Copy CSS Tokens</button>
+  </div>
+</aside>
+
+<div class="theme-toast" id="themeToast">CSS variables copied to clipboard!</div>
+
+<script>
+(() => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+  });
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+  });
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const translations = {
+    de: {
+      'Über uns':'Über uns',
+      'Payvity Parcels ist eine Partnerschaft zwischen Amazon und der Payvity GmbH, die globale Reichweite und lokale Geschäftspartner zusammenbringt, um neue Chancen zu schaffen.':'Payvity Parcels ist eine Partnerschaft zwischen Amazon und der Payvity GmbH, die globale Reichweite und lokale Geschäftspartner zusammenbringt, um neue Chancen zu schaffen.',
+      'Unser erfahrenes Team steuert das Onboarding, die Schulung und den laufenden Support, um jede Partnerschaft einfach und erfolgreich zu machen.':'Unser erfahrenes Team steuert das Onboarding, die Schulung und den laufenden Support, um jede Partnerschaft einfach und erfolgreich zu machen.',
+      'Offizielle Partnerschaft':'Offizielle Partnerschaft',
+      'Direkte Zusammenarbeit als autorisierter Amazon Hub Counter Partner.':'Direkte Zusammenarbeit als autorisierter Amazon Hub Counter Partner.',
+      'Volle Unterstützung':'Volle Unterstützung',
+      'Erfahrenes Team für reibungsloses Onboarding, Schulung und Betreuung.':'Erfahrenes Team für reibungsloses Onboarding, Schulung und Betreuung.',
+      'Lokale Wertschöpfung':'Lokale Wertschöpfung',
+      'Neue Einnahmen und wiederkehrende Kundschaft für Ihr Geschäft.':'Neue Einnahmen und wiederkehrende Kundschaft für Ihr Geschäft.',
+      'Warum uns':'Warum uns', 'Vertrauen':'Vertrauen', 'Ablauf':'Ablauf', 'FAQ':'FAQ', 'Partner werden':'Partner werden',
+      'Offizieller Partner von':'Offizieller Partner von',
+      'Amazon Hub Counter Partnerprogramm':'Amazon Hub Counter Partnerprogramm',
+      'Ihr Standort als Amazon Hub Counter.':'Ihr Standort als Amazon Hub Counter.',
+      'Mehr Laufkundschaft für Ihr Geschäft, ohne zusätzlichen Aufwand. Wir übernehmen Einrichtung, Schulung und Betrieb.':'Mehr Laufkundschaft für Ihr Geschäft, ohne zusätzlichen Aufwand. Wir übernehmen Einrichtung, Schulung und Betrieb.',
+      'Jetzt starten':'Jetzt starten', 'Mehr erfahren':'Mehr erfahren',
+      'Pakete abgeholt':'Pakete abgeholt', 'Berühren zum Zählen':'Berühren zum Zählen',
+      'Partner':'Partner', 'Standorte deutschlandweit':'Standorte deutschlandweit',
+      'Ihr Geschäft, unser Netzwerk.':'Ihr Geschäft, unser Netzwerk.',
+      'Payvity verbindet lokale Geschäfte mit Amazon-Kunden in der Umgebung. Sie stellen den Platz, wir übernehmen den Rest, von der Einrichtung bis zur laufenden Betreuung.':'Payvity verbindet lokale Geschäfte mit Amazon-Kunden in der Umgebung. Sie stellen den Platz, wir übernehmen den Rest, von der Einrichtung bis zur laufenden Betreuung.',
+      'Provision pro Paket':'Provision pro Paket',
+      'Sie erhalten eine feste Vergütung für jede Abholung, ganz ohne versteckte Kosten oder Mindestmengen.':'Sie erhalten eine feste Vergütung für jede Abholung, ganz ohne versteckte Kosten oder Mindestmengen.',
+      'Mehr Laufkundschaft':'Mehr Laufkundschaft',
+      'Amazon Kunden kommen automatisch in Ihr Geschäft, viele davon kaufen zusätzlich ein.':'Amazon Kunden kommen automatisch in Ihr Geschäft, viele davon kaufen zusätzlich ein.',
+      'Freie Fläche nutzen':'Freie Fläche nutzen',
+      'Schon wenige Quadratmeter genügen, um ungenutzten Platz in eine neue Einnahmequelle zu verwandeln.':'Schon wenige Quadratmeter genügen, um ungenutzten Platz in eine neue Einnahmequelle zu verwandeln.',
+      'Starkes Netzwerk':'Starkes Netzwerk',
+      'Als zertifizierter Amazon Hub Partner wachsen Sie mit einem etablierten, bundesweiten Netzwerk.':'Als zertifizierter Amazon Hub Partner wachsen Sie mit einem etablierten, bundesweiten Netzwerk.',
+      'Kontakt aufnehmen':'Kontakt aufnehmen',
+      'Bewerben Sie sich mit Ihrem Standort, wir prüfen die Eignung innerhalb weniger Tage.':'Bewerben Sie sich mit Ihrem Standort, wir prüfen die Eignung innerhalb weniger Tage.',
+      'Unterlagen senden und Vertrag unterschreiben':'Unterlagen senden und Vertrag unterschreiben',
+      'Nach der Prüfung Ihres Standorts reichen Sie die erforderlichen Unterlagen ein und unterschreiben den Partnerschaftsvertrag.':'Nach der Prüfung Ihres Standorts reichen Sie die erforderlichen Unterlagen ein und unterschreiben den Partnerschaftsvertrag.',
+      'Starten Sie durch':'Starten Sie durch',
+      'Wir richten alles ein und schulen Ihr Team. Sie profitieren ab dem ersten Tag.':'Wir richten alles ein und schulen Ihr Team. Sie profitieren ab dem ersten Tag.',
+      'In 3 Schritten zum Amazon Hub Partner':'In 3 Schritten zum Amazon Hub Partner',
+      'Warum Kunden uns vertrauen':'Warum Kunden uns vertrauen',
+      'Zusätzliches Einkommen und mehr Laufkundschaft, mit einem Partner, der den technischen und organisatorischen Aufwand übernimmt.':'Zusätzliches Einkommen und mehr Laufkundschaft, mit einem Partner, der den technischen und organisatorischen Aufwand übernimmt.',
+      'Offizieller Amazon Partner':'Offizieller Amazon Partner',
+      'Schneller Ablauf':'Schneller Ablauf', 'Transparente Preise':'Transparente Preise',
+      'Mehr Kundschaft im Laden':'Mehr Kundschaft im Laden',
+      'Zertifizierter Hub Counter Status, sichtbar für Millionen Amazon Kunden beim Checkout.':'Zertifizierter Hub Counter Status, sichtbar für Millionen Amazon Kunden beim Checkout.',
+      'Vom Erstgespräch bis zur Einrichtung vergehen oft nur wenige Tage.':'Vom Erstgespräch bis zur Einrichtung vergehen oft nur wenige Tage.',
+      'Feste, faire Vergütung pro Paket, ohne versteckte Gebühren.':'Feste, faire Vergütung pro Paket, ohne versteckte Gebühren.',
+      'Auch abends und am Wochenende sorgt die Abholung für zusätzlichen Umsatz.':'Auch abends und am Wochenende sorgt die Abholung für zusätzlichen Umsatz.',
+      'Reichweite':'Reichweite', 'In Frankfurt gestartet, bundesweit im Aufbau.':'In Frankfurt gestartet, bundesweit im Aufbau.',
+      'Payvity ist heute in Frankfurt aktiv und erweitert das Partnernetzwerk laufend auf weitere Städte. Bewegen Sie den Zeiger über die Markierung.':'Payvity ist heute in Frankfurt aktiv und erweitert das Partnernetzwerk laufend auf weitere Städte. Bewegen Sie den Zeiger über die Markierung.',
+      'Häufig gestellte Fragen':'Häufig gestellte Fragen',
+      'Was ist ein Amazon Hub Counter?':'Was ist ein Amazon Hub Counter?', 'Wie werde ich Partnershop?':'Wie werde ich Partnershop?',
+      'Was verdiene ich als Partner?':'Was verdiene ich als Partner?', 'Welche Voraussetzungen gelten?':'Welche Voraussetzungen gelten?',
+      'Welche Unterstützung erhalte ich?':'Welche Unterstützung erhalte ich?',
+      'Eine Abholstation in Partnergeschäften, an der Kunden ihre Amazon-Bestellungen sicher und flexibel abholen oder zurücksenden können.':'Eine Abholstation in Partnergeschäften, an der Kunden ihre Amazon-Bestellungen sicher und flexibel abholen oder zurücksenden können.',
+      'Senden Sie uns Ihre Standortdaten über das Kontaktformular. Nach der Prüfung melden wir uns mit den nächsten Schritten.':'Senden Sie uns Ihre Standortdaten über das Kontaktformular. Nach der Prüfung melden wir uns mit den nächsten Schritten.',
+      'Sie erhalten eine feste Vergütung pro abgeholtem Paket. Die genauen Konditionen besprechen wir im persönlichen Gespräch.':'Sie erhalten eine feste Vergütung pro abgeholtem Paket. Die genauen Konditionen besprechen wir im persönlichen Gespräch.',
+      'Ein bestehendes Geschäft mit guter Erreichbarkeit, regelmäßigen Öffnungszeiten und etwas Platz für Pakete.':'Ein bestehendes Geschäft mit guter Erreichbarkeit, regelmäßigen Öffnungszeiten und etwas Platz für Pakete.',
+      'Training, technische Einrichtung und laufenden persönlichen Support während der gesamten Partnerschaft.':'Training, technische Einrichtung und laufenden persönlichen Support während der gesamten Partnerschaft.',
+      'Der nächste Schritt':'Der nächste Schritt',
+      'Bereit, Amazon Hub Partner zu werden?':'Bereit, Amazon Hub Partner zu werden?',
+      'Tragen Sie Ihre E-Mail ein, wir melden uns mit den nächsten Schritten für Ihren Standort.':'Tragen Sie Ihre E-Mail ein, wir melden uns mit den nächsten Schritten für Ihren Standort.',
+      'ihre@email.de':'ihre@email.de', 'Kontakt':'Kontakt',
+      'Anfrage senden':'Anfrage senden', 'Datenschutz':'Datenschutz', 'Impressum':'Impressum',
+      '© 2026 Payvity Parcels — Offizieller Amazon Hub Counter Partner in Frankfurt.':'© 2026 Payvity Parcels — Offizieller Amazon Hub Counter Partner in Frankfurt.',
+      'Danke, wir melden uns in Kürze.':'Danke, wir melden uns in Kürze.'
+    },
+    en: {
+      'Über uns':'About us',
+      'Payvity Parcels ist eine Partnerschaft zwischen Amazon und der Payvity GmbH, die globale Reichweite und lokale Geschäftspartner zusammenbringt, um neue Chancen zu schaffen.':'Payvity Parcels is a partnership between Amazon and Payvity GmbH, bringing corporate and local business partners together to create new opportunities.',
+      'Unser erfahrenes Team steuert das Onboarding, die Schulung und den laufenden Support, um jede Partnerschaft einfach und erfolgreich zu machen.':'Our experienced team manages the onboarding, training and ongoing support to make every partnership simple and successful.',
+      'Offizielle Partnerschaft':'Official Partnership',
+      'Direkte Zusammenarbeit als autorisierter Amazon Hub Counter Partner.':'Direct collaboration as an authorized Amazon Hub Counter partner.',
+      'Volle Unterstützung':'Dedicated Support',
+      'Erfahrenes Team für reibungsloses Onboarding, Schulung und Betreuung.':'Experienced team for smooth onboarding, training, and ongoing care.',
+      'Lokale Wertschöpfung':'Local Opportunity',
+      'Neue Einnahmen und wiederkehrende Kundschaft für Ihr Geschäft.':'New revenue and recurring foot traffic for your business.',
+      'Warum uns':'Why us', 'Vertrauen':'Trust', 'Ablauf':'How it works', 'FAQ':'FAQ', 'Partner werden':'Become a partner',
+      'Offizieller Partner von':'Official Partner of',
+      'Amazon Hub Counter Partnerprogramm':'Amazon Hub Counter Partner Program',
+      'Ihr Standort als Amazon Hub Counter.':'Your location as an Amazon Hub Counter.',
+      'Mehr Laufkundschaft für Ihr Geschäft, ohne zusätzlichen Aufwand. Wir übernehmen Einrichtung, Schulung und Betrieb.':'Bring more customers to your business without extra effort. We handle setup, training, and operations.',
+      'Jetzt starten':'Get started', 'Mehr erfahren':'Learn more',
+      'Pakete abgeholt':'Packages collected', 'Berühren zum Zählen':'Hover to count',
+      'Partner':'Partners', 'Standorte deutschlandweit':'Locations across Germany',
+      'Ihr Geschäft, unser Netzwerk.':'Your business, our network.',
+      'Payvity verbindet lokale Geschäfte mit Amazon-Kunden in der Umgebung. Sie stellen den Platz, wir übernehmen den Rest, von der Einrichtung bis zur laufenden Betreuung.':'Payvity connects local businesses with Amazon customers nearby. You provide the space; we handle everything from setup to ongoing support.',
+      'Provision pro Paket':'Commission per package',
+      'Sie erhalten eine feste Vergütung für jede Abholung, ganz ohne versteckte Kosten oder Mindestmengen.':'You receive fixed compensation for every pickup, with no hidden costs or minimum volumes.',
+      'Mehr Laufkundschaft':'More customers',
+      'Amazon Kunden kommen automatisch in Ihr Geschäft, viele davon kaufen zusätzlich ein.':'Amazon customers come to your shop automatically, and many make additional purchases.',
+      'Freie Fläche nutzen':'Use spare space',
+      'Schon wenige Quadratmeter genügen, um ungenutzten Platz in eine neue Einnahmequelle zu verwandeln.':'Just a few square meters are enough to turn unused space into a new source of revenue.',
+      'Starkes Netzwerk':'Strong network',
+      'Als zertifizierter Amazon Hub Partner wachsen Sie mit einem etablierten, bundesweiten Netzwerk.':'As a certified Amazon Hub partner, you grow with an established, nationwide network.',
+      'Kontakt aufnehmen':'Get in touch',
+      'Bewerben Sie sich mit Ihrem Standort, wir prüfen die Eignung innerhalb weniger Tage.':'Apply with your location, and we will review suitability within a few days.',
+      'Unterlagen senden und Vertrag unterschreiben':'Send documents and sign the contract',
+      'Nach der Prüfung Ihres Standorts reichen Sie die erforderlichen Unterlagen ein und unterschreiben den Partnerschaftsvertrag.':'After reviewing your location, you submit the required documents and sign the partnership contract.',
+      'Starten Sie durch':'Launch your partnership',
+      'Wir richten alles ein und schulen Ihr Team. Sie profitieren ab dem ersten Tag.':'We set everything up and train your team. You benefit from day one.',
+      'In 3 Schritten zum Amazon Hub Partner':'Become an Amazon Hub Partner in 3 steps',
+      'Warum Kunden uns vertrauen':'Why customers trust us',
+      'Zusätzliches Einkommen und mehr Laufkundschaft, mit einem Partner, der den technischen und organisatorischen Aufwand übernimmt.':'Additional income and more foot traffic, with a partner handling the technical and operational effort.',
+      'Offizieller Amazon Partner':'Official Amazon partner',
+      'Schneller Ablauf':'Fast process', 'Transparente Preise':'Transparent pricing',
+      'Mehr Kundschaft im Laden':'More customers in store',
+      'Zertifizierter Hub Counter Status, sichtbar für Millionen Amazon Kunden beim Checkout.':'Certified Hub Counter status, visible to millions of Amazon customers at checkout.',
+      'Vom Erstgespräch bis zur Einrichtung vergehen oft nur wenige Tage.':'From the first conversation to setup, it often takes only a few days.',
+      'Feste, faire Vergütung pro Paket, ohne versteckte Gebühren.':'Fixed, fair compensation per package, with no hidden fees.',
+      'Auch abends und am Wochenende sorgt die Abholung für zusätzlichen Umsatz.':'Pickups bring additional revenue, including evenings and weekends.',
+      'Reichweite':'Reach', 'In Frankfurt gestartet, bundesweit im Aufbau.':'Started in Frankfurt, growing nationwide.',
+      'Payvity ist heute in Frankfurt aktiv und erweitert das Partnernetzwerk laufend auf weitere Städte. Bewegen Sie den Zeiger über die Markierung.':'Payvity is active in Frankfurt and continuously expanding its partner network to more cities. Move the cursor over the marker.',
+      'Häufig gestellte Fragen':'Frequently asked questions',
+      'Was ist ein Amazon Hub Counter?':'What is an Amazon Hub Counter?', 'Wie werde ich Partnershop?':'How do I become a partner shop?',
+      'Was verdiene ich als Partner?':'What do I earn as a partner?', 'Welche Voraussetzungen gelten?':'What are the requirements?',
+      'Welche Unterstützung erhalte ich?':'What support do I receive?',
+      'Eine Abholstation in Partnergeschäften, an der Kunden ihre Amazon-Bestellungen sicher und flexibel abholen oder zurücksenden können.':'A pickup point in partner stores where customers can safely and flexibly collect or return Amazon orders.',
+      'Senden Sie uns Ihre Standortdaten über das Kontaktformular. Nach der Prüfung melden wir uns mit den nächsten Schritten.':'Send us your location details through the contact form. After review, we will get back to you with the next steps.',
+      'Sie erhalten eine feste Vergütung pro abgeholtem Paket. Die genauen Konditionen besprechen wir im persönlichen Gespräch.':'You receive fixed compensation for every collected package. We will discuss the exact terms in a personal conversation.',
+      'Ein bestehendes Geschäft mit guter Erreichbarkeit, regelmäßigen Öffnungszeiten und etwas Platz für Pakete.':'An existing business with good accessibility, regular opening hours, and some space for packages.',
+      'Training, technische Einrichtung und laufenden persönlichen Support während der gesamten Partnerschaft.':'Training, technical setup, and ongoing personal support throughout the partnership.',
+      'Tragen Sie Ihre E-Mail ein, wir melden uns mit den nächsten Schritten für Ihren Standort.':'Enter your email and we will contact you with the next steps for your location.',
+      'ihre@email.de':'your@email.com', 'Kontakt':'Contact',
+      'Der nächste Schritt':'The next step',
+      'Bereit, Amazon Hub Partner zu werden?':'Ready to become an Amazon Hub Partner?',
+      'Anfrage senden':'Send inquiry', 'Datenschutz':'Privacy', 'Impressum':'Legal notice',
+      '© 2026 Payvity Parcels — Offizieller Amazon Hub Counter Partner in Frankfurt.':'© 2026 Payvity Parcels — Official Amazon Hub Counter Partner in Frankfurt.',
+      'Danke, wir melden uns in Kürze.':'Thank you, we will get in touch shortly.'
+    }
+  };
+  const setLanguage = language => {
+    const map = {};
+    if (language === 'en') {
+      Object.keys(translations.de).forEach(key => { map[key] = translations.en[key]; });
+    } else {
+      Object.keys(translations.de).forEach(key => { map[translations.en[key]] = key; });
+    }
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while (node = walker.nextNode()) {
+      const value = node.nodeValue.trim();
+      if (map[value] && map[value] !== value) node.nodeValue = node.nodeValue.replace(value, map[value]);
+    }
+    document.querySelectorAll('[placeholder]').forEach(element => {
+      if (map[element.placeholder]) element.placeholder = map[element.placeholder];
+    });
+    document.documentElement.lang = language;
+    document.querySelectorAll('.switch input[type="checkbox"]').forEach(input => {
+      input.checked = (language === 'en');
+      input.setAttribute('aria-checked', language === 'en' ? 'true' : 'false');
+    });
+  };
+  document.querySelectorAll('.switch').forEach(sw => {
+    const input = sw.querySelector('input[type="checkbox"]');
+    const spans = sw.querySelectorAll('span');
+    input.addEventListener('change', () => {
+      setLanguage(input.checked ? 'en' : 'de');
+    });
+    if (spans.length >= 2) {
+      spans[0].addEventListener('click', e => {
+        e.preventDefault();
+        if (input.checked) setLanguage('de');
+      });
+      spans[1].addEventListener('click', e => {
+        e.preventDefault();
+        if (!input.checked) setLanguage('en');
+      });
+    }
+  });
+  /* mobile menu */
+  const navToggle = document.getElementById('navToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  navToggle.addEventListener('click', () => {
+    const open = mobilePanel.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  /* smooth scroll + active nav state */
+  const allNavButtons = document.querySelectorAll('.nav-links button, .mobile-panel button');
+  allNavButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      mobilePanel.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const targetId = link.getAttribute('href').slice(1);
+      if (!targetId || targetId === 'top') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+        return;
+      }
+      const el = document.getElementById(targetId);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+  });
+  const sections = ['warum-uns','so-funktionierts','faq'].map(id => document.getElementById(id)).filter(Boolean);
+  const navMap = document.querySelectorAll('.nav-links button');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navMap.forEach(b => b.classList.toggle('active', b.dataset.target === entry.target.id));
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  /* cursor-follow glow in hero and final cta */
+  const glowContainers = [document.getElementById('hero'), document.getElementById('finalCta')].filter(Boolean);
+  if (!reducedMotion) {
+    glowContainers.forEach(container => {
+      container.addEventListener('pointermove', e => {
+        const rect = container.getBoundingClientRect();
+        container.style.setProperty('--gx', `${e.clientX - rect.left}px`);
+        container.style.setProperty('--gy', `${e.clientY - rect.top}px`);
+      });
+    });
+  }
+
+  /* count-up stats, replayed from zero on every hover or keyboard focus */
+  const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  const runCount = el => {
+    const target = Number(el.dataset.target);
+    if (!Number.isFinite(target)) return;
+    const suffix = el.dataset.suffix || '';
+    const decimalDivisor = Number(el.dataset.decimal) || null;
+    const duration = 1500;
+    const token = Symbol();
+    el._countToken = token;
+    el.textContent = decimalDivisor ? `0.1${suffix}` : `1${suffix}`;
+    const start = performance.now();
+    const step = now => {
+      if (el._countToken !== token) return;
+      const progress = Math.min((now - start) / duration, 1);
+      const raw = target * easeOutExpo(progress);
+      const value = decimalDivisor ? Math.max(0.1, raw / 10).toFixed(1) : Math.max(1, Math.round(raw));
+      el.textContent = `${value}${suffix}`;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const numbers = document.querySelectorAll('.stat-number[data-target]');
+  numbers.forEach(el => {
+    if (reducedMotion) {
+      const decimalDivisor = Number(el.dataset.decimal) || null;
+      const target = Number(el.dataset.target);
+      el.textContent = `${decimalDivisor ? (target/10).toFixed(1) : target}${el.dataset.suffix || ''}`;
+      return;
+    }
+    const parent = el.closest('.stat');
+    const trigger = () => runCount(el);
+    parent.addEventListener('mouseenter', trigger);
+    parent.addEventListener('focus', trigger, true);
+    setTimeout(trigger, 350);
+  });
+  /* stepper */
+  document.querySelectorAll('.step-btn').forEach(step => {
+    step.addEventListener('click', () => {
+      if (step.classList.contains('active')) {
+        step.classList.remove('active');
+        return;
+      }
+      document.querySelectorAll('.step-btn').forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+    });
+  });
+
+  /* why-us accordion rows (single open) */
+  document.querySelectorAll('.why-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.why-row').forEach(r => r.classList.remove('open'));
+      if (!isOpen) row.classList.add('open');
+    });
+  });
+
+  /* faq accordion (single open) */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* lead form */
+  const leadForm = document.getElementById('leadForm');
+  const leadNote = document.getElementById('leadNote');
+  leadForm.addEventListener('submit', e => {
+    e.preventDefault();
+    leadNote.textContent = document.documentElement.lang === 'en' ? 'Thank you, we will get in touch shortly.' : 'Danke, wir melden uns in Kürze.';
+    leadForm.reset();
+  });
+
+  /* ---------- Theme Studio & Palette Engine ---------- */
+  const PALETTES = {
+    obsidianGold: {
+      name: 'Obsidian Gold',
+      desc: '1. Warm Noir & Champagne Luxury (Current)',
+      swatches: ['#f7f4ec', '#c9974c', '#0e0e0c'],
+      vars: {
+        '--bg-page': '#f7f4ec',
+        '--bg-surface': '#efeade',
+        '--bg-surface-white': '#ffffff',
+        '--bg-nav': 'rgba(247,244,236,.82)',
+        '--nav-border': 'rgba(20,18,10,.07)',
+        '--nav-text': '#0e0e0c',
+        '--nav-text-muted': '#54503f',
+        '--ink': '#0e0e0c',
+        '--ink-soft': '#17170f',
+        '--stone': '#7c7666',
+        '--stone-dark': '#54503f',
+        '--accent': '#c9974c',
+        '--accent-soft': '#e7c47f',
+        '--accent-text': '#0e0e0c',
+        '--accent-glow': 'rgba(201,151,76,.35)',
+        '--hero-bg-top': '#232319',
+        '--hero-bg-bottom': '#0e0e0c',
+        '--hero-text': '#f7f4ec',
+        '--hero-text-muted': '#c8c3b5',
+        '--card-border': 'rgba(20,18,10,.08)',
+        '--border-subtle': 'rgba(20,18,10,.08)'
+      }
+    },
+    amazonNavy: {
+      name: 'Amazon Fleet',
+      desc: '2. Deep Navy & Electric Amber (Picture Reference)',
+      swatches: ['#ffffff', '#ff9900', '#131f2e'],
+      vars: {
+        '--bg-page': '#ffffff',
+        '--bg-surface': '#f3f6f9',
+        '--bg-surface-white': '#ffffff',
+        '--bg-nav': '#131f2e',
+        '--nav-border': 'rgba(255,255,255,.12)',
+        '--nav-text': '#ffffff',
+        '--nav-text-muted': '#94a3b8',
+        '--ink': '#0f172a',
+        '--ink-soft': '#1e293b',
+        '--stone': '#64748b',
+        '--stone-dark': '#475569',
+        '--accent': '#ff9900',
+        '--accent-soft': '#ffb84d',
+        '--accent-text': '#0f172a',
+        '--accent-glow': 'rgba(255,153,0,.35)',
+        '--hero-bg-top': '#1e293b',
+        '--hero-bg-bottom': '#0f172a',
+        '--hero-text': '#ffffff',
+        '--hero-text-muted': '#cbd5e1',
+        '--card-border': 'rgba(15,23,42,.08)',
+        '--border-subtle': 'rgba(15,23,42,.08)'
+      }
+    },
+    emeraldLogistics: {
+      name: 'Emerald Eco',
+      desc: '3. Eco Logistics & Fresh Mint (Recommendation)',
+      swatches: ['#f4f8f5', '#059669', '#091e17'],
+      vars: {
+        '--bg-page': '#f4f8f5',
+        '--bg-surface': '#e6f0e9',
+        '--bg-surface-white': '#ffffff',
+        '--bg-nav': 'rgba(244,248,245,.88)',
+        '--nav-border': 'rgba(16,42,28,.08)',
+        '--nav-text': '#091e17',
+        '--nav-text-muted': '#2f4f3e',
+        '--ink': '#091e17',
+        '--ink-soft': '#123327',
+        '--stone': '#527363',
+        '--stone-dark': '#2f4f3e',
+        '--accent': '#059669',
+        '--accent-soft': '#34d399',
+        '--accent-text': '#ffffff',
+        '--accent-glow': 'rgba(5,150,105,.35)',
+        '--hero-bg-top': '#11382b',
+        '--hero-bg-bottom': '#091e17',
+        '--hero-text': '#f4f8f5',
+        '--hero-text-muted': '#a7c7b8',
+        '--card-border': 'rgba(9,30,23,.08)',
+        '--border-subtle': 'rgba(9,30,23,.08)'
+      }
+    },
+    royalCobalt: {
+      name: 'Royal Cobalt',
+      desc: '4. High-Tech Enterprise Blue (Recommendation)',
+      swatches: ['#f8fafc', '#2563eb', '#0f172a'],
+      vars: {
+        '--bg-page': '#f8fafc',
+        '--bg-surface': '#edf2f7',
+        '--bg-surface-white': '#ffffff',
+        '--bg-nav': 'rgba(248,250,252,.88)',
+        '--nav-border': 'rgba(15,23,42,.07)',
+        '--nav-text': '#0f172a',
+        '--nav-text-muted': '#64748b',
+        '--ink': '#0f172a',
+        '--ink-soft': '#1e293b',
+        '--stone': '#64748b',
+        '--stone-dark': '#334155',
+        '--accent': '#2563eb',
+        '--accent-soft': '#60a5fa',
+        '--accent-text': '#ffffff',
+        '--accent-glow': 'rgba(37,99,235,.35)',
+        '--hero-bg-top': '#1e293b',
+        '--hero-bg-bottom': '#0f172a',
+        '--hero-text': '#ffffff',
+        '--hero-text-muted': '#94a3b8',
+        '--card-border': 'rgba(15,23,42,.08)',
+        '--border-subtle': 'rgba(15,23,42,.08)'
+      }
+    }
+  };
+
+  const EDITABLE_TOKENS = [
+    { key: '--accent', label: 'Primary Brand / Accent', desc: 'Buttons, highlight kickers, active tabs' },
+    { key: '--bg-page', label: 'Page Background', desc: 'Main canvas background color' },
+    { key: '--bg-surface', label: 'Card Surface', desc: 'Feature cards, accordion rows, faq backgrounds' },
+    { key: '--bg-nav', label: 'Navbar Background', desc: 'Header navigation bar pill surface' },
+    { key: '--ink', label: 'Headings & Ink', desc: 'Primary titles, headlines, strong text' },
+    { key: '--stone', label: 'Body & Secondary Text', desc: 'Paragraphs, descriptions, hints' },
+    { key: '--hero-bg-bottom', label: 'Hero Surface', desc: 'Dark hero & bottom CTA card background' }
+  ];
+
+  let currentPaletteKey = 'obsidianGold';
+  const root = document.documentElement;
+
+  const hexToRgba = (hex, alpha) => {
+    let c = hex.replace('#', '');
+    if (c.length === 3) c = c.split('').map(x => x + x).join('');
+    const num = parseInt(c, 16);
+    if (isNaN(num)) return `rgba(0,0,0,${alpha})`;
+    const r = (num >> 16) & 255;
+    const g = (num >> 8) & 255;
+    const b = num & 255;
+    return `rgba(${r},${g},${b},${alpha})`;
+  };
+
+  const getCssVar = (key) => {
+    const val = getComputedStyle(root).getPropertyValue(key).trim();
+    if (val.startsWith('#')) return val;
+    return '#c9974c';
+  };
+
+  const applyPalette = (key) => {
+    const pal = PALETTES[key];
+    if (!pal) return;
+    currentPaletteKey = key;
+    Object.entries(pal.vars).forEach(([prop, value]) => {
+      root.style.setProperty(prop, value);
+    });
+    updatePickerInputs();
+    updateActivePresetCard();
+    localStorage.setItem('payvity_active_palette', key);
+    localStorage.removeItem('payvity_custom_theme');
+  };
+
+  const applyCustomVar = (key, hexVal) => {
+    root.style.setProperty(key, hexVal);
+    if (key === '--accent') {
+      root.style.setProperty('--accent-glow', hexToRgba(hexVal, 0.35));
+    }
+    if (key === '--ink') {
+      root.style.setProperty('--hero-bg-bottom', hexVal);
+    }
+    saveCustomState();
+    updateActivePresetCard(null);
+  };
+
+  const saveCustomState = () => {
+    const state = {};
+    EDITABLE_TOKENS.forEach(t => {
+      state[t.key] = getComputedStyle(root).getPropertyValue(t.key).trim();
+    });
+    localStorage.setItem('payvity_custom_theme', JSON.stringify(state));
+  };
+
+  // Render Presets Grid
+  const presetsGrid = document.getElementById('themePresetsGrid');
+  Object.entries(PALETTES).forEach(([key, pal]) => {
+    const card = document.createElement('div');
+    card.className = `theme-preset-card ${key === currentPaletteKey ? 'active' : ''}`;
+    card.dataset.palette = key;
+    card.innerHTML = `
+      <div class="theme-preset-header">
+        <span>${pal.name}</span>
+        <div class="theme-swatches">
+          ${pal.swatches.map(s => `<span class="theme-swatch" style="background:${s}"></span>`).join('')}
+        </div>
+      </div>
+      <div class="theme-preset-desc">${pal.desc}</div>
+    `;
+    card.addEventListener('click', () => applyPalette(key));
+    presetsGrid.appendChild(card);
+  });
+
+  // Render Editable Pickers
+  const pickersList = document.getElementById('themePickersList');
+  EDITABLE_TOKENS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'theme-picker-row';
+    const curVal = getComputedStyle(root).getPropertyValue(item.key).trim();
+    const hex = curVal.startsWith('#') ? curVal : '#c9974c';
+    row.innerHTML = `
+      <div class="theme-picker-info">
+        <span class="theme-picker-label">${item.label}</span>
+        <span class="theme-picker-token">${item.key}</span>
+      </div>
+      <div class="theme-picker-controls">
+        <input type="text" class="theme-picker-hex" data-var="${item.key}" value="${hex}" maxlength="7" spellcheck="false">
+        <input type="color" class="theme-color-input" data-var="${item.key}" value="${hex}">
+      </div>
+    `;
+    const colorInput = row.querySelector('input[type="color"]');
+    const textInput = row.querySelector('input[type="text"]');
+
+    colorInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      textInput.value = val;
+      applyCustomVar(item.key, val);
+    });
+
+    textInput.addEventListener('change', (e) => {
+      let val = e.target.value.trim();
+      if (!val.startsWith('#')) val = '#' + val;
+      if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+        colorInput.value = val;
+        applyCustomVar(item.key, val);
+      }
+    });
+
+    pickersList.appendChild(row);
+  });
+
+  const updatePickerInputs = () => {
+    EDITABLE_TOKENS.forEach(item => {
+      const val = getComputedStyle(root).getPropertyValue(item.key).trim();
+      const hex = val.startsWith('#') ? val : '#c9974c';
+      const colorIn = pickersList.querySelector(`input[type="color"][data-var="${item.key}"]`);
+      const textIn = pickersList.querySelector(`input[type="text"][data-var="${item.key}"]`);
+      if (colorIn && val.startsWith('#')) colorIn.value = hex;
+      if (textIn) textIn.value = hex;
+    });
+  };
+
+  const updateActivePresetCard = (activeKey = currentPaletteKey) => {
+    document.querySelectorAll('.theme-preset-card').forEach(c => {
+      c.classList.toggle('active', c.dataset.palette === activeKey);
+    });
+  };
+
+  // Drawer Open / Close
+  const fab = document.getElementById('themeFab');
+  const drawer = document.getElementById('themeDrawer');
+  const overlay = document.getElementById('themeOverlay');
+  const closeBtn = document.getElementById('themeClose');
+
+  const openDrawer = () => {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+  };
+  const closeDrawer = () => {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+  };
+
+  fab.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+
+  // Reset Button
+  document.getElementById('themeResetBtn').addEventListener('click', () => {
+    applyPalette('obsidianGold');
+    showToast('Reset to Obsidian Gold theme');
+  });
+
+  // Copy CSS Tokens
+  const showToast = (msg) => {
+    const toast = document.getElementById('themeToast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2400);
+  };
+
+  document.getElementById('themeCopyBtn').addEventListener('click', () => {
+    const cssLines = EDITABLE_TOKENS.map(t => `  ${t.key}: ${getComputedStyle(root).getPropertyValue(t.key).trim()};`).join('\n');
+    const cssExport = `:root {\n${cssLines}\n}`;
+    navigator.clipboard.writeText(cssExport).then(() => {
+      showToast('Copied CSS color variables to clipboard!');
+    }).catch(() => {
+      showToast('Could not access clipboard');
+    });
+  });
+
+  // Restore saved theme on initial load
+  const savedCustom = localStorage.getItem('payvity_custom_theme');
+  const savedPal = localStorage.getItem('payvity_active_palette');
+  if (savedCustom) {
+    try {
+      const parsed = JSON.parse(savedCustom);
+      Object.entries(parsed).forEach(([k, v]) => root.style.setProperty(k, v));
+      updatePickerInputs();
+      updateActivePresetCard(null);
+    } catch(e) {}
+  } else if (savedPal && PALETTES[savedPal]) {
+    applyPalette(savedPal);
+  }
+})();
+</script>
+</body>
+</html>
