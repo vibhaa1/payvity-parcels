@@ -52,11 +52,11 @@
   ::selection{background:var(--accent-soft);color:var(--accent-text);}
 
   /* ---------- nav ---------- */
-  .nav-shell{position:sticky;top:0;z-index:50;padding-top:12px;}
+  .nav-shell{position:sticky;top:0;z-index:50;padding:12px 0 0;}
   .nav{
     align-items:center;background:var(--bg-nav);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
-    border:1px solid var(--nav-border);border-radius:var(--r-pill);display:flex;gap:clamp(20px,3vw,42px);justify-content:flex-start;
-    margin:0 auto;max-width:calc(var(--max) - 40px);padding:8px 10px 8px 20px;transition:background .3s var(--ease),border-color .3s var(--ease),border-radius .3s var(--ease);
+    border:1px solid var(--nav-border);border-radius:var(--r-pill);display:flex;gap:clamp(16px,2.4vw,36px);justify-content:flex-start;
+    margin:0 auto;width:100%;padding:8px 12px 8px 22px;transition:background .3s var(--ease),border-color .3s var(--ease),border-radius .3s var(--ease);
   }
   .brand{align-items:center;color:var(--nav-text);display:inline-flex;flex-shrink:0;gap:clamp(8px,1.2vw,13px);text-decoration:none;transition:opacity .2s var(--ease),color .3s var(--ease);}
   .brand:hover{opacity:.88;}
@@ -205,7 +205,7 @@
   .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg);}
   .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
-  .mobile-panel{background:var(--bg-page);border-radius:0 0 24px 24px;display:none;flex-direction:column;gap:2px;margin:0 auto;max-width:calc(var(--max) - 40px);overflow:hidden;padding:0 8px;border:1px solid var(--border-subtle);border-top:none;}
+  .mobile-panel{background:var(--bg-page);border-radius:0 0 24px 24px;display:none;flex-direction:column;gap:2px;margin:0 auto;width:100%;overflow:hidden;padding:0 8px;border:1px solid var(--border-subtle);border-top:none;}
   .mobile-panel.open{display:flex;}
   .mobile-panel button{background:none;border:none;border-top:1px solid var(--border-subtle);color:var(--ink);cursor:pointer;font-size:.98rem;padding:16px 10px;text-align:left;transition:color .2s var(--ease);}
   @media (max-width:920px){.nav-links{gap:14px;}.nav{gap:16px;}.nav-cta{padding-left:15px;padding-right:15px;}}
