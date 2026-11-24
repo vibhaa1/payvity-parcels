@@ -592,8 +592,7 @@ export function OnboardingWizard({
     step > 1 || Boolean(contactName.trim() || companyName.trim() || phone.trim());
 
   return (
-    <section className="wrap section" id="kontakt" style={{ paddingTop: "16px" }}>
-      <div className="wizard-shell">
+    <div className="wizard-shell">
         <div className="wizard-header">
           <div className="wizard-header-copy">
             <h2>{copy.sectionHeader.title}</h2>
@@ -1450,6 +1449,5 @@ export function OnboardingWizard({
           )}
         </div>
       </div>
-    </section>
   );
 }

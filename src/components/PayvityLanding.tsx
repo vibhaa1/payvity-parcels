@@ -11,7 +11,6 @@ import { PaketshopSection } from "./PaketshopSection";
 import { AdvantagesSection } from "./AdvantagesSection";
 import { ProcessSection } from "./ProcessSection";
 import { TrustSection } from "./TrustSection";
-import { LockerTeaserSection } from "./LockerTeaserSection";
 import { FaqSection } from "./FaqSection";
 import { FinalCtaSection } from "./FinalCtaSection";
 import { Footer } from "./Footer";
@@ -85,7 +84,6 @@ export function PayvityLanding({ lang }: { lang: Lang }) {
         <AdvantagesSection lang={lang} />
         <ProcessSection lang={lang} />
         <TrustSection lang={lang} />
-        <LockerTeaserSection lang={lang} />
         <FaqSection
           lang={lang}
           onScrollTo={scrollTo}

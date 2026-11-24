@@ -3,6 +3,13 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://payvityparcels.de";
 export const BRAND_NAME = "PAYVITY Parcels";
 export const CONTACT_EMAIL = "partner@payvityparcels.de";
+export const CONTACT_LINKS = {
+  // Update with final live WhatsApp number, Instagram handle, and LinkedIn company URL
+  whatsapp: "https://wa.me/49",
+  email: `mailto:${CONTACT_EMAIL}`,
+  instagram: "https://www.instagram.com/payvityparcels/",
+  linkedin: "https://www.linkedin.com/company/payvity-parcels/",
+} as const;
 export const OG_IMAGE_PATH = "/images/og-payvity-paketshop.jpg";
 export const LOGO_PATH = "/images/payvity-logo.png";
 

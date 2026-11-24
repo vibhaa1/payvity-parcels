@@ -22,6 +22,25 @@ export interface AdvantageCardItem {
   desc: string;
 }
 
+export type VerticalIconKey =
+  | "kiosk"
+  | "retail"
+  | "fuel"
+  | "stationery"
+  | "bakery"
+  | "lottery"
+  | "book"
+  | "pharmacy"
+  | "supermarket"
+  | "residential"
+  | "transit"
+  | "building";
+
+export interface VerticalMarqueeItem {
+  icon: VerticalIconKey;
+  label: string;
+}
+
 export interface ProcessStepItem {
   step: number;
   img: string;
@@ -79,8 +98,7 @@ export interface HomeLocaleContent {
     imageHeight: number;
     imageAlt: string;
     verticalsHeading: string;
-    verticals: string[];
-    multiCarrierNote: string;
+    verticals: VerticalMarqueeItem[];
   };
   advantages: {
     title: string;
@@ -157,7 +175,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 5000,
+          target: 20000,
           suffix: "+",
           label: "Pakete erfolgreich übergeben",
         },
@@ -169,7 +187,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         },
         {
           id: "locations",
-          target: 105,
+          target: 145,
           suffix: "+",
           label: "Standorte deutschlandweit",
         },
@@ -195,17 +213,15 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         "Amazon Hub Counter Paketshop im lokalen Einzelhandel mit persönlicher Paketübergabe",
       verticalsHeading: "Für welche Geschäfte eignet sich ein Paketshop?",
       verticals: [
-        "Kiosk & Späti",
-        "Einzelhandel",
-        "Tankstelle",
-        "Schreibwarenladen",
-        "Bäckerei & Café",
-        "Lotto-Annahmestelle",
-        "Buchhandlung",
-        "Apotheke & Drogerie",
+        { icon: "kiosk", label: "Kiosk & Späti" },
+        { icon: "retail", label: "Einzelhandel" },
+        { icon: "fuel", label: "Tankstelle" },
+        { icon: "stationery", label: "Schreibwarenladen" },
+        { icon: "bakery", label: "Bäckerei & Café" },
+        { icon: "lottery", label: "Lotto-Annahmestelle" },
+        { icon: "book", label: "Buchhandlung" },
+        { icon: "pharmacy", label: "Apotheke & Drogerie" },
       ],
-      multiCarrierNote:
-        "Auch bestehende DHL-, Hermes-, DPD- oder GLS-Paketshops können Amazon Hub Counter ergänzend anbieten, sofern bestehende Verträge dies zulassen.",
     },
     advantages: {
       title: "Warum sich ein Paketshop für Ihren Laden lohnt.",
@@ -244,7 +260,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/01-find-sm.png",
           width: 480,
           height: 320,
-          title: "1. Standort kostenlos prüfen lassen",
+          title: "Standort kostenlos prüfen lassen",
           desc: "Tragen Sie Ihren Geschäftsname, PLZ, Ort und Ihre Telefonnummer ein. Wir melden uns telefonisch und prüfen die Eignung Ihres Standorts.",
           alt: "Schritt 1: Standortprüfung für Ihren Amazon Paketshop anfragen",
         },
@@ -253,7 +269,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/02-choose-sm.png",
           width: 480,
           height: 320,
-          title: "2. Unterlagen & Vertrag abschließen",
+          title: "Unterlagen & Vertrag abschließen",
           desc: "Passt Ihr Standort ins Netzwerk, reichen Sie die erforderlichen Gewerbeunterlagen ein und schließen den Partnervertrag unkompliziert ab.",
           alt: "Schritt 2: Unterlagen prüfen und Partnerschaftsvertrag abschließen",
         },
@@ -262,7 +278,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/03-pickup-sm.png",
           width: 480,
           height: 320,
-          title: "3. Einrichtung, Schulung & Start",
+          title: "Einrichtung, Schulung & Start",
           desc: "Wir begleiten Sie bei der Einrichtung der Amazon Hub App und liefern Werbematerial für Ihr Schaufenster – anschließend geht Ihr Paketshop live.",
           alt: "Schritt 3: Einrichtung der Amazon Hub App und Start im Amazon-Checkout",
         },
@@ -368,6 +384,12 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           answer:
             "Im Amazon Paketshop (Hub Counter) übergeben Sie Pakete persönlich an Ihrer Theke und profitieren direkt vom Kundenkontakt im Laden. Ein Amazon Locker ist eine Selbstbedienungs-Paketstation mit geringem Personalaufwand für größere Innen- oder Außenflächen, die PAYVITY als ergänzende Lösung betreut.",
         },
+        {
+          id: "faq-9",
+          question: "Was passiert, nachdem ich das Formular abgeschickt habe?",
+          answer:
+            "Wir rufen Sie werktags innerhalb von 24 Stunden an, um Ihr Gebiet zu prüfen, Ihren Standort zu besprechen und den Vertrag abzuschließen. Nach Vertragsunterzeichnung dauert die Freischaltung 48–72 Stunden.",
+        },
       ],
     },
     leadForm: {
@@ -417,7 +439,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 5000,
+          target: 20000,
           suffix: "+",
           label: "Parcels handled",
         },
@@ -429,7 +451,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         },
         {
           id: "locations",
-          target: 105,
+          target: 145,
           suffix: "+",
           label: "Locations across Germany",
         },
@@ -455,17 +477,15 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         "Amazon Hub Counter parcel shop handover inside a local German retail store",
       verticalsHeading: "Which businesses fit an Amazon Parcel Shop?",
       verticals: [
-        "Kiosk & Späti",
-        "Retail Store",
-        "Petrol Station",
-        "Stationery Shop",
-        "Bakery & Café",
-        "Lottery Shop",
-        "Bookstore",
-        "Pharmacy & Drugstore",
+        { icon: "kiosk", label: "Kiosk & Späti" },
+        { icon: "retail", label: "Retail Store" },
+        { icon: "fuel", label: "Petrol Station" },
+        { icon: "stationery", label: "Stationery Shop" },
+        { icon: "bakery", label: "Bakery & Café" },
+        { icon: "lottery", label: "Lottery Shop" },
+        { icon: "book", label: "Bookstore" },
+        { icon: "pharmacy", label: "Pharmacy & Drugstore" },
       ],
-      multiCarrierNote:
-        "Already operating a DHL, Hermes, DPD, or GLS parcel shop? Many stores add Amazon Hub Counter alongside existing carriers where contracts permit.",
     },
     advantages: {
       title: "Why a Parcel Shop makes sense for your store.",
@@ -504,7 +524,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/01-find-sm.png",
           width: 480,
           height: 320,
-          title: "1. Free location check",
+          title: "Free location check",
           desc: "Submit your store details, postal code, and phone number. Our team calls you directly to review suitability in your area.",
           alt: "Step 1: Request a free location check for your Amazon Parcel Shop",
         },
@@ -513,7 +533,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/02-choose-sm.png",
           width: 480,
           height: 320,
-          title: "2. Documents & agreement",
+          title: "Documents & agreement",
           desc: "Once your store qualifies, submit your business registration documents and sign the partner agreement digitally.",
           alt: "Step 2: Submit documents and sign the partner agreement",
         },
@@ -522,7 +542,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/03-pickup-sm.png",
           width: 480,
           height: 320,
-          title: "3. Setup, training & go live",
+          title: "Setup, training & go live",
           desc: "We guide you through setting up the Amazon Hub App and ship storefront signage — then your store goes live at Amazon checkout.",
           alt: "Step 3: Amazon Hub App onboarding and live launch",
         },
@@ -621,6 +641,12 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
             "What is the difference between a Parcel Shop (Counter) and an Amazon Locker?",
           answer:
             "In a Parcel Shop (Hub Counter), your staff hands over parcels personally at the counter and engages directly with visiting shoppers. An Amazon Locker is an automated self-service kiosk with minimal staff involvement suited to larger indoor or outdoor spaces.",
+        },
+        {
+          id: "faq-9",
+          question: "What happens after I submit the form?",
+          answer:
+            "We call you within 24 working hours to validate your area, review your location and sign the contract. Activation takes 48–72 hours once signed.",
         },
       ],
     },

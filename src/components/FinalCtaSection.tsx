@@ -2,6 +2,7 @@
 
 import type { InterestOption } from "@/data/content";
 import type { Lang } from "@/lib/seo";
+import { ContactPickerCard } from "./ContactPickerCard";
 import { OnboardingWizard } from "./onboarding/OnboardingWizard";
 
 interface FinalCtaSectionProps {
@@ -18,11 +19,20 @@ export function FinalCtaSection({
   onChangeInterest,
 }: FinalCtaSectionProps) {
   return (
-    <OnboardingWizard
-      lang={lang}
-      selectedInterest={selectedInterest}
-      defaultInterest={defaultInterest}
-      onChangeInterest={onChangeInterest}
-    />
+    <section className="wrap section" id="kontakt" style={{ paddingTop: "16px" }}>
+      <div className="contact-split">
+        <aside className="contact-picker-aside">
+          <ContactPickerCard lang={lang} />
+        </aside>
+        <div className="contact-wizard-col">
+          <OnboardingWizard
+            lang={lang}
+            selectedInterest={selectedInterest}
+            defaultInterest={defaultInterest}
+            onChangeInterest={onChangeInterest}
+          />
+        </div>
+      </div>
+    </section>
   );
 }

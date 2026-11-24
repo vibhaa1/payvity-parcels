@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { HOME_CONTENT, InterestOption } from "@/data/content";
 import { Lang, localizedPath } from "@/lib/seo";
 import { FadeUp } from "./MotionPrimitives";
+import { VerticalMarquee } from "./VerticalMarquee";
 
 interface PaketshopSectionProps {
   lang: Lang;
@@ -88,26 +89,10 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
           <h3>{data.verticalsHeading}</h3>
         </div>
 
-        <div className="vertical-marquee" aria-label={data.verticalsHeading}>
-          <div className="vertical-marquee-track">
-            <ul className="vertical-marquee-group">
-              {data.verticals.map((sector) => (
-                <li key={sector} className="vertical-chip">
-                  {sector}
-                </li>
-              ))}
-            </ul>
-            <ul className="vertical-marquee-group" aria-hidden="true">
-              {data.verticals.map((sector) => (
-                <li key={`dup-${sector}`} className="vertical-chip">
-                  {sector}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="vertical-note">{data.multiCarrierNote}</p>
+        <VerticalMarquee
+          items={data.verticals}
+          ariaLabel={data.verticalsHeading}
+        />
       </div>
     </section>
   );

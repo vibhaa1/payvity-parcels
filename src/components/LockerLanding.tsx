@@ -12,6 +12,7 @@ import { ProcessSection } from "./ProcessSection";
 import { FaqSection } from "./FaqSection";
 import { FinalCtaSection } from "./FinalCtaSection";
 import { Footer } from "./Footer";
+import { VerticalMarquee } from "./VerticalMarquee";
 
 export function LockerLanding({ lang }: { lang: Lang }) {
   const [selectedInterest, setSelectedInterest] =
@@ -100,30 +101,10 @@ export function LockerLanding({ lang }: { lang: Lang }) {
 
                 <div className="locker-sites-block">
                   <h3>{content.overview.siteTypesTitle}</h3>
-                  <div
-                    className="vertical-marquee"
-                    aria-label={content.overview.siteTypesTitle}
-                  >
-                    <div className="vertical-marquee-track">
-                      <ul className="vertical-marquee-group">
-                        {content.overview.siteTypes.map((siteType) => (
-                          <li key={siteType} className="vertical-chip">
-                            {siteType}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul
-                        className="vertical-marquee-group"
-                        aria-hidden="true"
-                      >
-                        {content.overview.siteTypes.map((siteType) => (
-                          <li key={`dup-${siteType}`} className="vertical-chip">
-                            {siteType}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  <VerticalMarquee
+                    items={content.overview.siteTypes}
+                    ariaLabel={content.overview.siteTypesTitle}
+                  />
                 </div>
               </div>
 

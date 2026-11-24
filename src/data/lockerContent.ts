@@ -1,5 +1,5 @@
 import type { Lang } from "@/lib/seo";
-import type { FaqItem, ProcessStepItem } from "./content";
+import type { FaqItem, ProcessStepItem, VerticalMarqueeItem } from "./content";
 
 export interface LockerLocaleContent {
   meta: {
@@ -23,7 +23,7 @@ export interface LockerLocaleContent {
     imageHeight: number;
     imageAlt: string;
     siteTypesTitle: string;
-    siteTypes: string[];
+    siteTypes: VerticalMarqueeItem[];
   };
   requirements: {
     title: string;
@@ -79,12 +79,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
       imageAlt: "Amazon Hub Locker Selbstbedienungs-Paketstation am Standort",
       siteTypesTitle: "Geeignete Standorte für Amazon Hub Locker",
       siteTypes: [
-        "Supermärkte & Discounter",
-        "Tankstellen & Waschanlagen",
-        "Einkaufszentren & Fachmärkte",
-        "Wohnanlagen & Quartierszentren",
-        "Bahnhofsnahe Gewerbeflächen",
-        "Büro- & Gewerbeparks",
+        { icon: "supermarket", label: "Supermärkte & Discounter" },
+        { icon: "fuel", label: "Tankstellen & Waschanlagen" },
+        { icon: "kiosk", label: "Einkaufszentren & Fachmärkte" },
+        { icon: "residential", label: "Wohnanlagen & Quartierszentren" },
+        { icon: "transit", label: "Bahnhofsnahe Gewerbeflächen" },
+        { icon: "building", label: "Büro- & Gewerbeparks" },
       ],
     },
     requirements: {
@@ -112,7 +112,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/01-find-sm.png",
           width: 480,
           height: 320,
-          title: "1. Fläche unverbindlich anfragen",
+          title: "Fläche unverbindlich anfragen",
           desc: "Teilen Sie uns Adresse, Geschäftsname und Telefonnummer mit. Wir prüfen Bedarf und technische Eignung der Stellfläche.",
           alt: "Schritt 1: Standortprüfung für Amazon Locker anfragen",
         },
@@ -121,7 +121,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/02-choose-sm.png",
           width: 480,
           height: 320,
-          title: "2. Standortbegehung & Vertrag",
+          title: "Standortbegehung & Vertrag",
           desc: "Bei positiver Vorprüfung werden Maße, Stromanschluss und Zugang abgestimmt und die Standortvereinbarung abgeschlossen.",
           alt: "Schritt 2: Abstimmung der Locker-Fläche und Standortvertrag",
         },
@@ -130,7 +130,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/03-pickup-sm.png",
           width: 480,
           height: 320,
-          title: "3. Lieferung, Aufbau & Freischaltung",
+          title: "Lieferung, Aufbau & Freischaltung",
           desc: "Installation und technische Anbindung werden organisiert – danach erscheint Ihr Locker direkt im Amazon-Checkout.",
           alt: "Schritt 3: Aufbau und Inbetriebnahme des Amazon Lockers",
         },
@@ -212,12 +212,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
       imageAlt: "Amazon Hub Locker self-service parcel station in retail setting",
       siteTypesTitle: "Suitable property types for Amazon Hub Lockers",
       siteTypes: [
-        "Supermarkets & Discounters",
-        "Petrol Stations",
-        "Shopping Centers & Retail Parks",
-        "Residential Complexes",
-        "Transit-adjacent Properties",
-        "Office & Business Parks",
+        { icon: "supermarket", label: "Supermarkets & Discounters" },
+        { icon: "fuel", label: "Petrol Stations" },
+        { icon: "kiosk", label: "Shopping Centers & Retail Parks" },
+        { icon: "residential", label: "Residential Complexes" },
+        { icon: "transit", label: "Transit-adjacent Properties" },
+        { icon: "building", label: "Office & Business Parks" },
       ],
     },
     requirements: {
@@ -245,7 +245,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/01-find-sm.png",
           width: 480,
           height: 320,
-          title: "1. Submit your site",
+          title: "Submit your site",
           desc: "Share your business name, postal code, city, and phone number. We check demand and technical fit.",
           alt: "Step 1: Request an Amazon Locker location review",
         },
@@ -254,7 +254,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/02-choose-sm.png",
           width: 480,
           height: 320,
-          title: "2. Technical check & agreement",
+          title: "Technical check & agreement",
           desc: "Once pre-approved, dimensions, power access, and placement are aligned and formalized.",
           alt: "Step 2: Locker site survey and agreement",
         },
@@ -263,7 +263,7 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           img: "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/03-pickup-sm.png",
           width: 480,
           height: 320,
-          title: "3. Delivery, setup & launch",
+          title: "Delivery, setup & launch",
           desc: "Installation and activation are arranged — your Locker then appears directly in Amazon checkout.",
           alt: "Step 3: Locker installation and go-live",
         },
