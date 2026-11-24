@@ -1,6 +1,7 @@
 "use client";
 
-import { ADVANTAGES, AdvantageCardItem, I18N, Lang } from "@/data/content";
+import { AdvantageCardItem, HOME_CONTENT } from "@/data/content";
+import type { Lang } from "@/lib/seo";
 import { FadeUp, StaggerGrid, StaggerItem } from "./MotionPrimitives";
 
 function CardIcon({ type }: { type: AdvantageCardItem["icon"] }) {
@@ -29,19 +30,25 @@ function CardIcon({ type }: { type: AdvantageCardItem["icon"] }) {
           <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
         </svg>
       );
-    case "space":
+    case "app":
       return (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <rect
-            x="4"
-            y="4"
-            width="16"
-            height="16"
-            rx="2"
+            x="6"
+            y="2.5"
+            width="12"
+            height="19"
+            rx="2.5"
             stroke="currentColor"
             strokeWidth="1.8"
           />
-          <path d="M4 14h16" stroke="currentColor" strokeWidth="1.8" />
+          <path
+            d="M9.5 11.5l1.8 1.8 3.7-3.8"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       );
     case "network":
@@ -60,19 +67,19 @@ function CardIcon({ type }: { type: AdvantageCardItem["icon"] }) {
 }
 
 export function AdvantagesSection({ lang }: { lang: Lang }) {
-  const copy = I18N[lang];
+  const data = HOME_CONTENT[lang].advantages;
 
   return (
-    <section className="wrap section" id="warum-uns">
+    <section className="wrap section" id="vorteile">
       <FadeUp className="section-head-split">
         <div>
-          <h2>{copy.why_title}</h2>
+          <h2>{data.title}</h2>
         </div>
-        <p className="section-lead">{copy.why_lead}</p>
+        <p className="section-lead">{data.lead}</p>
       </FadeUp>
 
       <StaggerGrid className="cards" id="advantageCards">
-        {ADVANTAGES.map((item) => (
+        {data.cards.map((item) => (
           <StaggerItem key={item.id}>
             <div className="card">
               <div className="card-top">
@@ -80,8 +87,8 @@ export function AdvantagesSection({ lang }: { lang: Lang }) {
                   <CardIcon type={item.icon} />
                 </span>
               </div>
-              <h3>{copy[item.titleKey]}</h3>
-              <p>{copy[item.descKey]}</p>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
             </div>
           </StaggerItem>
         ))}

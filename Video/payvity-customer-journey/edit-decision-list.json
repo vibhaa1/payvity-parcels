@@ -1,0 +1,117 @@
+{
+  "fps": 24,
+  "duration": 30,
+  "availableJourneyEnd": 26.5,
+  "status": "work_in_progress_exit_missing",
+  "scenes": [
+    {
+      "id": "arrival-greeting",
+      "kind": "video",
+      "sourceIn": 0,
+      "frames": 165,
+      "title": "Ankommen und begrüßen",
+      "startFrame": 0,
+      "start": 0.0,
+      "duration": 6.875
+    },
+    {
+      "id": "app-home",
+      "kind": "image",
+      "asset": "01_app_home.jpeg",
+      "frames": 48,
+      "title": "App öffnen",
+      "startFrame": 165,
+      "start": 6.875,
+      "duration": 2.0
+    },
+    {
+      "id": "human-code",
+      "kind": "video",
+      "sourceIn": 165,
+      "frames": 68,
+      "title": "Abholcode zeigen",
+      "startFrame": 213,
+      "start": 8.875,
+      "duration": 2.8333333333333335
+    },
+    {
+      "id": "code-screen",
+      "kind": "image",
+      "asset": "02_customer_code_scan.jpeg",
+      "frames": 48,
+      "title": "Abholcode scannen",
+      "startFrame": 281,
+      "start": 11.708333333333334,
+      "duration": 2.0
+    },
+    {
+      "id": "human-check",
+      "kind": "video",
+      "sourceIn": 233,
+      "frames": 32,
+      "title": "Abholcode bestätigt",
+      "startFrame": 329,
+      "start": 13.708333333333334,
+      "duration": 1.3333333333333333
+    },
+    {
+      "id": "human-wait",
+      "kind": "video",
+      "sourceIn": 265,
+      "frames": 34,
+      "title": "Ein kurzer Moment",
+      "startFrame": 361,
+      "start": 15.041666666666666,
+      "duration": 1.4166666666666667
+    },
+    {
+      "id": "human-parcel",
+      "kind": "video",
+      "sourceIn": 329,
+      "frames": 67,
+      "title": "Paket holen und scannen",
+      "startFrame": 395,
+      "start": 16.458333333333332,
+      "duration": 2.7916666666666665
+    },
+    {
+      "id": "parcel-screen",
+      "kind": "image",
+      "asset": "03_parcel_scan.jpeg",
+      "frames": 48,
+      "title": "Paket scannen",
+      "startFrame": 462,
+      "start": 19.25,
+      "duration": 2.0
+    },
+    {
+      "id": "success-screen",
+      "kind": "image",
+      "asset": "04_pickup_success.jpeg",
+      "frames": 42,
+      "title": "Abholung bestätigt",
+      "startFrame": 510,
+      "start": 21.25,
+      "duration": 1.75
+    },
+    {
+      "id": "handover-turn",
+      "kind": "video",
+      "sourceIn": 396,
+      "frames": 84,
+      "title": "Paket übernehmen und verabschieden",
+      "startFrame": 552,
+      "start": 23.0,
+      "duration": 3.5
+    },
+    {
+      "id": "exit-pending",
+      "kind": "gap",
+      "frames": 84,
+      "title": "Ausgangsaufnahme ausstehend",
+      "startFrame": 636,
+      "start": 26.5,
+      "duration": 3.5
+    }
+  ]
+}

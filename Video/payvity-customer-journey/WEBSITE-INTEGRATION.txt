@@ -1,0 +1,73 @@
+STANDALONE REVIEW AND FUTURE NEXT.JS INTEGRATION
+
+The current website is untouched. Review http://127.0.0.1:4173/preview/ first.
+The final 3.5-second exit shot is required before final integration/acceptance.
+
+Editable film
+  studio/index.html is the 1920 × 1080 HyperFrames composition.
+  studio/mobile/index.html is the 1080 × 1350 mobile composition.
+  Both use a deterministic paused GSAP timeline and independent original screenshot
+  and real-video layers. The root duration is 30 seconds at 24 fps. Film titles and
+  CTA are deliberately absent from the renders; the website owns that copy.
+  build_production.py rebuilds source trims, compositions and review encodes from
+  the frame-based SCENES list. After modifying a composition in Studio, carry the
+  edits back into that build source or render the edited composition directly;
+  do not run the generator over unmerged manual Studio edits.
+
+Media delivery
+  renders/*review-master-24fps.mp4 are high-quality review masters (CRF 14).
+  renders/*web.mp4 are H.264 (CRF 20, six-frame closed GOP, no B-frames, faststart).
+  renders/*web.webm are VP9 (CRF 28, six-frame keyframe spacing).
+  Both formats retain native 24 fps; no interpolation or frame-rate conversion.
+  Six frames at 24 fps is 250 ms between keyframes, trading file size for seeking.
+  Treat these as review media until the final exit has been inserted and checked.
+
+Hosting and HTTP
+  Serve video with correct Content-Type, Content-Length and Accept-Ranges: bytes.
+  Support valid 206 Partial Content responses and Content-Range. A CDN or the
+  existing static public/video directory can handle delivery after final review.
+  The included local server implements these semantics for standalone validation.
+  Do not host large masters as website sources: ship web MP4/WebM and posters.
+
+Client integration after approval
+  Port the small standalone player into a dedicated Next.js client component.
+  Keep configuration in one place: duration 30, fps 24, desktop distance 400vh,
+  mobile distance 350vh, breakpoint 760px and the existing #kontakt CTA target.
+  Use a sticky viewport inside a section of height 100svh + configured distance.
+  This makes actual scroll travel 400vh/350vh, rather than subtracting a viewport
+  from the requested distance. Map its clamped progress to 0–30 seconds.
+  Use requestAnimationFrame only while the target differs from current video time.
+  Coalesce seeks: finish the in-flight seek before requesting the latest target.
+  Never call video.play(). Use muted playsinline, correct posters and preload.
+  Keep desktop/mobile video sources separate. Load one selected source, and reset
+  media on breakpoint change while preserving story progress. Avoid preloading
+  both encodes on a constrained connection. MP4 is the default; WebM is optional.
+  The standalone query ?format=webm provides codec-comparison review.
+
+Typography, CTA and accessibility
+  Closing headline: Wenige Schritte. Ein zufriedener Kunde.
+  Supporting text: So einfach funktioniert die Paketabholung in Ihrem Geschäft.
+  Native link: Jetzt Paketshop werden → #kontakt.
+  These are independent DOM elements, never text baked into the media.
+  Inactive closing copy is aria-hidden and inert so an invisible CTA cannot take
+  keyboard focus. The visible CTA is focusable/clickable and uses a native link.
+  Preserve an accessible process description for the video. Do not announce every
+  scroll frame to screen readers or trap keyboard scrolling inside the scene.
+  prefers-reduced-motion disables pinning and scrubbing; show a stationary poster,
+  a readable four-step summary, original screens and a normal native CTA instead.
+
+QA evidence
+  review/browser-qa.json: desktop and mobile, both codecs, 44 forward/backward
+  target checks, media loading, no horizontal overflow, paused/no autoplay,
+  native closing CTA, configurable distances and reduced-motion checks.
+  review/media-qa.json: durations, frame counts, native cadence, keyframe spacing,
+  MP4 faststart and unchanged original source asset hashes.
+  HyperFrames check reports live under each project's .hyperframes/artifacts/.
+  Browser QA is local Chromium emulation, not physical iOS/Safari validation.
+  Repeat on actual mobile Safari/Chrome and a throttled connection before release.
+
+Remaining acceptance gate
+  Supply/generate exit-continuation.mp4, conform it to 24 fps carefully if needed,
+  replace the black slot at 26.5–30, check continuity and complete the visible exit.
+  Render final masters and web variants, recheck seeking and mobile framing, then
+  integrate into the website only after the standalone complete journey is reviewed.
