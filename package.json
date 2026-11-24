@@ -1,0 +1,28 @@
+{
+  "name": "payvity-parcels",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "pages:preview": "npx wrangler pages dev out",
+    "pages:deploy": "npm run build && npx wrangler pages deploy out --project-name=payvity-parcels"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "framer-motion": "^12.4.7",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2"
+  }
+}
