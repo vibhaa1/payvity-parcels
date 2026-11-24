@@ -27,7 +27,7 @@ export function StepIndicator({
           initial={false}
           animate={{ width: `${progressPct}%` }}
           transition={
-            reduced ? { duration: 0 } : { duration: 0.35, ease: [0.19, 1, 0.22, 1] }
+            reduced ? { duration: 0 } : { duration: 0.3, ease: [0.19, 1, 0.22, 1] }
           }
         />
       </div>
@@ -36,7 +36,8 @@ export function StepIndicator({
         {steps.map((step) => {
           const isActive = step.number === currentStep;
           const isDone = step.number < currentStep;
-          const canJump = step.number <= maxVisitedStep || step.number <= currentStep + 1;
+          const canJump =
+            step.number <= maxVisitedStep || step.number <= currentStep + 1;
 
           return (
             <li key={step.number}>
@@ -52,8 +53,8 @@ export function StepIndicator({
                 <span className="wizard-step-dot" aria-hidden="true">
                   {isDone ? (
                     <svg
-                      width="13"
-                      height="13"
+                      width="12"
+                      height="12"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -64,7 +65,7 @@ export function StepIndicator({
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   ) : (
-                    <span>{String(step.number).padStart(2, "0")}</span>
+                    <span>{step.number}</span>
                   )}
                 </span>
                 <span className="wizard-step-label">{step.shortTitle}</span>

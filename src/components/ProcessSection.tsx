@@ -8,29 +8,19 @@ import { FadeUp, StaggerGrid, StaggerItem } from "./MotionPrimitives";
 interface ProcessSectionProps {
   lang: Lang;
   title?: string;
-  lead?: string;
   steps?: ProcessStepItem[];
 }
 
-export function ProcessSection({
-  lang,
-  title,
-  lead,
-  steps,
-}: ProcessSectionProps) {
+export function ProcessSection({ lang, title, steps }: ProcessSectionProps) {
   const [activeStep, setActiveStep] = useState<number>(1);
   const defaults = HOME_CONTENT[lang].process;
   const heading = title ?? defaults.title;
-  const sublead = lead ?? defaults.lead;
   const list = steps ?? defaults.steps;
 
   return (
     <section className="wrap section" id="so-funktionierts">
-      <FadeUp className="section-head-split">
-        <div>
-          <h2>{heading}</h2>
-        </div>
-        <p className="section-lead">{sublead}</p>
+      <FadeUp className="section-head-single">
+        <h2>{heading}</h2>
       </FadeUp>
 
       <StaggerGrid className="steps-grid" id="stepper">

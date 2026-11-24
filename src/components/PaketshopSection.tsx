@@ -18,11 +18,8 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
 
   return (
     <section className="wrap section" id="paketshop">
-      <FadeUp className="section-head-split">
-        <div>
-          <h2>{data.title}</h2>
-        </div>
-        <p className="section-lead">{data.lead}</p>
+      <FadeUp className="section-head-single">
+        <h2>{data.title}</h2>
       </FadeUp>
 
       <div className="solution-card">
@@ -89,16 +86,26 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
       <div className="vertical-strip">
         <div className="vertical-strip-head">
           <h3>{data.verticalsHeading}</h3>
-          <p>{data.verticalsLead}</p>
         </div>
 
-        <ul className="vertical-chips">
-          {data.verticals.map((sector) => (
-            <li key={sector} className="vertical-chip">
-              {sector}
-            </li>
-          ))}
-        </ul>
+        <div className="vertical-marquee" aria-label={data.verticalsHeading}>
+          <div className="vertical-marquee-track">
+            <ul className="vertical-marquee-group">
+              {data.verticals.map((sector) => (
+                <li key={sector} className="vertical-chip">
+                  {sector}
+                </li>
+              ))}
+            </ul>
+            <ul className="vertical-marquee-group" aria-hidden="true">
+              {data.verticals.map((sector) => (
+                <li key={`dup-${sector}`} className="vertical-chip">
+                  {sector}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
         <p className="vertical-note">{data.multiCarrierNote}</p>
       </div>

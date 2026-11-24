@@ -34,9 +34,12 @@ export function FaqSection({
 
   return (
     <section className="wrap section" id="faq">
+      <FadeUp className="section-head-single faq-head-single">
+        <h2>{title ?? defaults.title}</h2>
+      </FadeUp>
+
       <div className="faq-split">
         <FadeUp className="faq-aside">
-          <h2>{title ?? defaults.title}</h2>
           <p className="section-lead">{lead ?? defaults.lead}</p>
           <div className="faq-help-box">
             <h3>{helpTitle ?? defaults.helpTitle}</h3>

@@ -71,11 +71,8 @@ export function AdvantagesSection({ lang }: { lang: Lang }) {
 
   return (
     <section className="wrap section" id="vorteile">
-      <FadeUp className="section-head-split">
-        <div>
-          <h2>{data.title}</h2>
-        </div>
-        <p className="section-lead">{data.lead}</p>
+      <FadeUp className="section-head-single">
+        <h2>{data.title}</h2>
       </FadeUp>
 
       <StaggerGrid className="cards" id="advantageCards">

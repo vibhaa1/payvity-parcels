@@ -61,7 +61,6 @@ export interface HomeLocaleContent {
   };
   hero: {
     ariaLabel: string;
-    eyebrow: string;
     title: string;
     subtitle: string;
     ctaPrimary: string;
@@ -70,7 +69,6 @@ export interface HomeLocaleContent {
   };
   paketshop: {
     title: string;
-    lead: string;
     cardHeading: string;
     cardDesc: string;
     bullets: string[];
@@ -81,18 +79,15 @@ export interface HomeLocaleContent {
     imageHeight: number;
     imageAlt: string;
     verticalsHeading: string;
-    verticalsLead: string;
     verticals: string[];
     multiCarrierNote: string;
   };
   advantages: {
     title: string;
-    lead: string;
     cards: AdvantageCardItem[];
   };
   process: {
     title: string;
-    lead: string;
     steps: ProcessStepItem[];
   };
   trust: {
@@ -105,7 +100,6 @@ export interface HomeLocaleContent {
     items: TrustRowItem[];
   };
   lockerTeaser: {
-    badge: string;
     title: string;
     desc: string;
     ctaLabel: string;
@@ -119,38 +113,7 @@ export interface HomeLocaleContent {
     items: FaqItem[];
   };
   leadForm: {
-    title: string;
-    lead: string;
-    interestLabel: string;
     options: Array<{ value: InterestOption; label: string }>;
-    fields: {
-      businessName: string;
-      businessPlaceholder: string;
-      postalCode: string;
-      postalPlaceholder: string;
-      city: string;
-      cityPlaceholder: string;
-      contactName: string;
-      contactPlaceholder: string;
-      phone: string;
-      phonePlaceholder: string;
-      email: string;
-      emailPlaceholder: string;
-    };
-    privacyPrefix: string;
-    privacyLinkLabel: string;
-    privacySuffix: string;
-    submitLabel: string;
-    submittingLabel: string;
-    trustLine: string;
-    successMessage: string;
-    errorFallback: string;
-    validationMessages: {
-      required: string;
-      invalidPostal: string;
-      invalidPhone: string;
-      invalidEmail: string;
-    };
   };
   footer: {
     copy: string;
@@ -186,10 +149,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     hero: {
       ariaLabel: "PAYVITY Parcels — Amazon Paketshop in Deutschland werden",
-      eyebrow: "Offizieller Amazon Hub Partner in Deutschland",
       title: "Amazon Paketshop werden – mehr Kunden für Ihr Geschäft.",
       subtitle:
-        "Werden Sie Teil des Amazon Hub Counter Netzwerks. Bieten Sie Ihren Kunden einen zusätzlichen Service, erzielen Sie zusätzliche Einnahmen pro erfolgreich abgewickeltem Paket und profitieren Sie von potenziell mehr Laufkundschaft. PAYVITY begleitet Sie von der Standortprüfung bis zum laufenden Betrieb.",
+        "Werden Sie Teil des Amazon Hub Counter Netzwerks in Deutschland. Erzielen Sie zusätzliche Einnahmen pro Paket und gewinnen Sie neue Laufkundschaft – persönlich begleitet durch PAYVITY.",
       ctaPrimary: "Jetzt Paketshop werden",
       ctaSecondary: "So funktioniert der Paketshop",
       stats: [
@@ -214,16 +176,14 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
     },
     paketshop: {
-      title: "Ihr Geschäft als Amazon Paketshop & Annahmestelle.",
-      lead: "Als Amazon Hub Counter Partner werden lokale Geschäfte zu einer offiziellen Abhol- und Annahmestelle direkt in der Nachbarschaft — ohne aufwendigen Umbau und mit persönlicher Betreuung durch PAYVITY.",
+      title: "Ihr Geschäft als offizieller Amazon Paketshop (Hub Counter).",
       cardHeading: "Amazon Hub Counter (Paketshop)",
       cardDesc:
-        "Nutzen Sie Ihre bestehende Ladentheke und einen kleinen, sicheren Lagerbereich für die schnelle Paketausgabe. Sobald Kunden Ihren Shop beim Amazon-Checkout auswählen, steigern Sie Ihre Sichtbarkeit im Viertel und erschließen eine zusätzliche Einnahmequelle für Ihr Geschäft.",
+        "Verwandeln Sie Ihren bestehenden Laden in einen Amazon Paketshop. Geben Sie Pakete aus, gewinnen Sie neue Kunden und erzielen Sie zusätzliche Einnahmen mit minimalem Aufwand.",
       bullets: [
-        "Zusätzliche Einnahmen pro erfolgreich abgewickeltem Paket – transparent vereinbart ohne versteckte Gebühren.",
+        "Zusätzliche Einnahmen pro erfolgreich abgewickeltem Paket – transparent ohne versteckte Gebühren.",
         "Einfache Bedienung über die Amazon Hub App zur Paketabwicklung auf Smartphone oder Tablet.",
-        "Paketabholung und Amazon Retouren-Annahme (sofern für Ihren Standort und das Programm freigeschaltet).",
-        "Persönliche Begleitung durch PAYVITY bis zur Freischaltung, inklusive Team-Einweisung und Werbematerial.",
+        "Persönliche Begleitung durch PAYVITY bis zur Freischaltung inklusive Einweisung und Werbematerial.",
       ],
       ctaLabel: "Kostenlose Standortprüfung anfragen",
       secondaryLinkLabel: "Auch an Amazon Locker interessiert?",
@@ -234,8 +194,6 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       imageAlt:
         "Amazon Hub Counter Paketshop im lokalen Einzelhandel mit persönlicher Paketübergabe",
       verticalsHeading: "Für welche Geschäfte eignet sich ein Paketshop?",
-      verticalsLead:
-        "Ob Sie erstmals einen Paketshop eröffnen oder Ihr bestehendes Geschäft um eine attraktive Amazon Annahmestelle erweitern möchten – entscheidend sind verlässliche Öffnungszeiten, gute Erreichbarkeit und eine trockene Ablagefläche:",
       verticals: [
         "Kiosk & Späti",
         "Einzelhandel",
@@ -247,11 +205,10 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         "Apotheke & Drogerie",
       ],
       multiCarrierNote:
-        "Sie betreiben bereits einen DHL-, Hermes-, DPD- oder GLS-Paketshop? Viele Partner nutzen Amazon Hub Counter als zusätzlichen Paketdienst, sofern bestehende Verträge mit anderen Paketdiensten keine Exklusivität vorschreiben.",
+        "Auch bestehende DHL-, Hermes-, DPD- oder GLS-Paketshops können Amazon Hub Counter ergänzend anbieten, sofern bestehende Verträge dies zulassen.",
     },
     advantages: {
       title: "Warum sich ein Paketshop für Ihren Laden lohnt.",
-      lead: "PAYVITY verbindet lokale Einzelhändler in ganz Deutschland mit dem Amazon Hub Counter Netzwerk – für zusätzliche Einnahmen und potenziell mehr Laufkundschaft.",
       cards: [
         {
           id: "comp",
@@ -281,7 +238,6 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     process: {
       title: "In 3 Schritten zum Amazon Counter Partner.",
-      lead: "Klar strukturiert und unverbindlich – PAYVITY begleitet Sie persönlich von der Anfrage bis zur Freischaltung Ihres Paketshops.",
       steps: [
         {
           step: 1,
@@ -314,7 +270,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     trust: {
       title: "Warum Einzelhändler auf PAYVITY setzen.",
-      lead: "Als spezialisierter Amazon Hub Partner in Deutschland nehmen wir Ihnen organisatorische Hürden ab, damit Sie sich auf Ihren Laden konzentrieren können.",
+      lead: "Wir übernehmen Einrichtung und Organisation – Sie konzentrieren sich auf Ihr Geschäft.",
       imageSrc:
         "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/ULP-Image-Grid-New_compressed.png",
       imageWidth: 960,
@@ -345,17 +301,16 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
     },
     lockerTeaser: {
-      badge: "Zusatzangebot für größere Flächen",
       title: "Freie Innen- oder Außenfläche? Amazon Locker als Zusatzoption.",
-      desc: "Unser Schwerpunkt liegt auf persönlichen Paketshops im Einzelhandel. Für Supermärkte, Tankstellen, Einkaufszentren oder Gewerbeimmobilien unterstützen wir ergänzend auch bei vollautomatischen Amazon Hub Lockern (Selbstbedienungs-Paketstationen mit geringem Personalaufwand).",
+      desc: "PAYVITY unterstützt außerdem Supermärkte, Tankstellen, Einkaufszentren und Immobilieneigentümer bei Amazon Hub Lockern – als komfortable Selbstbedienungs-Paketstation mit geringem Personalaufwand.",
       ctaLabel: "Mehr zu Amazon Locker Standorten",
     },
     faq: {
-      title: "Häufig gestellte Fragen zum Paketshop",
-      lead: "Alle wichtigen Antworten zu Voraussetzungen, Provision, Ablauf und Amazon Hub App auf einen Blick.",
+      title: "Häufig gestellte Fragen",
+      lead: "Voraussetzungen, Vergütung, Ablauf und die Amazon Hub App auf einen Blick.",
       helpTitle: "Passt Ihr Geschäft als Standort?",
       helpDesc:
-        "Lassen Sie Ihre Adresse unverbindlich prüfen – unser Team ruft Sie kurzfristig zurück und beantwortet alle Fragen zur Vergütung.",
+        "Lassen Sie Ihre Adresse unverbindlich prüfen – unser Team ruft Sie kurzfristig zurück.",
       helpCta: "Jetzt Standort prüfen lassen",
       items: [
         {
@@ -416,44 +371,11 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
     },
     leadForm: {
-      title: "Jetzt Amazon Paketshop werden",
-      lead: "Kostenlos und unverbindlich Ihren Standort prüfen lassen. Unser Partner-Team meldet sich telefonisch bei Ihnen.",
-      interestLabel: "Ich interessiere mich für",
       options: [
         { value: "Amazon Paketshop", label: "Amazon Paketshop" },
         { value: "Amazon Locker", label: "Amazon Locker" },
         { value: "Beides", label: "Beides" },
       ],
-      fields: {
-        businessName: "Name des Geschäfts *",
-        businessPlaceholder: "z. B. Kiosk am Markt",
-        postalCode: "Postleitzahl *",
-        postalPlaceholder: "z. B. 60311",
-        city: "Ort *",
-        cityPlaceholder: "z. B. Frankfurt am Main",
-        contactName: "Ansprechpartner *",
-        contactPlaceholder: "Vor- und Nachname",
-        phone: "Telefonnummer *",
-        phonePlaceholder: "z. B. 0171 1234567",
-        email: "E-Mail-Adresse (optional)",
-        emailPlaceholder: "name@geschaeft.de",
-      },
-      privacyPrefix: "Informationen zur Verarbeitung Ihrer Daten finden Sie in unserer ",
-      privacyLinkLabel: "Datenschutzerklärung",
-      privacySuffix: ".",
-      submitLabel: "Kostenlose Standortprüfung anfragen",
-      submittingLabel: "Anfrage wird gesendet...",
-      trustLine: "Unverbindlich · Persönliche Betreuung",
-      successMessage:
-        "Vielen Dank! Ihre Anfrage ist bei PAYVITY eingegangen. Unser Team meldet sich telefonisch zur Standortprüfung bei Ihnen.",
-      errorFallback:
-        "Die Anfrage konnte gerade nicht übermittelt werden. Bitte schreiben Sie uns direkt an partner@payvityparcels.de.",
-      validationMessages: {
-        required: "Bitte füllen Sie alle mit * markierten Pflichtfelder aus.",
-        invalidPostal: "Bitte geben Sie eine gültige Postleitzahl an.",
-        invalidPhone: "Bitte geben Sie eine gültige Telefonnummer für den Rückruf an.",
-        invalidEmail: "Bitte prüfen Sie das Format Ihrer E-Mail-Adresse.",
-      },
     },
     footer: {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner für Deutschland.",
@@ -487,10 +409,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     hero: {
       ariaLabel: "PAYVITY Parcels — Become an Amazon Parcel Shop in Germany",
-      eyebrow: "Official Amazon Hub Partner in Germany",
       title: "Become an Amazon Parcel Shop – attract more customers.",
       subtitle:
-        "Join the Amazon Hub Counter network in Germany. Offer local shoppers a convenient parcel service, generate additional income per processed parcel, and benefit from potential extra foot traffic. PAYVITY supports you from site check to ongoing operations.",
+        "Join the Amazon Hub Counter network in Germany. Earn additional income per processed parcel and attract new visitors to your store with personal guidance from PAYVITY.",
       ctaPrimary: "Apply as Parcel Shop",
       ctaSecondary: "How it works",
       stats: [
@@ -516,14 +437,12 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     paketshop: {
       title: "Your store as an official Amazon Parcel Shop (Hub Counter).",
-      lead: "Amazon Hub Counter turns existing retail shops in Germany into neighborhood parcel pickup and drop-off points — using your existing counter with personal guidance from PAYVITY.",
       cardHeading: "Amazon Hub Counter (Paketshop)",
       cardDesc:
-        "Use your existing checkout counter and a small secure storage corner to hand over online orders to nearby shoppers. Appearing at Amazon checkout increases local visibility and creates an extra revenue stream.",
+        "Turn your existing shop into an Amazon Paketshop. Hand over parcels, attract more customers and earn additional income with minimal effort.",
       bullets: [
         "Additional revenue per successfully processed parcel with transparent partner terms.",
         "Simple handheld workflow via the Amazon Hub App for parcel processing on a phone or tablet.",
-        "Parcel collection and Amazon returns acceptance (where enabled for your store and program).",
         "Personal onboarding from PAYVITY through activation, including team training and display materials.",
       ],
       ctaLabel: "Request free location check",
@@ -535,8 +454,6 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       imageAlt:
         "Amazon Hub Counter parcel shop handover inside a local German retail store",
       verticalsHeading: "Which businesses fit an Amazon Parcel Shop?",
-      verticalsLead:
-        "Whether you are opening a parcel shop for the first time or expanding an existing store, reliable opening hours, easy neighborhood access, and dry storage space are key:",
       verticals: [
         "Kiosk & Späti",
         "Retail Store",
@@ -548,11 +465,10 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         "Pharmacy & Drugstore",
       ],
       multiCarrierNote:
-        "Already operating a DHL, Hermes, DPD, or GLS parcel shop? Many shops add Amazon Hub Counter as an additional carrier service where existing contracts permit.",
+        "Already operating a DHL, Hermes, DPD, or GLS parcel shop? Many stores add Amazon Hub Counter alongside existing carriers where contracts permit.",
     },
     advantages: {
       title: "Why a Parcel Shop makes sense for your store.",
-      lead: "PAYVITY connects local German retailers with the Amazon Hub Counter network — built for extra per-parcel income and potential in-store footfall.",
       cards: [
         {
           id: "comp",
@@ -582,7 +498,6 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     process: {
       title: "3 steps to becoming an Amazon Counter partner.",
-      lead: "Straightforward and non-binding — PAYVITY guides you personally all the way to activation.",
       steps: [
         {
           step: 1,
@@ -590,7 +505,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           width: 480,
           height: 320,
           title: "1. Free location check",
-          desc: "Submit your store name, postal code, city, and phone number. Our team calls you directly to review suitability in your area.",
+          desc: "Submit your store details, postal code, and phone number. Our team calls you directly to review suitability in your area.",
           alt: "Step 1: Request a free location check for your Amazon Parcel Shop",
         },
         {
@@ -615,7 +530,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
     },
     trust: {
       title: "Why German retailers work with PAYVITY.",
-      lead: "As an experienced Amazon Hub partner, we remove administrative friction so store owners can focus on serving their customers.",
+      lead: "We handle onboarding and coordination so you can focus on serving your customers.",
       imageSrc:
         "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/ULP-Image-Grid-New_compressed.png",
       imageWidth: 960,
@@ -645,9 +560,8 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
     },
     lockerTeaser: {
-      badge: "Additional option for larger sites",
       title: "Spare indoor or outdoor space? Amazon Lockers as an add-on.",
-      desc: "While staffed Parcel Shops (Counters) are our primary business across Germany, PAYVITY also helps supermarkets, petrol stations, shopping centers, and property owners host self-service Amazon Hub Lockers requiring minimal staff involvement.",
+      desc: "PAYVITY also helps supermarkets, petrol stations, shopping centers and property owners host Amazon Hub Lockers, offering a convenient self-service parcel solution with minimal staff involvement.",
       ctaLabel: "Explore Amazon Locker locations",
     },
     faq: {
@@ -655,7 +569,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       lead: "Key facts about location eligibility, compensation, multi-carrier rules, and the Amazon Hub App.",
       helpTitle: "Want to check if your store qualifies?",
       helpDesc:
-        "Request a free, non-binding site check and our partner team will call you to discuss local demand and rates.",
+        "Request a free, non-binding site check and our partner team will call you.",
       helpCta: "Request free site check",
       items: [
         {
@@ -696,57 +610,26 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
         },
         {
           id: "faq-7",
-          question: "Can I run an Amazon Parcel Shop alongside DHL, Hermes, DPD, or GLS?",
+          question:
+            "Can I run an Amazon Parcel Shop alongside DHL, Hermes, DPD, or GLS?",
           answer:
             "Yes, in many cases stores combine Amazon Hub Counter with other carriers, provided existing agreements with DHL, Hermes, DPD, or GLS do not enforce exclusivity. It is also an ideal starting option if you do not yet offer parcel services.",
         },
         {
           id: "faq-8",
-          question: "What is the difference between a Parcel Shop (Counter) and an Amazon Locker?",
+          question:
+            "What is the difference between a Parcel Shop (Counter) and an Amazon Locker?",
           answer:
             "In a Parcel Shop (Hub Counter), your staff hands over parcels personally at the counter and engages directly with visiting shoppers. An Amazon Locker is an automated self-service kiosk with minimal staff involvement suited to larger indoor or outdoor spaces.",
         },
       ],
     },
     leadForm: {
-      title: "Become an Amazon Parcel Shop now",
-      lead: "Check your store's eligibility free of charge and without obligation. Our partner team will follow up by phone.",
-      interestLabel: "I am interested in",
       options: [
         { value: "Amazon Paketshop", label: "Amazon Parcel Shop" },
         { value: "Amazon Locker", label: "Amazon Locker" },
         { value: "Beides", label: "Both" },
       ],
-      fields: {
-        businessName: "Business name *",
-        businessPlaceholder: "e.g. Kiosk am Markt",
-        postalCode: "Postal code *",
-        postalPlaceholder: "e.g. 60311",
-        city: "City *",
-        cityPlaceholder: "e.g. Frankfurt am Main",
-        contactName: "Contact person *",
-        contactPlaceholder: "Full name",
-        phone: "Phone number *",
-        phonePlaceholder: "e.g. +49 171 1234567",
-        email: "Email address (optional)",
-        emailPlaceholder: "owner@store.de",
-      },
-      privacyPrefix: "Information on how we process your data can be found in our ",
-      privacyLinkLabel: "Privacy Policy",
-      privacySuffix: ".",
-      submitLabel: "Request free location check",
-      submittingLabel: "Sending request...",
-      trustLine: "Non-binding · Personal support",
-      successMessage:
-        "Thank you! Your inquiry has been received by PAYVITY. Our partner team will call you shortly regarding your location check.",
-      errorFallback:
-        "Unable to submit right now. Please contact us directly at partner@payvityparcels.de.",
-      validationMessages: {
-        required: "Please complete all required fields marked with *.",
-        invalidPostal: "Please enter a valid postal code.",
-        invalidPhone: "Please enter a valid phone number so we can call you.",
-        invalidEmail: "Please enter a valid email address.",
-      },
     },
     footer: {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner for Germany.",

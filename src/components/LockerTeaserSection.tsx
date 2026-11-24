@@ -13,7 +13,6 @@ export function LockerTeaserSection({ lang }: { lang: Lang }) {
     >
       <div className="locker-teaser">
         <div className="locker-teaser-copy">
-          <span className="locker-badge">{teaser.badge}</span>
           <h2>{teaser.title}</h2>
           <p>{teaser.desc}</p>
         </div>

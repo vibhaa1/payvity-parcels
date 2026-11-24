@@ -10,7 +10,6 @@ export interface LockerLocaleContent {
   breadcrumbHome: string;
   breadcrumbCurrent: string;
   hero: {
-    eyebrow: string;
     title: string;
     subtitle: string;
     ctaPrimary: string;
@@ -18,7 +17,6 @@ export interface LockerLocaleContent {
   };
   overview: {
     title: string;
-    lead: string;
     bullets: string[];
     imageSrc: string;
     imageWidth: number;
@@ -29,16 +27,13 @@ export interface LockerLocaleContent {
   };
   requirements: {
     title: string;
-    lead: string;
     items: Array<{ title: string; desc: string }>;
   };
   process: {
     title: string;
-    lead: string;
     steps: ProcessStepItem[];
   };
   paketshopCrossLink: {
-    badge: string;
     title: string;
     desc: string;
     ctaLabel: string;
@@ -64,21 +59,18 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     breadcrumbHome: "Startseite (Paketshop)",
     breadcrumbCurrent: "Amazon Locker",
     hero: {
-      eyebrow: "Zusatzlösung für Gewerbe- & Immobilienflächen",
       title: "Amazon Locker Standortpartner werden – freie Fläche sinnvoll nutzen.",
       subtitle:
-        "Neben unserem Kerngeschäft rund um betreute Amazon Paketshops unterstützt PAYVITY Einzelhandelsflächen, Supermärkte, Tankstellen und Immobilienbesitzer als Standortpartner für vollautomatische Amazon Hub Locker – Selbstbedienungs-Paketstationen mit geringem Personalaufwand.",
+        "PAYVITY unterstützt Supermärkte, Tankstellen, Einkaufszentren und Immobilieneigentümer bei Amazon Hub Lockern – als komfortable Selbstbedienungs-Paketstation mit geringem Personalaufwand.",
       ctaPrimary: "Locker-Standort prüfen lassen",
       ctaPaketshop: "Lieber Amazon Paketshop (Theke)? →",
     },
     overview: {
       title: "Selbstbedienungs-Paketstationen für stark frequentierte Orte.",
-      lead: "Kunden holen ihre Amazon-Sendungen flexibel per Abholcode am Automaten ab oder geben Retouren auf – während Ihr Standort von zusätzlicher Besucherfrequenz profitiert.",
       bullets: [
         "Selbstbedienungs-Paketstation mit geringem Personalaufwand im täglichen Ablauf.",
         "Geeignet für gut zugängliche Innenbereiche oder witterungsfeste Außenflächen.",
         "Planung, Koordination der Aufstellung und laufender Support durch PAYVITY und Amazon.",
-        "Flexible Nutzung ungenutzter Nebenflächen vor Märkten, an Tankstellen oder in Wohnquartieren.",
       ],
       imageSrc:
         "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/ULP-Image-Grid-New_compressed.png",
@@ -97,7 +89,6 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     },
     requirements: {
       title: "Wichtige Standort-Voraussetzungen für einen Locker",
-      lead: "Wir prüfen jeden vorgeschlagenen Innen- und Außenbereich kostenlos auf Machbarkeit, Erreichbarkeit und Anlieferung.",
       items: [
         {
           title: "Gut erreichbare Fläche",
@@ -115,7 +106,6 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     },
     process: {
       title: "In 3 Schritten zum Amazon Locker Standort",
-      lead: "PAYVITY koordiniert die technische und organisatorische Prüfung gemeinsam mit Ihnen bis zur Inbetriebnahme.",
       steps: [
         {
           step: 1,
@@ -147,13 +137,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
       ],
     },
     paketshopCrossLink: {
-      badge: "Unser Hauptgeschäft für Einzelhändler",
       title: "Sie betreiben ein Ladengeschäft mit Theke?",
-      desc: "Für Kioske, Einzelhändler, Bäckereien oder kleinere Läden ohne große Stellfläche ist der betreute Amazon Paketshop (Hub Counter) meist die schnellere und passendere Lösung.",
+      desc: "Für Kioske, Einzelhändler, Bäckereien oder kleinere Läden ohne große Stellfläche ist der betreute Amazon Paketshop (Hub Counter) meist die passendere Lösung.",
       ctaLabel: "Zum Amazon Paketshop (Counter) →",
     },
     faq: {
-      title: "Häufige Fragen zu Amazon Locker Standorten",
+      title: "Häufig gestellte Fragen",
       lead: "Alle wichtigen Informationen zur Aufstellung eines Amazon Hub Lockers als Standortpartner.",
       helpTitle: "Locker oder Paketshop?",
       helpDesc:
@@ -203,21 +192,18 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     breadcrumbHome: "Home (Parcel Shop)",
     breadcrumbCurrent: "Amazon Lockers",
     hero: {
-      eyebrow: "Additional Option for Retail & Commercial Properties",
       title: "Become an Amazon Locker host – monetize spare space.",
       subtitle:
-        "Alongside our core Parcel Shop (Hub Counter) business across Germany, PAYVITY supports supermarkets, petrol stations, shopping centers, and commercial properties with self-service Amazon Hub Lockers requiring minimal staff involvement.",
+        "PAYVITY helps supermarkets, petrol stations, shopping centers and property owners host Amazon Hub Lockers, offering a convenient self-service parcel solution with minimal staff involvement.",
       ctaPrimary: "Request Locker site check",
       ctaPaketshop: "Prefer a staffed Parcel Shop? →",
     },
     overview: {
       title: "Self-service parcel kiosks for high-footfall locations.",
-      lead: "Shoppers collect or return Amazon orders using a pickup code at the terminal while your property gains regular neighborhood visits.",
       bullets: [
         "Self-service parcel kiosk with minimal day-to-day staff involvement.",
         "Available for accessible indoor entrances and weather-resistant outdoor spots.",
         "Site coordination, installation scheduling, and partner support via PAYVITY and Amazon.",
-        "Suitable for unused retail fronts, car parks, shopping arcades, and residential hubs.",
       ],
       imageSrc:
         "https://m.media-amazon.com/images/G/01/DSP2022/ULP-LP/ULP-Image-Grid-New_compressed.png",
@@ -236,7 +222,6 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     },
     requirements: {
       title: "Key site requirements for an Amazon Locker",
-      lead: "We review every indoor or outdoor spot free of charge for accessibility, power availability, and courier delivery access.",
       items: [
         {
           title: "Accessible ground-level spot",
@@ -254,7 +239,6 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
     },
     process: {
       title: "3 steps to hosting an Amazon Locker",
-      lead: "PAYVITY coordinates technical and operational review with you through installation.",
       steps: [
         {
           step: 1,
@@ -286,13 +270,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
       ],
     },
     paketshopCrossLink: {
-      badge: "Our primary service for retail stores",
       title: "Do you operate a shop with a staffed counter?",
-      desc: "For kiosks, local retail stores, bakeries, or shops without spare locker footprint, an Amazon Hub Counter (Paketshop) is typically the better and faster option.",
+      desc: "For kiosks, local retail stores, bakeries, or shops without spare locker footprint, an Amazon Hub Counter (Paketshop) is typically the better option.",
       ctaLabel: "Go to Amazon Parcel Shop →",
     },
     faq: {
-      title: "Amazon Locker FAQ",
+      title: "Frequently asked questions",
       lead: "Common questions from German commercial property owners and retailers.",
       helpTitle: "Locker or Parcel Shop?",
       helpDesc:

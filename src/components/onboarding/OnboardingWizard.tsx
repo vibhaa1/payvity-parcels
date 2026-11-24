@@ -30,7 +30,6 @@ import {
 import { Lang, localizedPath } from "@/lib/seo";
 import { EASE, SPRING } from "../MotionPrimitives";
 import { DocumentUploadRow } from "./DocumentUploadRow";
-import { LiveIntelligenceSidebar } from "./LiveIntelligenceSidebar";
 import { ScheduleEditor } from "./ScheduleEditor";
 import { StepIndicator } from "./StepIndicator";
 
@@ -89,7 +88,6 @@ export function OnboardingWizard({
   defaultInterest = "Amazon Paketshop",
   onChangeInterest,
 }: OnboardingWizardProps) {
-  const frameRef = useRef<HTMLDivElement | null>(null);
   const reduced = useReducedMotion();
   const copy = ONBOARDING_COPY[lang];
   const interestOptions = HOME_CONTENT[lang].leadForm.options;
@@ -160,7 +158,6 @@ export function OnboardingWizard({
     utmCampaign: "",
   });
 
-  // Sync external interest CTA clicks
   useEffect(() => {
     if (selectedInterest) {
       setInterestState(selectedInterest);
@@ -172,7 +169,6 @@ export function OnboardingWizard({
     onChangeInterest?.(next);
   };
 
-  // Load saved local draft and attribution once on client mount
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
@@ -235,7 +231,6 @@ export function OnboardingWizard({
     setDraftHydrated(true);
   }, []);
 
-  // Save draft changes on client
   useEffect(() => {
     if (!draftHydrated || typeof window === "undefined") return;
     if (submitState === "success") return;
@@ -307,7 +302,6 @@ export function OnboardingWizard({
     schedule,
   ]);
 
-  // Revoke object URLs on unmount
   const uploadsRef = useRef(uploads);
   uploadsRef.current = uploads;
   useEffect(() => {
@@ -336,30 +330,6 @@ export function OnboardingWizard({
   const uploadedDocsForActiveForm = useMemo(() => {
     return docDefs.filter((def) => Boolean(uploads[def.id])).length;
   }, [docDefs, uploads]);
-
-  const readinessPct = useMemo(() => {
-    let score = 15; // Model + legalForm always pre-selected
-    if (contactName.trim()) score += 10;
-    if (phone.replace(/\D/g, "").length >= 6) score += 15;
-    if (companyName.trim()) score += 10;
-    if (street.trim()) score += 10;
-    if (/^[A-Za-z0-9\s-]{4,10}$/.test(postalCode.trim()) && city.trim()) score += 10;
-    if (storeName.trim()) score += 10;
-    if (scheduleMetrics.openDays > 0) score += 10;
-    if (deferDocs || uploadedDocsForActiveForm > 0) score += 10;
-    return Math.min(100, score);
-  }, [
-    contactName,
-    phone,
-    companyName,
-    street,
-    postalCode,
-    city,
-    storeName,
-    scheduleMetrics.openDays,
-    deferDocs,
-    uploadedDocsForActiveForm,
-  ]);
 
   const handlePlzChange = (val: string) => {
     setPostalCode(val);
@@ -564,7 +534,8 @@ export function OnboardingWizard({
     formData.set("website", honeypot);
     formData.set(
       "landingPage",
-      attribution.landingPage || (typeof window !== "undefined" ? window.location.pathname : "")
+      attribution.landingPage ||
+        (typeof window !== "undefined" ? window.location.pathname : "")
     );
     formData.set("referrer", attribution.referrer);
     formData.set("utmSource", attribution.utmSource);
@@ -611,103 +582,83 @@ export function OnboardingWizard({
     }
   };
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (reduced || !frameRef.current) return;
-    const rect = frameRef.current.getBoundingClientRect();
-    frameRef.current.style.setProperty("--gx", `${e.clientX - rect.left}px`);
-    frameRef.current.style.setProperty("--gy", `${e.clientY - rect.top}px`);
-  };
-
   const currentStepMeta = copy.steps[step - 1] ?? copy.steps[0];
   const isCustomIndustrySelected =
     industry === INDUSTRY_PRESETS[lang][INDUSTRY_PRESETS[lang].length - 1];
   const selectedLangMeta = CONTACT_LANGUAGES.find(
     (l) => l.code === contactLanguage
   );
+  const showReset =
+    step > 1 || Boolean(contactName.trim() || companyName.trim() || phone.trim());
 
   return (
     <section className="wrap section" id="kontakt" style={{ paddingTop: "16px" }}>
-      <div
-        className="wizard-frame"
-        ref={frameRef}
-        onPointerMove={handlePointerMove}
-      >
-        <div className="hero-glow" aria-hidden="true" />
-
+      <div className="wizard-shell">
         <div className="wizard-header">
           <div className="wizard-header-copy">
-            <span className="hero-eyebrow">{copy.sectionHeader.eyebrow}</span>
             <h2>{copy.sectionHeader.title}</h2>
             <p>{copy.sectionHeader.lead}</p>
           </div>
-
-          {submitState !== "success" && (
-            <div className="wizard-draft-bar">
-              <span className="wizard-draft-pill">
-                <span className="wizard-live-dot" aria-hidden="true" />
-                {copy.sectionHeader.draftSaved}
-              </span>
-              <button
-                type="button"
-                className="wizard-reset-btn"
-                onClick={handleReset}
-              >
-                {copy.sectionHeader.resetDraft}
-              </button>
-            </div>
+          {submitState !== "success" && showReset && (
+            <button
+              type="button"
+              className="wizard-reset-btn"
+              onClick={handleReset}
+            >
+              {copy.sectionHeader.resetDraft}
+            </button>
           )}
         </div>
 
-        {submitState === "success" ? (
-          <div className="wizard-success-panel" aria-live="polite">
-            <span className="wizard-success-badge">{copy.success.badge}</span>
-            <h3>{copy.success.title}</h3>
-            <p>{copy.success.desc}</p>
+        <div className="wizard-card">
+          {submitState === "success" ? (
+            <div className="wizard-success-panel" aria-live="polite">
+              <span className="wizard-success-badge">{copy.success.badge}</span>
+              <h3>{copy.success.title}</h3>
+              <p>{copy.success.desc}</p>
 
-            <div className="wizard-success-meta">
-              <div className="wizard-success-card">
-                <span>{copy.success.refLabel}</span>
-                <strong>{referenceId}</strong>
+              <div className="wizard-success-meta">
+                <div className="wizard-success-card">
+                  <span>{copy.success.refLabel}</span>
+                  <strong>{referenceId}</strong>
+                </div>
+                <div className="wizard-success-card">
+                  <span>{copy.success.langNoticePrefix}</span>
+                  <strong>
+                    {selectedLangMeta
+                      ? `${selectedLangMeta.badge} · ${selectedLangMeta.nativeLabel}`
+                      : contactLanguage.toUpperCase()}
+                  </strong>
+                </div>
               </div>
-              <div className="wizard-success-card">
-                <span>{copy.success.langNoticePrefix}</span>
-                <strong>
-                  {selectedLangMeta
-                    ? `${selectedLangMeta.badge} · ${selectedLangMeta.nativeLabel}`
-                    : contactLanguage.toUpperCase()}
-                </strong>
+
+              <div className="wizard-next-steps">
+                <h4>{copy.success.nextStepsTitle}</h4>
+                <ol>
+                  {copy.success.nextSteps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
               </div>
+
+              <button
+                type="button"
+                className="button outline-dark"
+                onClick={handleReset}
+              >
+                {copy.success.newApplicationBtn}
+              </button>
             </div>
+          ) : (
+            <>
+              <StepIndicator
+                steps={copy.steps}
+                currentStep={step}
+                maxVisitedStep={maxVisitedStep}
+                onSelectStep={goToStep}
+              />
 
-            <div className="wizard-next-steps">
-              <h4>{copy.success.nextStepsTitle}</h4>
-              <ol>
-                {copy.success.nextSteps.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ol>
-            </div>
-
-            <button
-              type="button"
-              className="button outline-dark wizard-new-btn"
-              onClick={handleReset}
-            >
-              {copy.success.newApplicationBtn}
-            </button>
-          </div>
-        ) : (
-          <>
-            <StepIndicator
-              steps={copy.steps}
-              currentStep={step}
-              maxVisitedStep={maxVisitedStep}
-              onSelectStep={goToStep}
-            />
-
-            <div className="wizard-layout">
               <div className="wizard-stage">
-                {/* Honeypot */}
                 <div className="lead-honeypot" aria-hidden="true">
                   <label htmlFor="wizard-website">Website</label>
                   <input
@@ -733,39 +684,39 @@ export function OnboardingWizard({
                     initial={
                       reduced
                         ? false
-                        : { opacity: 0, x: direction > 0 ? 18 : -18 }
+                        : { opacity: 0, x: direction > 0 ? 14 : -14 }
                     }
                     animate={{ opacity: 1, x: 0 }}
                     exit={
                       reduced
                         ? undefined
-                        : { opacity: 0, x: direction > 0 ? -18 : 18 }
+                        : { opacity: 0, x: direction > 0 ? -14 : 14 }
                     }
-                    transition={{ duration: 0.22, ease: EASE }}
+                    transition={{ duration: 0.2, ease: EASE }}
                   >
-                    {/* STEP 1: Program & Legal Form */}
+                    {/* STEP 1 */}
                     {step === 1 && (
                       <div className="wizard-fields">
                         <div className="wizard-block">
                           <span className="wizard-label">
                             {copy.step1.programLabel}
                           </span>
-                          <div className="interest-pills">
+                          <div className="wizard-segment">
                             {interestOptions.map((opt) => {
                               const isActive = interest === opt.value;
                               return (
                                 <button
                                   key={opt.value}
                                   type="button"
-                                  className={`interest-pill${
-                                    isActive ? " active" : ""
+                                  className={`wizard-seg-btn${
+                                    isActive ? " is-selected" : ""
                                   }`}
                                   onClick={() => setInterest(opt.value)}
                                 >
                                   {isActive && (
                                     <motion.span
                                       layoutId="wizard-interest-bg"
-                                      className="interest-pill-bg"
+                                      className="wizard-seg-pill"
                                       transition={SPRING}
                                       aria-hidden="true"
                                     />
@@ -828,7 +779,7 @@ export function OnboardingWizard({
                       </div>
                     )}
 
-                    {/* STEP 2: Personal Details & 6 Contact Languages */}
+                    {/* STEP 2 */}
                     {step === 2 && (
                       <div className="wizard-fields">
                         <div className="wizard-block">
@@ -936,7 +887,7 @@ export function OnboardingWizard({
                       </div>
                     )}
 
-                    {/* STEP 3: Company & Address */}
+                    {/* STEP 3 */}
                     {step === 3 && (
                       <div className="wizard-fields">
                         <div className="lead-grid">
@@ -988,7 +939,9 @@ export function OnboardingWizard({
                             <div className="lead-field lead-field-full">
                               <input
                                 type="text"
-                                aria-label={copy.step3.industryCustomPlaceholder}
+                                aria-label={
+                                  copy.step3.industryCustomPlaceholder
+                                }
                                 value={customIndustry}
                                 onChange={(e) =>
                                   setCustomIndustry(e.target.value)
@@ -1143,7 +1096,7 @@ export function OnboardingWizard({
                       </div>
                     )}
 
-                    {/* STEP 4: Smart Documents */}
+                    {/* STEP 4 */}
                     {step === 4 && (
                       <div className="wizard-fields">
                         <div className="wizard-info-banner">
@@ -1169,9 +1122,6 @@ export function OnboardingWizard({
                               <span className="wizard-label">
                                 {copy.step4.idTypeLabel}
                               </span>
-                              <p className="wizard-hint">
-                                {copy.step4.idTypeHint}
-                              </p>
                               <div className="wizard-mini-pills">
                                 <button
                                   type="button"
@@ -1215,7 +1165,7 @@ export function OnboardingWizard({
                       </div>
                     )}
 
-                    {/* STEP 5: Storefront & Capacity */}
+                    {/* STEP 5 */}
                     {step === 5 && (
                       <div className="wizard-fields">
                         <div className="lead-grid">
@@ -1278,10 +1228,7 @@ export function OnboardingWizard({
                             }
                             className="capacity-slider"
                           />
-                          <div
-                            className="capacity-scale"
-                            aria-hidden="true"
-                          >
+                          <div className="capacity-scale" aria-hidden="true">
                             <span>10</span>
                             <span>30</span>
                             <span>60</span>
@@ -1316,51 +1263,10 @@ export function OnboardingWizard({
                             })}
                           </div>
                         </div>
-
-                        <div className="checkout-preview-card">
-                          <span className="checkout-preview-kicker">
-                            {copy.step5.previewLabel}
-                          </span>
-                          <div className="checkout-preview-body">
-                            <div className="checkout-pin" aria-hidden="true">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              >
-                                <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10Z" />
-                                <circle cx="12" cy="11" r="2.2" />
-                              </svg>
-                            </div>
-                            <div>
-                              <span className="checkout-badge">
-                                {copy.step5.previewBadge}
-                              </span>
-                              <h5>
-                                {storeName.trim() ||
-                                  companyName.trim() ||
-                                  copy.step5.previewFallbackName}
-                              </h5>
-                              <p>
-                                {[street, postalCode, city]
-                                  .filter(Boolean)
-                                  .join(", ") || "Deutschland"}
-                              </p>
-                              <span className="checkout-hours-pill">
-                                {scheduleMetrics.openDays > 0
-                                  ? `${scheduleMetrics.openDays} ${copy.step6.statusReadyPrefix} · ${scheduleMetrics.weeklyHours}h/Woche`
-                                  : copy.step5.previewHoursFallback}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     )}
 
-                    {/* STEP 6: Opening Hours */}
+                    {/* STEP 6 */}
                     {step === 6 && (
                       <ScheduleEditor
                         schedule={schedule}
@@ -1369,17 +1275,14 @@ export function OnboardingWizard({
                       />
                     )}
 
-                    {/* STEP 7: Review & Submit */}
+                    {/* STEP 7 */}
                     {step === 7 && (
                       <div className="wizard-fields">
                         <div className="review-grid">
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.modelAndEntity}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(1)}
-                              >
+                              <button type="button" onClick={() => goToStep(1)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1394,10 +1297,7 @@ export function OnboardingWizard({
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.contact}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(2)}
-                              >
+                              <button type="button" onClick={() => goToStep(2)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1416,10 +1316,7 @@ export function OnboardingWizard({
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.company}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(3)}
-                              >
+                              <button type="button" onClick={() => goToStep(3)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1434,10 +1331,7 @@ export function OnboardingWizard({
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.documents}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(4)}
-                              >
+                              <button type="button" onClick={() => goToStep(4)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1453,10 +1347,7 @@ export function OnboardingWizard({
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.store}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(5)}
-                              >
+                              <button type="button" onClick={() => goToStep(5)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1472,10 +1363,7 @@ export function OnboardingWizard({
                           <div className="review-card">
                             <div className="review-card-head">
                               <h5>{copy.step7.sections.hours}</h5>
-                              <button
-                                type="button"
-                                onClick={() => goToStep(6)}
-                              >
+                              <button type="button" onClick={() => goToStep(6)}>
                                 {copy.step7.editLabel}
                               </button>
                             </div>
@@ -1489,9 +1377,7 @@ export function OnboardingWizard({
 
                         <p className="lead-privacy">
                           {copy.step7.privacyPrefix}
-                          <Link href={privacyHref}>
-                            {copy.step7.privacyLink}
-                          </Link>
+                          <Link href={privacyHref}>{copy.step7.privacyLink}</Link>
                           {copy.step7.privacySuffix}
                         </p>
                       </div>
@@ -1509,7 +1395,7 @@ export function OnboardingWizard({
                   {step > 1 ? (
                     <button
                       type="button"
-                      className="button ghost wizard-back-btn"
+                      className="button outline-dark"
                       onClick={() => goToStep(step - 1)}
                     >
                       ← {copy.navButtons.back}
@@ -1522,7 +1408,7 @@ export function OnboardingWizard({
                     {step === 4 && !deferDocs && uploadedDocsForActiveForm === 0 && (
                       <button
                         type="button"
-                        className="button ghost"
+                        className="button outline-dark"
                         onClick={() => {
                           setDeferDocs(true);
                           goToStep(5);
@@ -1558,31 +1444,11 @@ export function OnboardingWizard({
                   </div>
                 </div>
 
-                {step === 7 && (
-                  <span className="lead-trust-line">{copy.step7.trustLine}</span>
-                )}
+                <span className="lead-trust-line">{copy.step7.trustLine}</span>
               </div>
-
-              <LiveIntelligenceSidebar
-                lang={lang}
-                copy={copy}
-                currentStepMeta={currentStepMeta}
-                readinessPct={readinessPct}
-                interest={interest}
-                legalForm={legalForm}
-                contactLanguage={contactLanguage}
-                postalCode={postalCode}
-                city={city}
-                state={state}
-                uploadedCount={uploadedDocsForActiveForm}
-                totalDocCount={docDefs.length}
-                deferDocs={deferDocs}
-                openDays={scheduleMetrics.openDays}
-                weeklyHours={scheduleMetrics.weeklyHours}
-              />
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </section>
   );

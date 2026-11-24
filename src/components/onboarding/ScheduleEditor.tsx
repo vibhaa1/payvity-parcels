@@ -92,20 +92,6 @@ export function ScheduleEditor({
     setTimeout(() => setCopiedDay(null), 1600);
   };
 
-  const copyToAllOpen = (sourceDay: DayKey) => {
-    const source = schedule[sourceDay];
-    const copiedSlots = source.slots.map((s) => ({ ...s }));
-    const next = { ...schedule };
-    DAY_ORDER.forEach((d) => {
-      if (next[d].open) {
-        next[d] = { open: true, slots: copiedSlots.map((s) => ({ ...s })) };
-      }
-    });
-    onChange(next);
-    setCopiedDay(sourceDay);
-    setTimeout(() => setCopiedDay(null), 1600);
-  };
-
   return (
     <div className="schedule-editor">
       <p className="wizard-hint">{stepCopy.hint}</p>
@@ -217,13 +203,6 @@ export function ScheduleEditor({
                     {copiedDay === day
                       ? stepCopy.copiedFeedback
                       : stepCopy.copyWeekdaysLabel}
-                  </button>
-                  <button
-                    type="button"
-                    className="schedule-copy-btn"
-                    onClick={() => copyToAllOpen(day)}
-                  >
-                    {stepCopy.copyAllOpenLabel}
                   </button>
                 </div>
               )}

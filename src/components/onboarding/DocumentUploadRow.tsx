@@ -99,7 +99,6 @@ export function DocumentUploadRow({
         <div className="doc-info">
           <div className="doc-title-line">
             <h5>{doc.title}</h5>
-            <span className="doc-badge">{doc.badge}</span>
           </div>
           <p className="doc-desc">{doc.desc}</p>
 

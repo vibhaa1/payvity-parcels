@@ -46,7 +46,6 @@ export function LockerLanding({ lang }: { lang: Lang }) {
               <span aria-current="page">{content.breadcrumbCurrent}</span>
             </nav>
 
-            <span className="hero-eyebrow">{content.hero.eyebrow}</span>
             <h1>{content.hero.title}</h1>
             <p className="subpage-lead">{content.hero.subtitle}</p>
 
@@ -70,11 +69,8 @@ export function LockerLanding({ lang }: { lang: Lang }) {
         </section>
 
         <section className="wrap section">
-          <div className="section-head-split">
-            <div>
-              <h2>{content.overview.title}</h2>
-            </div>
-            <p className="section-lead">{content.overview.lead}</p>
+          <div className="section-head-single">
+            <h2>{content.overview.title}</h2>
           </div>
 
           <div className="solution-card">
@@ -104,13 +100,30 @@ export function LockerLanding({ lang }: { lang: Lang }) {
 
                 <div className="locker-sites-block">
                   <h3>{content.overview.siteTypesTitle}</h3>
-                  <ul className="vertical-chips">
-                    {content.overview.siteTypes.map((siteType) => (
-                      <li key={siteType} className="vertical-chip">
-                        {siteType}
-                      </li>
-                    ))}
-                  </ul>
+                  <div
+                    className="vertical-marquee"
+                    aria-label={content.overview.siteTypesTitle}
+                  >
+                    <div className="vertical-marquee-track">
+                      <ul className="vertical-marquee-group">
+                        {content.overview.siteTypes.map((siteType) => (
+                          <li key={siteType} className="vertical-chip">
+                            {siteType}
+                          </li>
+                        ))}
+                      </ul>
+                      <ul
+                        className="vertical-marquee-group"
+                        aria-hidden="true"
+                      >
+                        {content.overview.siteTypes.map((siteType) => (
+                          <li key={`dup-${siteType}`} className="vertical-chip">
+                            {siteType}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -145,11 +158,8 @@ export function LockerLanding({ lang }: { lang: Lang }) {
         </section>
 
         <section className="wrap section">
-          <div className="section-head-split">
-            <div>
-              <h2>{content.requirements.title}</h2>
-            </div>
-            <p className="section-lead">{content.requirements.lead}</p>
+          <div className="section-head-single">
+            <h2>{content.requirements.title}</h2>
           </div>
 
           <div className="cards cards-3">
@@ -165,16 +175,12 @@ export function LockerLanding({ lang }: { lang: Lang }) {
         <ProcessSection
           lang={lang}
           title={content.process.title}
-          lead={content.process.lead}
           steps={content.process.steps}
         />
 
         <section className="wrap section locker-teaser-wrap">
           <div className="locker-teaser">
             <div className="locker-teaser-copy">
-              <span className="locker-badge">
-                {content.paketshopCrossLink.badge}
-              </span>
               <h2>{content.paketshopCrossLink.title}</h2>
               <p>{content.paketshopCrossLink.desc}</p>
             </div>

@@ -84,7 +84,6 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
         <div className="hero-content wrap">
           <div className="hero-inner">
             <div className="hero-copy">
-              <span className="hero-eyebrow">{hero.eyebrow}</span>
               <h1>{hero.title}</h1>
               <p>{hero.subtitle}</p>
 
