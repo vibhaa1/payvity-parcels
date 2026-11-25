@@ -1,0 +1,78 @@
+PAYVITY CUSTOMER JOURNEY — REVIEW BUILD
+
+Implemented the approved refinements on 24 November 2026.
+
+READY FOR REVIEW
+- Standalone scroll preview; existing Next.js application not modified.
+- Editable HyperFrames desktop project in studio/ and mobile project in studio/mobile/.
+- All four unchanged original app screenshots in the correct operational sequence.
+- Original human photographs retained as continuity references, without static inserts.
+- Existing real arrival, greeting, code scan, parcel return/scan, physical handover
+  and beginning of departure retained at natural speed and native 24 fps.
+- 30-second timeline: available edit 0–26.5; missing exit slot 26.5–30 stays black.
+- Desktop 1920 × 1080; mobile 1080 × 1350. Contained landscape footage protects
+  both women, the parcel and hands instead of cropping them away for portrait fill.
+- High-quality H.264 review masters, web H.264 MP4 and VP9 WebM in renders/.
+- Web keyframes every six frames (0.25 seconds); MP4 B-frames disabled; faststart.
+- Closing headlines and CTA remain independent HTML. No burned-in website copy.
+- Desktop scroll distance 400vh; mobile 350vh; configurable in preview/config.js,
+  preview settings, or the distance query parameter.
+- Reduced-motion fallback uses a stationary original-footage poster, a readable
+  process summary, the four original screens and native CTA. No scroll pinning.
+- Local HTTP server supports byte-range requests required for efficient seeking.
+
+UNRESOLVED SHOT
+Only one additional movement is required: continue from the last source frame,
+with the customer already carrying her parcel, and show her walking to and leaving
+through the established shop entrance. Usable duration 3.5 seconds at 26.5–30.
+Generate a five-second take if the provider offers five-second increments, allowing
+1.5 seconds of total editorial handles. The actual exit cannot be verified until
+this shot is supplied/generated, composited and reviewed.
+
+The prior requests for a replacement arrival, phone plates and storage retrieval
+are no longer production requirements: arrival is covered by real footage, app
+screens are explicit original editorial inserts, and return-to-counter footage
+communicates optional retrieval sufficiently under the approved refinements.
+
+ESTIMATE — NOT A PURCHASE OR AUTHORIZATION
+Public fal pricing for Kling 2.5 Turbo Pro image-to-video: USD 0.07 per output
+second. A five-second take is estimated at USD 0.35; three attempts USD 1.05.
+Source checked 24 November 2026: https://fal.ai/pricing
+Model: https://fal.ai/models/fal-ai/kling-video/v2.5-turbo/pro/image-to-video
+These are public list-price calculations, not an account-specific quote. Taxes,
+provider changes, account eligibility, additional image preparation, upscaling
+and retries beyond the stated count are not included. No paid generation jobs,
+credit purchases or generation-provider uploads have been started. The exact
+provider's confirmed price must be checked before a paid job is submitted.
+
+REFERENCES AND INTEGRITY
+assets-manifest.json verifies the six original files by SHA-256. The second
+handover attachment is a duplicate. Existing footage supplies additional masks,
+entrance geometry, source ending, camera position and direction references.
+Character/wardrobe/masks/devices/parcel/environment continuity remains mandatory.
+
+REBUILD
+Run build_production.py using Python with the installed FFmpeg paths configured
+at the top of that script. --render rebuilds the review exports. Film timing is
+defined once as integer frames in that file and exported to edit-decision-list.json.
+GSAP and CSS remain editable in studio/. The script generates the composition
+and native-frame review encodes from the same edit list.
+
+REVIEW URL
+http://127.0.0.1:4173/preview/
+Server: node serve-preview.mjs (binds only to 127.0.0.1).
+
+This is a clearly marked work-in-progress preview. It is not the completed
+customer journey, the final delivery master or a deployed website change.
+
+LATEST GENERATION STATUS
+fal is now connected. The model-selection tool proposed a Wan 3.0 Prime draft
+(alibaba/wan-3.0-prime/image-to-video); its live rate estimate is USD 0.05 per
+second, or USD 0.25 for five seconds. This is an advisory rate calculation.
+Reference upload initiation was rejected with HTTP 403: balance_exhausted on
+the connected fal account named Rio. No upload completed and no paid generation
+was submitted. No credits were purchased. Add credits to Rio, then verify account
+readiness before resuming. The source frame is retained in review/.
+
+CORRECTION — EXISTING HYPERFRAMES SUBSCRIPTION PATH
+Fal is optional, not a dependency. The installed HyperFrames CLI supports media-use generate --type video with the existing HyperFrames OAuth session. A live account check for srivaibhavbalaram@gmail.com returned HyperFrames plan none and credits 0. The user's existing paid entitlement must be reconciled with the signed-in account before requesting any additional purchase. A non-generating --plan check succeeded; no HyperFrames generation was submitted. Do not resume fal spending as the default path.

@@ -1,0 +1,83 @@
+{
+  "status": "awaiting_reconciliation_of_existing_HyperFrames_paid_account",
+  "paidGenerationStarted": false,
+  "master": {
+    "durationSeconds": 30,
+    "fps": 24,
+    "desktop": [
+      1920,
+      1080
+    ],
+    "mobile": [
+      1080,
+      1350
+    ]
+  },
+  "clipRequests": [
+    {
+      "id": "exit-continuation",
+      "filename": "exit-continuation.mp4",
+      "masterStart": 26.5,
+      "masterEnd": 30,
+      "usableSeconds": 3.5,
+      "proposedGeneratedSeconds": 5,
+      "firstFrame": "review/exit-continuation-start.jpg",
+      "locationReference": "review/entrance-location-reference.jpg",
+      "continuityReferences": [
+        "assets/05_human_scanning.png",
+        "assets/06_human_handover.png",
+        "footage/existing-counter.mp4"
+      ],
+      "prompt": "Continue the last real frame of the customer carrying the original Amazon parcel at the counter. The same long brown-haired customer, rust knitted sweater, blue jeans, patterned face mask and green phone continues her turn and walks naturally towards the established glass entrance. Show her visibly leaving through that entrance carrying the same parcel with unchanged dimensions, orientation and Prime tape. The blonde associate in beige long sleeves, red apron and black mask returns to work. Preserve exact shop geography, black subway tiles, white counter, jars, equipment and Hub sign. Use the source entrance location reference to connect the exit, rather than inventing a different doorway. Realistic anatomy, physical contact, parcel weight and footfalls. Gentle camera tracking; keep customer and parcel visible through departure. No generated interface, captions, CTA, unmasked faces, slideshow movement or floating devices. No reversal of arrival footage, which lacks the parcel. No dialogue/audio required.",
+      "proposedProvider": "HyperFrames / HeyGen",
+      "proposedModel": "heygen-video-1",
+      "estimate": {
+        "currency": "USD",
+        "ratePerSecond": 0.05,
+        "seconds": 5,
+        "estimatedPerAttempt": 0.25,
+        "source": "fal connected-account estimate_cost response",
+        "checkedOn": "2026-11-24",
+        "advisoryOnly": true,
+        "configurationQuoteGuaranteed": false,
+        "generationSubmitted": false
+      },
+      "qualityGate": [
+        "seam matches source end",
+        "same customer, wardrobe and mask",
+        "same parcel and devices",
+        "established entrance geography",
+        "continuous physical walk",
+        "visible exit carrying parcel",
+        "no anatomy or texture instability"
+      ]
+    }
+  ],
+  "supersededShotRequests": [
+    "replacement arrival",
+    "generated app phone plate",
+    "full storage retrieval",
+    "generated success phone plate"
+  ],
+  "reason": "Approved refinements prioritize existing real footage and explicit original screenshot inserts.",
+  "generationBlock": {
+    "accountName": "Rio",
+    "stage": "reference_upload_initiate",
+    "httpStatus": 403,
+    "reason": "balance_exhausted",
+    "creditsPurchased": false,
+    "uploadsCompleted": false,
+    "generationSubmitted": false,
+    "nextAction": "Add credits to the connected fal account, then check_account_status before uploading or submitting.",
+    "billingUrl": "https://fal.ai/connect/credits?utm_medium=fal_mcp&utm_campaign=balance_exhausted&utm_content=codex"
+  },
+  "hyperframesAccountCheck": {
+    "email": "srivaibhavbalaram@gmail.com",
+    "plan": "none",
+    "credits": 0,
+    "source": "live hyperframes auth status --json",
+    "paidEntitlementVerified": false,
+    "generationSubmitted": false,
+    "falRequired": false
+  }
+}

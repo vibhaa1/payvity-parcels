@@ -1,0 +1,321 @@
+{
+  "cases": [
+    {
+      "mobile": false,
+      "format": "mp4",
+      "seekResults": [
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.375113,
+          "settleMs": 279.65049999999974
+        },
+        {
+          "requestedTime": 24.5,
+          "actualTime": 24.454279,
+          "settleMs": 481.20900000000256
+        },
+        {
+          "requestedTime": 7.5,
+          "actualTime": 7.542086,
+          "settleMs": 405.8363999999965
+        },
+        {
+          "requestedTime": 20,
+          "actualTime": 19.941743,
+          "settleMs": 370.16270000000077
+        },
+        {
+          "requestedTime": 12.5,
+          "actualTime": 12.547273,
+          "settleMs": 400.3260999999984
+        },
+        {
+          "requestedTime": 26.2,
+          "actualTime": 26.144414,
+          "settleMs": 449.41530000000057
+        },
+        {
+          "requestedTime": 4,
+          "actualTime": 4.052188,
+          "settleMs": 483.8391999999985
+        },
+        {
+          "requestedTime": 22,
+          "actualTime": 21.941406,
+          "settleMs": 449.3956999999973
+        },
+        {
+          "requestedTime": 10,
+          "actualTime": 10.043586,
+          "settleMs": 432.4556999999986
+        },
+        {
+          "requestedTime": 28,
+          "actualTime": 27.941561,
+          "settleMs": 449.6741000000002
+        },
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.453489,
+          "settleMs": 489.0125000000007
+        }
+      ],
+      "details": {
+        "target": 0.397265625,
+        "smooth": 0.4423262179532991,
+        "currentTime": 0.453489,
+        "seeking": false,
+        "requested": 195,
+        "completed": 193,
+        "meanSeekMs": 13.684455962069912,
+        "worstSeekMs": 158.9000000357628,
+        "reduced": false,
+        "duration": 30,
+        "source": "http://127.0.0.1:4173/renders/payvity-desktop-web.mp4",
+        "scrollDistanceVh": 400,
+        "overflow": false,
+        "paused": true
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "mobile": false,
+      "format": "webm",
+      "seekResults": [
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.33996,
+          "settleMs": 110.89839999999822
+        },
+        {
+          "requestedTime": 24.5,
+          "actualTime": 24.454159,
+          "settleMs": 498.4118000000017
+        },
+        {
+          "requestedTime": 7.5,
+          "actualTime": 7.54189,
+          "settleMs": 466.2305999999953
+        },
+        {
+          "requestedTime": 20,
+          "actualTime": 19.953696,
+          "settleMs": 433.5159000000058
+        },
+        {
+          "requestedTime": 12.5,
+          "actualTime": 12.547392,
+          "settleMs": 399.5535999999993
+        },
+        {
+          "requestedTime": 26.2,
+          "actualTime": 26.144273,
+          "settleMs": 433.00019999999495
+        },
+        {
+          "requestedTime": 4,
+          "actualTime": 4.0414,
+          "settleMs": 483.0835999999981
+        },
+        {
+          "requestedTime": 22,
+          "actualTime": 21.941257,
+          "settleMs": 449.5391000000018
+        },
+        {
+          "requestedTime": 10,
+          "actualTime": 10.043524,
+          "settleMs": 433.85169999999925
+        },
+        {
+          "requestedTime": 28,
+          "actualTime": 27.968589,
+          "settleMs": 499.6463999999978
+        },
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.441172,
+          "settleMs": 501.2569999999978
+        }
+      ],
+      "details": {
+        "target": 0.397265625,
+        "smooth": 0.43245486057150156,
+        "currentTime": 0.441172,
+        "seeking": false,
+        "requested": 165,
+        "completed": 163,
+        "meanSeekMs": 17.459509203404735,
+        "worstSeekMs": 85.80000001192093,
+        "reduced": false,
+        "duration": 30,
+        "source": "http://127.0.0.1:4173/renders/payvity-desktop-web.webm",
+        "scrollDistanceVh": 400,
+        "overflow": false,
+        "paused": true
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "mobile": true,
+      "format": "mp4",
+      "seekResults": [
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.339608,
+          "settleMs": 106.35840000000462
+        },
+        {
+          "requestedTime": 24.5,
+          "actualTime": 24.436699,
+          "settleMs": 464.1898000000001
+        },
+        {
+          "requestedTime": 7.5,
+          "actualTime": 7.561814,
+          "settleMs": 404.20760000000155
+        },
+        {
+          "requestedTime": 20,
+          "actualTime": 19.948941,
+          "settleMs": 422.52990000000136
+        },
+        {
+          "requestedTime": 12.5,
+          "actualTime": 12.558994,
+          "settleMs": 383.4429000000018
+        },
+        {
+          "requestedTime": 26.2,
+          "actualTime": 26.136857,
+          "settleMs": 416.8605000000098
+        },
+        {
+          "requestedTime": 4,
+          "actualTime": 4.057508,
+          "settleMs": 466.68829999999434
+        },
+        {
+          "requestedTime": 22,
+          "actualTime": 21.942732,
+          "settleMs": 449.59229999998934
+        },
+        {
+          "requestedTime": 10,
+          "actualTime": 10.062186,
+          "settleMs": 416.6203000000096
+        },
+        {
+          "requestedTime": 28,
+          "actualTime": 27.94477,
+          "settleMs": 449.449099999998
+        },
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.452036,
+          "settleMs": 466.6932000000088
+        }
+      ],
+      "details": {
+        "target": 0.39718390318212593,
+        "smooth": 0.4411456984966198,
+        "currentTime": 0.452036,
+        "seeking": false,
+        "requested": 216,
+        "completed": 216,
+        "meanSeekMs": 10.155555555389988,
+        "worstSeekMs": 75.20000004768372,
+        "reduced": false,
+        "duration": 30,
+        "source": "http://127.0.0.1:4173/renders/payvity-mobile-web.mp4",
+        "scrollDistanceVh": 350,
+        "overflow": false,
+        "paused": true
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "mobile": true,
+      "format": "webm",
+      "seekResults": [
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.339507,
+          "settleMs": 105.44019999999728
+        },
+        {
+          "requestedTime": 24.5,
+          "actualTime": 24.436778,
+          "settleMs": 466.6796999999933
+        },
+        {
+          "requestedTime": 7.5,
+          "actualTime": 7.561629,
+          "settleMs": 433.49289999999746
+        },
+        {
+          "requestedTime": 20,
+          "actualTime": 19.937541,
+          "settleMs": 415.53469999998924
+        },
+        {
+          "requestedTime": 12.5,
+          "actualTime": 12.547782,
+          "settleMs": 400.6105000000098
+        },
+        {
+          "requestedTime": 26.2,
+          "actualTime": 26.149645,
+          "settleMs": 432.5767000000051
+        },
+        {
+          "requestedTime": 4,
+          "actualTime": 4.046541,
+          "settleMs": 483.0738999999885
+        },
+        {
+          "requestedTime": 22,
+          "actualTime": 21.942705,
+          "settleMs": 449.99770000000717
+        },
+        {
+          "requestedTime": 10,
+          "actualTime": 10.050609,
+          "settleMs": 433.68399999999383
+        },
+        {
+          "requestedTime": 28,
+          "actualTime": 27.944741,
+          "settleMs": 449.1103000000003
+        },
+        {
+          "requestedTime": 0.4,
+          "actualTime": 0.452004,
+          "settleMs": 483.2027000000089
+        }
+      ],
+      "details": {
+        "target": 0.39718390318212593,
+        "smooth": 0.4410614979590638,
+        "currentTime": 0.452004,
+        "seeking": false,
+        "requested": 200,
+        "completed": 198,
+        "meanSeekMs": 11.46767677110855,
+        "worstSeekMs": 75.09999996423721,
+        "reduced": false,
+        "duration": 30,
+        "source": "http://127.0.0.1:4173/renders/payvity-mobile-web.webm",
+        "scrollDistanceVh": 350,
+        "overflow": false,
+        "paused": true
+      },
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

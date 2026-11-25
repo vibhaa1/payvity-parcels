@@ -1,0 +1,254 @@
+# PAYVITY — Amazon Paketshop Cinematic Customer Journey
+
+## Production objective
+
+Create a premium, photorealistic, human-led cinematic product demonstration for the PAYVITY Amazon Paketshop website.
+
+Follow a customer from the moment she enters the shop until she leaves carrying her Amazon parcel.
+
+This must feel like a real commercial filmed inside an operating Amazon Paketshop, presented through an Apple-inspired scroll-controlled website experience.
+
+Do not create a motion graphics explainer, infographic, cartoon or floating smartphone presentation.
+
+## Attached source assets
+
+Import the following six attachments as independent media assets.
+
+- `01_app_home.jpeg` — Original Amazon Hub Counter home screen.
+- `02_customer_code_scan.jpeg` — Original customer pickup code scanning screen.
+- `03_parcel_scan.jpeg` — Original parcel barcode scanning screen.
+- `04_pickup_success.jpeg` — Original successful pickup confirmation.
+- `05_human_scanning.png` — Reference photograph showing the customer and associate scanning the pickup code.
+- `06_human_handover.png` — Reference photograph showing both characters, parcel and Amazon Hub counter environment.
+
+All six supplied attachments must appear in the final composition.
+
+The four app screenshots are immutable source assets. Use the actual image files, not AI-generated recreations.
+
+Preserve their content, proportions, typography, icons, branding, barcodes and colors. If compositing them onto a physical smartphone screen, apply only the necessary perspective transformation and masking.
+
+## Character continuity
+
+Customer:
+
+- Long brown hair.
+- Rust-brown knitted sweater.
+- Blue jeans.
+- Smartphone with a muted green protective case.
+- Natural, friendly body language.
+
+Store associate:
+
+- Blonde hair.
+- Beige long-sleeved top.
+- Red apron.
+- Black smartphone.
+- Professional and friendly body language.
+
+Environment:
+
+- Same shop environment as attachment 06.
+- Black subway-tile wall.
+- White service counter.
+- Glass jars and existing countertop equipment.
+- Amazon Hub countertop sign.
+- Brown Amazon parcel with dark Prime tape.
+
+Use attachments 05 and 06 as the primary visual references for every additional human scene.
+
+Do not change character appearances, clothing, devices, parcel dimensions or established shop details between shots.
+
+The entrance, exit and parcel storage area are not visible in the supplied references. If additional footage must be generated, extend the existing environment conservatively and consistently.
+
+## Storyboard and timeline
+
+**Scene 01 — 0–3 seconds: Arrival**
+
+Show a wide cinematic shot of the shop entrance.
+
+The customer opens the door, enters the shop and approaches the Amazon Hub counter.
+
+The associate notices the customer and smiles.
+
+Use newly generated or supplied live-action footage matching attachments 05 and 06.
+
+**Scene 02 — 3–6 seconds: Greeting**
+
+Show both women interacting naturally at the counter.
+
+The customer greets the associate and takes out her green smartphone. She opens her Amazon pickup notification.
+
+The associate takes out her black smartphone.
+
+**Scene 03 — 6–9 seconds: Open the app**
+
+Use an over-the-shoulder camera angle focusing on the associate's smartphone.
+
+Insert attachment 01 as the actual smartphone display.
+
+The associate taps the original menu option “Abholung durch den Kunden”.
+
+Do not redraw the interface.
+
+German overlay: “App öffnen.”
+
+**Scene 04 — 9–12 seconds: Present the pickup code**
+
+Use attachment 05 as the original photographic shot and reference for the human interaction.
+
+The customer holds her smartphone towards the associate.
+
+The associate positions her smartphone to scan the customer's barcode.
+
+Maintain realistic hand movements and device positioning.
+
+**Scene 05 — 12–15 seconds: Scan the pickup code**
+
+Transition from the physical scanning interaction to attachment 02.
+
+Use the exact original screenshot.
+
+A brief, subtle scanning highlight may be added as an independent overlay without modifying the original image.
+
+German overlay: “Abholcode scannen.”
+
+**Scene 06 — 15–18 seconds: Retrieve the parcel**
+
+Return to the real-world shop environment.
+
+The associate locates the matching Amazon parcel in the storage area, picks it up and brings it to the counter.
+
+The customer waits naturally.
+
+Use the parcel and environment from attachment 06 as visual references.
+
+**Scene 07 — 18–21 seconds: Scan the parcel**
+
+Show the associate holding her smartphone above the parcel label.
+
+Transition into attachment 03.
+
+Preserve the original customer name, parcel information and barcode.
+
+German overlay: “Paket finden und scannen.”
+
+**Scene 08 — 21–23 seconds: Successful confirmation**
+
+Reveal attachment 04 on the associate's smartphone.
+
+The original “Done! Pickup completed” screen must remain unchanged.
+
+Hold the shot briefly before returning to the human interaction.
+
+**Scene 09 — 23–26 seconds: Parcel handover**
+
+Use attachment 06 as the original counter shot and starting reference for the motion.
+
+The associate lowers her smartphone, gently moves the Amazon parcel towards the customer and hands it over.
+
+The customer receives the parcel with both hands.
+
+Both women smile naturally.
+
+German overlay: “Paket übergeben.”
+
+**Scene 10 — 26–29 seconds: Customer departure**
+
+Continue seamlessly from the handover.
+
+The customer secures the parcel in her arms, thanks the associate, turns around and walks towards the shop exit.
+
+Show her walking away naturally while carrying the same parcel.
+
+The associate returns to her work.
+
+Maintain full character, clothing and environmental continuity.
+
+**Scene 11 — 29–30 seconds: Closing**
+
+Show the customer leaving the shop with the parcel.
+
+Hold the final cinematic composition and gently darken the background.
+
+Closing headline:
+
+“Wenige Schritte. Ein zufriedener Kunde.”
+
+Supporting text:
+
+“So einfach funktioniert die Paketabholung in Ihrem Geschäft.”
+
+Reserve space for the website's native HTML CTA:
+
+“Jetzt Paketshop werden”
+
+## Cinematography
+
+- Photorealistic live-action commercial aesthetic.
+- Natural human anatomy and movements.
+- Soft, realistic lighting.
+- Smooth camera tracking and controlled push-ins.
+- Natural close-ups of hands, smartphones and the parcel.
+- Consistent color grading.
+- Seamless transitions between physical interactions and original app screenshots.
+- Minimalist German typography.
+- Charcoal #080B10 and Amazon Hub blue #00A8E1 for external overlays only.
+
+Avoid excessive effects, holographic screens, floating devices, cartoon characters, artificial facial expressions and unnecessary graphics.
+
+## Missing footage workflow
+
+Inspect the six attached files before building the composition.
+
+Identify which shots require additional live-action footage.
+
+If image-to-video generation is available, use attachments 05 and 06 as visual references to generate the missing human interactions.
+
+If video generation is unavailable, provide a list of the missing video clips and their required durations. Do not substitute animated still-image translations for realistic human movements.
+
+Never use generative video to recreate the four app screenshots. Composite the original files onto the relevant smartphone displays during editing.
+
+## HyperFrames deliverables
+
+Create an editable HyperFrames project containing:
+
+- Original source assets in an assets directory.
+- Additional human video clips in a separate directory.
+- HTML composition files.
+- CSS styling.
+- A deterministic, seekable GSAP timeline.
+- Independent screenshot, video and text layers.
+- Desktop composition at 1920 × 1080.
+- Responsive mobile composition.
+- A 30 fps master render.
+- A high-quality MP4 preview.
+- Website integration instructions.
+
+## Website integration
+
+The final experience must be controlled by scroll progress rather than independent autoplay.
+
+Map the entire 30-second composition to scroll progress from 0 to 100%.
+
+Scrolling down advances the story. Scrolling up reverses it.
+
+Use a pinned viewport, smooth scroll scrubbing and responsive positioning.
+
+The CTA must be an accessible and clickable native HTML element, not text embedded into the video.
+
+Provide a reduced-motion fallback.
+
+## Acceptance criteria
+
+- All six original attachments are used.
+- The Amazon Hub screenshots are preserved.
+- The same two human characters appear throughout.
+- The customer visibly enters the shop.
+- The pickup code and parcel barcode are scanned in the correct order.
+- Successful pickup confirmation appears before the handover.
+- The customer physically receives the parcel.
+- The customer turns, walks away and leaves with the parcel.
+- No fictional app screens or features are introduced.
+- The experience feels like a premium live-action commercial, not a slideshow.
+
+Inspect the source assets and produce the shot plan before assembling the final composition.

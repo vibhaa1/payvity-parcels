@@ -1,0 +1,183 @@
+PAYVITY — AMAZON PAKETSHOP CUSTOMER JOURNEY
+Production plan | 30 seconds | 1920 × 1080 | 30 fps
+
+STATUS
+Source inspection and shot planning complete. Final composition and master render
+are pending missing live-action shots. No missing human action will be represented
+by panning, translating or zooming a photograph.
+
+ASSET AUDIT
+Six unique supplied assets were copied into assets/ without re-encoding. SHA-256
+hashes verify that all copied assets match the originals; see assets-manifest.json.
+The second handover PNG is byte-identical to the first and is a duplicate.
+
+01_app_home.jpeg             1376 × 3012
+02_customer_code_scan.jpeg   1376 × 3012
+03_parcel_scan.jpeg          1536 × 2752
+04_pickup_success.jpeg       1376 × 3012
+05_human_scanning.png        2150 × 1231
+06_human_handover.png        2190 × 665
+
+Screenshot 03 includes dark outer margins and has a different aspect ratio from
+the other screens. Retain the original file intact. Define a separate display mask
+only if required for a physical screen insert; do not stretch, redraw or retouch
+the source. Keep original app colors, labels, name, logos and barcodes unchanged.
+The handover photograph is an unusually wide crop: protect both people's hands,
+the parcel and the sign; a portrait crop cannot retain the entire photograph.
+
+ADDITIONAL EXISTING FOOTAGE
+footage/existing-counter.mp4 is a copy of the repository's amazon-counter.mp4:
+20 seconds, 1920 × 1080, H.264, 24 fps, no audio stream reported by ffprobe.
+Video/amazon-hero.webm is also 20 seconds, 1920 × 1080, 24 fps. Contact sheets
+show the same shot sequence. Treat these as alternate encodings, not two stories.
+
+Reviewed the MP4 at half-second intervals. Useful approximate source ranges:
+  00.0–00.8  Customer at the glass entrance; approach/entry coverage is brief.
+  00.8–02.8  Amazon Hub counter sign insert.
+  02.8–06.8  Greeting, customer phone presentation, associate preparing phone.
+  06.8–09.5  Close-up of green customer phone and black associate phone scanning.
+  09.5–11.0  Associate checking phone and turning away.
+  11.0–13.5  Customer waiting close-up.
+  13.5–14.8  Associate bringing a parcel to the counter.
+  14.8–16.5  Associate directing phone towards parcel.
+  16.5–18.3  Customer reaches for and physically lifts the parcel.
+  18.3–20.0  Farewell and beginning of turn/walk with parcel.
+These are edit candidates, not frame-accurate in/out decisions. Check full-motion
+boundaries and continuity before final trimming. The actual exit through the door,
+complete storage retrieval and readable associate phone display are not established
+by this review. Do not claim those acceptance criteria are already met.
+
+CONTINUITY
+The existing footage matches the brown-haired customer, rust sweater, jeans,
+green phone, blonde associate, beige top, red apron, black phone, white counter,
+black tiles and Amazon Hub sign. It also reveals face coverings: patterned mask
+on the customer, black mask on the associate. Preserve them in added footage.
+Communicate friendliness through eyes, posture and gestures. Do not invent visible
+unmasked smiles. Keep the original parcel proportions and Prime tape.
+Use source entrance frames as an additional reference when extending the shop.
+
+30-SECOND EDIT PLAN
+Scene 01 | 00–03 | Arrival
+  Use the existing entrance as a location reference. Obtain a continuous 3-second
+  shot of the same customer opening the door, entering and approaching the counter.
+  The existing short entrance view may be reused only if the action reads clearly
+  in full-motion review; it does not alone establish all requested arrival actions.
+
+Scene 02 | 03–06 | Greeting
+  Reuse source approximately 02.8–06.8 with a 3-second trim. Both women acknowledge
+  each other and present their phones. Maintain masks and natural hand positions.
+
+Scene 03 | 06–09 | App öffnen.
+  New over-shoulder phone plate: black associate phone, stable visible display,
+  right viewing direction, natural tap at the original pickup menu option.
+  Composite actual 01_app_home.jpeg as an independently editable screen layer.
+  Track perspective and hand occlusion. Do not render the interface generatively.
+
+Scene 04 | 09–12 | Present the code
+  Reuse source approximately 06.8–09.5. Include the actual 05_human_scanning.png
+  as a brief stationary photographic insert/match frame within this interval.
+  Movement before/after that insert comes from real footage, not the photograph.
+
+Scene 05 | 12–15 | Abholcode scannen.
+  Use exact 02_customer_code_scan.jpeg as the screen close-up. If the transition
+  needs a physical phone, use the matching phone plate and composite the original.
+  Any optional scan highlight is a separate restrained overlay.
+
+Scene 06 | 15–18 | Retrieve parcel
+  New 3-second shot shows the associate selecting the matching parcel from nearby
+  storage and carrying it to the counter. Source 13.5–14.8 can supply the return
+  portion but does not show full retrieval. Extend storage conservatively.
+
+Scene 07 | 18–21 | Paket finden und scannen.
+  Start with source approximately 14.8–16.5 showing physical parcel scanning;
+  transition to exact 03_parcel_scan.jpeg as a separate screen close-up.
+  Preserve original Vanessa text, parcel details, barcode and source proportions.
+
+Scene 08 | 21–23 | Success
+  New stable phone plate or readable screen close-up, composited with the exact
+  04_pickup_success.jpeg. Hold confirmation before any parcel transfer.
+  Do not add a fictional confirmation button or alter the success text.
+
+Scene 09 | 23–26 | Paket übergeben.
+  Use source approximately 16.5–18.3 for real receiving/lifting movement.
+  Include actual 06_human_handover.png as a brief stationary original insert or
+  matched opening hold. Do not use it to fake hand movement. Customer must visibly
+  receive the same parcel with both hands, after the success screen.
+
+Scene 10 | 26–29 | Departure
+  Continue the real farewell/turn from source approximately 18.3–20.0. A new
+  matching continuation must show her carrying the parcel towards the exit.
+  Keep direction of travel, carrying grip, parcel orientation and masks consistent.
+
+Scene 11 | 29–30 | Exit and closing
+  Continue the new exit shot until she visibly leaves with the parcel. Gently darken
+  the shot behind independently editable German closing text:
+    Wenige Schritte. Ein zufriedener Kunde.
+    So einfach funktioniert die Paketabholung in Ihrem Geschäft.
+  Native HTML link: Jetzt Paketshop werden
+  Reserve safe space for this accessible CTA in both desktop and mobile framing.
+
+MISSING FOOTAGE — REQUIRED USABLE DURATIONS
+See MISSING-FOOTAGE.json for exact clip requests and generation-ready directions.
+  A. Entrance and approach       3 seconds
+  B. Associate app phone plate   3 seconds
+  C. Parcel storage retrieval    3 seconds
+  D. Success phone plate         2 seconds
+  E. Walk to exit and leave      4 seconds (26–30, continuing existing handover)
+Total requested usable footage: 15 seconds. Request roughly 0.5-second edit
+handles at each end where the provider supports it; handles are outside the master.
+Shots A/C/E are the unresolved human actions. B/D provide the physical display
+inserts specified by the brief. Existing MP4 may reduce new-shot needs after
+frame-by-frame motion review; do not generate replacement greetings or handovers
+unless existing coverage fails the required action or continuity checks.
+
+GENERATION AVAILABILITY
+HyperFrames CLI 0.9.90 is installed and its fresh login completed successfully.
+Its cloud commands render existing compositions; CLI help exposes no image-to-video
+generation command. No video-generation connector is currently confirmed connected.
+HeyGen is available to add for reference-driven generation. No generation jobs,
+paid credits, uploads to a generator, or final renders have been started.
+
+ASSEMBLY SPECIFICATION ONCE FOOTAGE IS AVAILABLE
+1. Use an editable HyperFrames root and independent video, screenshot and text
+   layers. Keep originals in assets/ and human clips in footage/.
+2. Build a synchronous deterministic GSAP timeline, paused and registered under
+   window.__timelines. Master duration 30 seconds; composition 1920 × 1080.
+3. Track original screenshot planes and masks independently; never burn generated
+   UI into the human footage. Author per-shot corner tracking if the phone moves.
+4. Use restrained match transitions and short crossfades. Protect physical actions
+   from overlapping transition frames. No floating-device presentation.
+5. Deliver a separately framed mobile composition. Reposition overlays, protect
+   faces/hands/parcel and use contained originals where portrait cropping loses
+   screenshot details. Do not automatically center-crop the wide handover photo.
+6. Render master/preview as high-quality H.264 MP4 at 30 fps. Source is 24 fps:
+   export at 30 fps without changing action speed; inspect frame cadence. Do not
+   claim the existing 24 fps MP4 is the requested new 30 fps master.
+7. Run HyperFrames lint, runtime validation and timeline layout inspection, then
+   visually verify all scenes and both output formats before delivery.
+
+WEBSITE INTEGRATION DESIGN
+Use a pinned viewport over approximately 600vh of scroll. Map clamped scroll
+progress 0..1 to master time 0..30 seconds. Smoothly scrub in both directions.
+The website must seek the story; it must not independently autoplay the film.
+For an MP4 export, encode frequent keyframes and test reverse seeking on mobile.
+Keep closing copy and CTA as separate native HTML outside the exported video;
+do not duplicate burned-in text beneath the native overlay. Respect
+prefers-reduced-motion with a stationary, readable pickup summary and a clickable
+CTA. Provide descriptive accessible text and avoid trapping keyboard navigation
+inside the pinned region. Integrate into the existing Next.js site only after
+the approved footage and render exist; existing site files have not been changed.
+
+ACCEPTANCE GATE
+Verify all six originals appear; screenshots remain intact; actors/wardrobe/masks,
+devices and parcel remain consistent; customer enters; code scan precedes parcel
+scan; success precedes transfer; customer physically receives, turns and exits
+carrying the parcel. Scrub every transition backwards. Verify mobile framing,
+reduced motion, native CTA, 30 fps encoding and no missing media.
+
+CURRENT DELIVERABLES
+Production brief copy, original assets with integrity manifest, existing human
+footage copy, review contact sheets, shot plan and missing-shot requests.
+HTML composition, GSAP assembly, mobile output, MP4 master and deployable scroll
+experience remain pending the footage above. This package is preproduction,
+not the completed commercial.

@@ -1,0 +1,50 @@
+[
+  {
+    "asset": "01_app_home.jpeg",
+    "original": "C:\\Users\\srivi\\Downloads\\1.jpeg",
+    "sha256": "E6D9E39F0D92362AC841307924F9810D6A304F6954EB2AE733FE563C6D2D0377",
+    "byteIdentical": true,
+    "width": 1376,
+    "height": 3012
+  },
+  {
+    "asset": "02_customer_code_scan.jpeg",
+    "original": "C:\\Users\\srivi\\Downloads\\2.jpeg",
+    "sha256": "0FE3213D1569B6FA51FCC32C38DD838C31D49352EDB69AF01D3A52EE59A4CDDE",
+    "byteIdentical": true,
+    "width": 1376,
+    "height": 3012
+  },
+  {
+    "asset": "03_parcel_scan.jpeg",
+    "original": "C:\\Users\\srivi\\Downloads\\3.jpeg",
+    "sha256": "D721230E4880BDC0749436895B4B3A1CAC460D130239380D97C357496B610D0F",
+    "byteIdentical": true,
+    "width": 1536,
+    "height": 2752
+  },
+  {
+    "asset": "04_pickup_success.jpeg",
+    "original": "C:\\Users\\srivi\\Downloads\\4.jpeg",
+    "sha256": "F311C0FC0EE5BD2A1270193054C980A02B23EE3F98ACC90C8223BCD5BAC454BC",
+    "byteIdentical": true,
+    "width": 1376,
+    "height": 3012
+  },
+  {
+    "asset": "05_human_scanning.png",
+    "original": "C:\\Users\\srivi\\AppData\\Local\\Temp\\codex-clipboard-9fec16da-9c7b-4f44-b9c6-43078b401b28.png",
+    "sha256": "887DAE7881139470277A10F8C5D831B23269F81EB64698B363ACB2534C53F1D3",
+    "byteIdentical": true,
+    "width": 2150,
+    "height": 1231
+  },
+  {
+    "asset": "06_human_handover.png",
+    "original": "C:\\Users\\srivi\\AppData\\Local\\Temp\\codex-clipboard-09f76a18-69ab-4eaf-99ca-851a37dcdbc7.png",
+    "sha256": "2785F2FAAEF87A0D7AD5049FE8C8436F91AEB223E2EAE345073A524A3C7B3495",
+    "byteIdentical": true,
+    "width": 2190,
+    "height": 665
+  }
+]

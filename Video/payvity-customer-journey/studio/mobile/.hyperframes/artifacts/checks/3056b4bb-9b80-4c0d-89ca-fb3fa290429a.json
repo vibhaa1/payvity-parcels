@@ -1,0 +1,848 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 3,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "invalid_parent_traversal_in_asset_path",
+        "severity": "error",
+        "message": "Found 11 asset path(s) traversing above the project root with \"../\" (../footage/ (6), ../assets/ (4), ../vendor/), resolved from the folder of the file that holds them. Render and preview clamp them to the project root or resolve them outside it, so they load a different file than written, or none.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Point the path at a file inside the project: from compositions/scene.html, \"../assets/x.png\" and \"assets/x.png\" both reach the project's assets folder."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "This HTML file has 5 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "missing_local_asset",
+        "severity": "error",
+        "message": "<video> element references local file(s) not found in the project: ../footage/arrival-greeting.mp4, ../footage/human-code.mp4, ../footage/human-check.mp4, ../footage/human-wait.mp4, ../footage/human-parcel.mp4, ../footage/handover-turn.mp4. The renderer will silently skip these and produce a video with missing visuals.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add the missing files to the project directory, or update the src attributes to point to existing files. Captured asset filenames are unreliable. Verify against capture/contact-sheets/ and capture/extracted/asset-descriptions.md."
+      },
+      {
+        "code": "missing_local_asset",
+        "severity": "error",
+        "message": "<img> element references local file(s) not found in the project: ../assets/01_app_home.jpeg, ../assets/02_customer_code_scan.jpeg, ../assets/03_parcel_scan.jpeg, ../assets/04_pickup_success.jpeg. The renderer will silently skip these and produce a video with missing visuals.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add the missing files to the project directory, or update the src attributes to point to existing files. Captured asset filenames are unreliable. Verify against capture/contact-sheets/ and capture/extracted/asset-descriptions.md."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": false,
+    "errorCount": 26,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading assets/01_app_home.jpeg",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/assets/01_app_home.jpeg"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading assets/02_customer_code_scan.jpeg",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/assets/02_customer_code_scan.jpeg"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading assets/03_parcel_scan.jpeg",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/assets/03_parcel_scan.jpeg"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading assets/04_pickup_success.jpeg",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/assets/04_pickup_success.jpeg"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading vendor/gsap.min.js",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/vendor/gsap.min.js"
+      },
+      {
+        "code": "console_error",
+        "severity": "error",
+        "message": "Refused to execute script from 'http://127.0.0.1:61843/vendor/gsap.min.js' because its MIME type ('') is not executable, and strict MIME type checking is enabled.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/"
+      },
+      {
+        "code": "request_failed",
+        "severity": "error",
+        "message": "Failed to load vendor/gsap.min.js: net::ERR_ABORTED",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/vendor/gsap.min.js"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/arrival-greeting.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/footage/arrival-greeting.mp4"
+      },
+      {
+        "code": "page_error",
+        "severity": "error",
+        "message": "Cannot read properties of undefined (reading 'timeline')",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/arrival-greeting.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/footage/arrival-greeting.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-code.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 10,
+        "url": "http://127.0.0.1:61843/footage/human-code.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-parcel.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 17.5,
+        "url": "http://127.0.0.1:61843/footage/human-parcel.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/handover-turn.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 24.5,
+        "url": "http://127.0.0.1:61843/footage/handover-turn.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/handover-turn.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 26.2,
+        "url": "http://127.0.0.1:61843/footage/handover-turn.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/arrival-greeting.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:61843/footage/arrival-greeting.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-code.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 8.875,
+        "url": "http://127.0.0.1:61843/footage/human-code.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-check.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 13.75,
+        "url": "http://127.0.0.1:61843/footage/human-check.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-wait.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 15.125,
+        "url": "http://127.0.0.1:61843/footage/human-wait.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-parcel.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 16.5,
+        "url": "http://127.0.0.1:61843/footage/human-parcel.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/handover-turn.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 23,
+        "url": "http://127.0.0.1:61843/footage/handover-turn.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/arrival-greeting.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 0,
+        "timeRange": [
+          0,
+          1.173
+        ],
+        "url": "http://127.0.0.1:61843/footage/arrival-greeting.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-code.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 8.045,
+        "timeRange": [
+          8.045,
+          9.218
+        ],
+        "url": "http://127.0.0.1:61843/footage/human-code.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-check.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 13.408,
+        "timeRange": [
+          13.408,
+          14.581
+        ],
+        "url": "http://127.0.0.1:61843/footage/human-check.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-wait.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 14.749,
+        "timeRange": [
+          14.749,
+          15.922
+        ],
+        "url": "http://127.0.0.1:61843/footage/human-wait.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/human-parcel.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 16.089,
+        "timeRange": [
+          16.089,
+          17.263
+        ],
+        "url": "http://127.0.0.1:61843/footage/human-parcel.mp4"
+      },
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading footage/handover-turn.mp4",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "payvity-mobile",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1080",
+          "data-height": "1350",
+          "data-fps": "24"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350
+        },
+        "time": 22.793,
+        "timeRange": [
+          22.793,
+          23.966
+        ],
+        "url": "http://127.0.0.1:61843/footage/handover-turn.mp4"
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 30,
+    "samples": [
+      0.4,
+      4,
+      7.5,
+      10,
+      12.5,
+      17.5,
+      20,
+      22,
+      24.5,
+      26.2,
+      28
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false,
+    "faceCheck": {
+      "ran": true,
+      "candidates": 0,
+      "faces": 0
+    }
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.4,
+      7.5,
+      17.5,
+      22,
+      28
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 30 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 240
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": true,
+    "files": [
+      ".hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\frame-00-at-0.4s.png",
+      ".hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\frame-01-at-7.5s.png",
+      ".hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\frame-02-at-17.5s.png",
+      ".hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\frame-03-at-22.0s.png",
+      ".hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\frame-04-at-28.0s.png"
+    ],
+    "times": [
+      0.4,
+      7.5,
+      17.5,
+      22,
+      28
+    ],
+    "findingFiles": [
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-00-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-01-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-02-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-03-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-04-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-05-console_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-06-request_failed.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-07-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-08-page_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-09-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-10-http_error.png",
+      "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\mobile\\.hyperframes\\artifacts\\snapshots\\32c94de1-85e1-4800-972b-1716996d1422\\finding-11-http_error.png"
+    ]
+  }
+}

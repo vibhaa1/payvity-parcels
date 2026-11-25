@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "historyId": "f107880b-62d1-41b8-9d92-96c34ab61a42",
+  "currentRevision": null,
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "729e31835a21c7b42ee006e2aacc63016abc05d26883f871ad3bf206943f2cfb",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\72\\729e31835a21c7b42ee006e2aacc63016abc05d26883f871ad3bf206943f2cfb"
+    },
+    "CLAUDE.md": {
+      "hash": "729e31835a21c7b42ee006e2aacc63016abc05d26883f871ad3bf206943f2cfb",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\72\\729e31835a21c7b42ee006e2aacc63016abc05d26883f871ad3bf206943f2cfb"
+    },
+    "DESIGN.md": {
+      "hash": "ce815a8ab7d9719fb48db4680b73035dbb41e108dc95006096dcb4be1cf5b304",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\ce\\ce815a8ab7d9719fb48db4680b73035dbb41e108dc95006096dcb4be1cf5b304"
+    },
+    "assets/06_human_handover.png": {
+      "hash": "2785f2faaef87a0d7ad5049fe8c8436f91aeb223e2eae345073a524a3c7b3495",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\27\\2785f2faaef87a0d7ad5049fe8c8436f91aeb223e2eae345073a524a3c7b3495"
+    },
+    "footage/human-check.mp4": {
+      "hash": "9dad6b107d40a9503c8ded356f165d4c1037cf71987731cbe2e29010c40b4d2e",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\9d\\9dad6b107d40a9503c8ded356f165d4c1037cf71987731cbe2e29010c40b4d2e"
+    },
+    "footage/human-wait.mp4": {
+      "hash": "1f48797a6598b981eccb30a0d4239b3741f25f34535e500dc2833cdf759213d1",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\1f\\1f48797a6598b981eccb30a0d4239b3741f25f34535e500dc2833cdf759213d1"
+    },
+    "hyperframes.json": {
+      "hash": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\35\\35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+    },
+    "index.html": {
+      "hash": "8a1ee674b4b84c222da2d644491e2505a1f28affdc8fc80f49f15954839a6a51",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\8a\\8a1ee674b4b84c222da2d644491e2505a1f28affdc8fc80f49f15954839a6a51"
+    },
+    "meta.json": {
+      "hash": "744a428f42ddb89b6e5550c179b62a75845536764e9eba96c1f8fde865edc4e7",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\74\\744a428f42ddb89b6e5550c179b62a75845536764e9eba96c1f8fde865edc4e7"
+    },
+    "mobile/index.html": {
+      "hash": "e11d1bf8ca0f3b9c3bcc4d45ee41a179adbfb0cfe6f6555d0fec675338ef5189",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\e1\\e11d1bf8ca0f3b9c3bcc4d45ee41a179adbfb0cfe6f6555d0fec675338ef5189"
+    },
+    "package.json": {
+      "hash": "9b174b1228b3214bf4584a99a44ef067ddb01a206a942157b97adb04738499b5",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\9b\\9b174b1228b3214bf4584a99a44ef067ddb01a206a942157b97adb04738499b5"
+    },
+    "vendor/gsap.min.js": {
+      "hash": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\92\\92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    "assets/01_app_home.jpeg": {
+      "hash": "e6d9e39f0d92362ac841307924f9810d6a304f6954eb2ae733fe563c6d2d0377",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\e6\\e6d9e39f0d92362ac841307924f9810d6a304f6954eb2ae733fe563c6d2d0377"
+    },
+    "assets/02_customer_code_scan.jpeg": {
+      "hash": "0fe3213d1569b6fa51fcc32c38dd838c31d49352edb69af01d3a52ee59a4cdde",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\0f\\0fe3213d1569b6fa51fcc32c38dd838c31d49352edb69af01d3a52ee59a4cdde"
+    },
+    "assets/03_parcel_scan.jpeg": {
+      "hash": "d721230e4880bdc0749436895b4b3a1cac460d130239380d97c357496b610d0f",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\d7\\d721230e4880bdc0749436895b4b3a1cac460d130239380d97c357496b610d0f"
+    },
+    "assets/04_pickup_success.jpeg": {
+      "hash": "f311c0fc0ee5bd2a1270193054c980a02b23ee3f98acc90c8223bcd5bac454bc",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\f3\\f311c0fc0ee5bd2a1270193054c980a02b23ee3f98acc90c8223bcd5bac454bc"
+    },
+    "assets/05_human_scanning.png": {
+      "hash": "887dae7881139470277a10f8c5d831b23269f81eb64698b363acb2534c53f1d3",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\88\\887dae7881139470277a10f8c5d831b23269f81eb64698b363acb2534c53f1d3"
+    },
+    "footage/arrival-greeting.mp4": {
+      "hash": "ccba62b6e4783d2b13b7ae21ff1064124be0b7c0571b3076ee3252e85742a406",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\cc\\ccba62b6e4783d2b13b7ae21ff1064124be0b7c0571b3076ee3252e85742a406"
+    },
+    "footage/existing-counter.mp4": {
+      "hash": "68929c1096aeb56993045d864c609e9704f0a5c82397fdf706e7d6e6f2b7e459",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\68\\68929c1096aeb56993045d864c609e9704f0a5c82397fdf706e7d6e6f2b7e459"
+    },
+    "footage/handover-turn.mp4": {
+      "hash": "6e97d15f725a40082a4f61540a879702005f82151786abdac0387ca50a4b5e73",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\6e\\6e97d15f725a40082a4f61540a879702005f82151786abdac0387ca50a4b5e73"
+    },
+    "footage/human-code.mp4": {
+      "hash": "866b7d5d764f3c19d45bcc55777dbfa15d46ed24244bc26582ba2189a2d08b75",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\86\\866b7d5d764f3c19d45bcc55777dbfa15d46ed24244bc26582ba2189a2d08b75"
+    },
+    "footage/human-parcel.mp4": {
+      "hash": "7489cf300a7b3116985873f9d48dbcf83d1be32884a049f01006958811efa02f",
+      "content": "C:\\Users\\srivi\\.cache\\hyperframes\\history\\f107880b-62d1-41b8-9d92-96c34ab61a42\\blobs\\74\\7489cf300a7b3116985873f9d48dbcf83d1be32884a049f01006958811efa02f"
+    }
+  },
+  "revisions": {},
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "4adb055e-6b4a-434d-965c-b529a65b7143"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143",
+        "scope": "project",
+        "report": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\checks\\4adb055e-6b4a-434d-965c-b529a65b7143.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "at": [
+              0.4,
+              4,
+              7.5,
+              10,
+              12.5,
+              17.5,
+              20,
+              22,
+              24.5,
+              26.2,
+              28
+            ],
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 45000,
+            "cache": true,
+            "contrast": true,
+            "craft": true,
+            "strict": false,
+            "snapshots": true,
+            "safeZones": [
+              "tiktok",
+              "reels",
+              "shorts"
+            ],
+            "browserGpuMode": "auto",
+            "includeUnmounted": false
+          }
+        },
+        "createdAt": 1795536087988,
+        "contentHash": "dbbe6c2ca73a9cd2fe9909004d5abf8ac01587f69b88a5ca6f9411c35df172d2",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": null,
+      "id": "4adb055e-6b4a-434d-965c-b529a65b7143-4"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143-0",
+        "scope": "full",
+        "image": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\snapshots\\0189e11e-0375-460b-b5f9-3a898741e1f6\\frame-00-at-0.4s.png",
+        "time": 0.4,
+        "metadata": {
+          "checkId": "4adb055e-6b4a-434d-965c-b529a65b7143",
+          "width": 1920,
+          "height": 1080
+        },
+        "createdAt": 1795536087988,
+        "contentHash": "85cd15f055361801b96523623d94c4f53b0722e1c2b41604202f7e0cc9f09b8a",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143-1",
+        "scope": "full",
+        "image": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\snapshots\\0189e11e-0375-460b-b5f9-3a898741e1f6\\frame-01-at-7.5s.png",
+        "time": 7.5,
+        "metadata": {
+          "checkId": "4adb055e-6b4a-434d-965c-b529a65b7143",
+          "width": 1920,
+          "height": 1080
+        },
+        "createdAt": 1795536087988,
+        "contentHash": "e1633282a5fcd47bdc6744bb8370843ce4a4833cf068e12b8dc66c5c5a2ecdba",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143-2",
+        "scope": "full",
+        "image": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\snapshots\\0189e11e-0375-460b-b5f9-3a898741e1f6\\frame-02-at-17.5s.png",
+        "time": 17.5,
+        "metadata": {
+          "checkId": "4adb055e-6b4a-434d-965c-b529a65b7143",
+          "width": 1920,
+          "height": 1080
+        },
+        "createdAt": 1795536087989,
+        "contentHash": "6c18fbc7570cb5ceeec6f264a86c6219d14639148459196ccefb2b9c62e9eb45",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143-3",
+        "scope": "full",
+        "image": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\snapshots\\0189e11e-0375-460b-b5f9-3a898741e1f6\\frame-03-at-22.0s.png",
+        "time": 22,
+        "metadata": {
+          "checkId": "4adb055e-6b4a-434d-965c-b529a65b7143",
+          "width": 1920,
+          "height": 1080
+        },
+        "createdAt": 1795536087990,
+        "contentHash": "871d3269549dcede74967a8b0ec92f23de1321749b7f3e95b4f8700e898e1e53",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "4adb055e-6b4a-434d-965c-b529a65b7143-4",
+        "scope": "full",
+        "image": "C:\\Users\\srivi\\Downloads\\Payvity\\Video\\payvity-customer-journey\\studio\\.hyperframes\\artifacts\\snapshots\\0189e11e-0375-460b-b5f9-3a898741e1f6\\frame-04-at-28.0s.png",
+        "time": 28,
+        "metadata": {
+          "checkId": "4adb055e-6b4a-434d-965c-b529a65b7143",
+          "width": 1920,
+          "height": 1080
+        },
+        "createdAt": 1795536087991,
+        "contentHash": "d613fd0584bae73f3848b045110f02d45ef40495b150f36618f889c4d4b73080",
+        "revision": null,
+        "inputFingerprint": "742eb29f0f36c3045ef13a61c4ecbdc4aa7f2e0533b67a8bd05818d982c37de6",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  }
+}

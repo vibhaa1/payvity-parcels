@@ -1,0 +1,60 @@
+PAYVITY — CURRENT PRODUCTION SHOT PLAN
+Approved story with refinements: 24 fps / 30 seconds / real footage first.
+Current export is work in progress: only 26.5–30 needs additional exit footage.
+
+FRAME-ACCURATE EDIT (24 fps)
+0000.000–0006.875 s | Ankommen und begrÃ¼ÃŸen
+  existing-counter.mp4 frames 0–164, natural speed
+0006.875–0008.875 s | App Ã¶ffnen
+  01_app_home.jpeg
+0008.875–0011.708 s | Abholcode zeigen
+  existing-counter.mp4 frames 165–232, natural speed
+0011.708–0013.708 s | Abholcode scannen
+  02_customer_code_scan.jpeg
+0013.708–0015.042 s | Abholcode bestÃ¤tigt
+  existing-counter.mp4 frames 233–264, natural speed
+0015.042–0016.458 s | Ein kurzer Moment
+  existing-counter.mp4 frames 265–298, natural speed
+0016.458–0019.250 s | Paket holen und scannen
+  existing-counter.mp4 frames 329–395, natural speed
+0019.250–0021.250 s | Paket scannen
+  03_parcel_scan.jpeg
+0021.250–0023.000 s | Abholung bestÃ¤tigt
+  04_pickup_success.jpeg
+0023.000–0026.500 s | Paket Ã¼bernehmen und verabschieden
+  existing-counter.mp4 frames 396–479, natural speed
+0026.500–0030.000 s | Ausgangsaufnahme ausstehend
+  MISSING EXIT FOOTAGE; black review slot
+
+DECISIONS IMPLEMENTED
+The real doorway arrival and counter approach establish arrival.
+Real greeting and scanning movement remain continuous; no photographic inserts.
+App home → customer code scan → parcel scan → pickup success is explicit.
+The source parcel-return action replaces optional full storage retrieval.
+Actual receipt, lifting and beginning of the turn use source frames 396–479.
+Only the continuing walk and physical exit remain missing.
+Human photos are preserved as references/match-frame guides, not animated shots.
+Masks, devices, wardrobe, package proportions and shop details remain original.
+Three-frame transitions separate editorial inserts; all human movement stays 1x.
+Native 24 fps retained. No optical flow or 24-to-30 cadence conversion.
+Mobile preserves both people and the interaction with contained landscape footage.
+Native HTML provides closing headlines, CTA, configurable scroll and reduced motion.
+Default actual scroll travel is 400vh desktop and 350vh mobile.
+
+REMAINING SHOT AND COST
+One 3.5-second exit continuation, ideally from a five-second generated take.
+Proposed list-price estimate: Kling 2.5 Turbo Pro via fal, USD 0.07/second.
+Five seconds: USD 0.35 per attempt; three attempts: USD 1.05 before extras/taxes.
+No paid jobs submitted; generator connection and confirmed charge remain pending.
+See MISSING-FOOTAGE.json and PRODUCTION-STATUS.txt for references and caveats.
+
+REVIEW
+http://127.0.0.1:4173/preview/
+Desktop project: studio/index.html. Mobile project: studio/mobile/index.html.
+The existing Next.js website has not been modified.
+review/approved-plan-v1.txt retains the earlier planning record.
+
+LIVE PROVIDER UPDATE
+fal connected; Wan 3.0 Prime draft estimated at USD 0.25 for five seconds.
+Reference upload was blocked because account Rio has no credits. No generation
+submitted. The earlier Kling USD 0.35 calculation remains an alternative estimate.

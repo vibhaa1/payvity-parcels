@@ -1,0 +1,201 @@
+{
+  "paused": true,
+  "rootDuration": 30,
+  "fps": 24,
+  "clips": [
+    {
+      "id": "arrival-greeting",
+      "start": 0,
+      "duration": 7,
+      "kind": "VIDEO",
+      "source": "footage/arrival-greeting.mp4"
+    },
+    {
+      "id": "app-home",
+      "start": 6.875,
+      "duration": 2.125,
+      "kind": "IMG",
+      "source": "assets/01_app_home.jpeg"
+    },
+    {
+      "id": "human-code",
+      "start": 8.875,
+      "duration": 2.9583333333333335,
+      "kind": "VIDEO",
+      "source": "footage/human-code.mp4"
+    },
+    {
+      "id": "code-screen",
+      "start": 11.708333333333334,
+      "duration": 2.125,
+      "kind": "IMG",
+      "source": "assets/02_customer_code_scan.jpeg"
+    },
+    {
+      "id": "human-check",
+      "start": 13.708333333333334,
+      "duration": 1.4583333333333333,
+      "kind": "VIDEO",
+      "source": "footage/human-check.mp4"
+    },
+    {
+      "id": "human-wait",
+      "start": 15.041666666666666,
+      "duration": 1.5416666666666667,
+      "kind": "VIDEO",
+      "source": "footage/human-wait.mp4"
+    },
+    {
+      "id": "human-parcel",
+      "start": 16.458333333333332,
+      "duration": 2.9166666666666665,
+      "kind": "VIDEO",
+      "source": "footage/human-parcel.mp4"
+    },
+    {
+      "id": "parcel-screen",
+      "start": 19.25,
+      "duration": 2.125,
+      "kind": "IMG",
+      "source": "assets/03_parcel_scan.jpeg"
+    },
+    {
+      "id": "success-screen",
+      "start": 21.25,
+      "duration": 1.875,
+      "kind": "IMG",
+      "source": "assets/04_pickup_success.jpeg"
+    },
+    {
+      "id": "handover-turn",
+      "start": 23,
+      "duration": 3.625,
+      "kind": "VIDEO",
+      "source": "footage/handover-turn.mp4"
+    },
+    {
+      "id": "exit-pending",
+      "start": 26.5,
+      "duration": 3.5,
+      "kind": "DIV",
+      "source": null
+    }
+  ],
+  "tweens": [
+    {
+      "targets": [
+        "arrival-greeting"
+      ],
+      "start": 0,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "app-home"
+      ],
+      "start": 6.875,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "human-code"
+      ],
+      "start": 8.875,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "code-screen"
+      ],
+      "start": 11.7083333,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "human-check"
+      ],
+      "start": 13.7083333,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "human-wait"
+      ],
+      "start": 15.0416667,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "human-parcel"
+      ],
+      "start": 16.4583333,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "parcel-screen"
+      ],
+      "start": 19.25,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "success-screen"
+      ],
+      "start": 21.25,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "handover-turn"
+      ],
+      "start": 23,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    },
+    {
+      "targets": [
+        "exit-pending"
+      ],
+      "start": 26.5,
+      "duration": 0.125,
+      "properties": [
+        "opacity"
+      ]
+    }
+  ],
+  "review": {
+    "transition": "Three-frame opacity crossfades only; no image translations, scaling or artificial human motion.",
+    "knownGap": "26.5–30 seconds intentionally black; missing physical exit.",
+    "holds": "Original screenshot inserts and real human source motion. No decorative ambient animation."
+  }
+}

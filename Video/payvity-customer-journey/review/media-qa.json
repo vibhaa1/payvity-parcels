@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "asset": "01_app_home.jpeg",
+      "allCopiesByteIdentical": true
+    },
+    {
+      "asset": "02_customer_code_scan.jpeg",
+      "allCopiesByteIdentical": true
+    },
+    {
+      "asset": "03_parcel_scan.jpeg",
+      "allCopiesByteIdentical": true
+    },
+    {
+      "asset": "04_pickup_success.jpeg",
+      "allCopiesByteIdentical": true
+    },
+    {
+      "asset": "05_human_scanning.png",
+      "allCopiesByteIdentical": true
+    },
+    {
+      "asset": "06_human_handover.png",
+      "allCopiesByteIdentical": true
+    }
+  ],
+  "encodes": [
+    {
+      "file": "payvity-desktop-review-master-24fps.mp4",
+      "bytes": 19575675,
+      "codec_name": "h264",
+      "width": 1920,
+      "height": 1080,
+      "has_b_frames": 2,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "2211840/92159",
+      "nb_read_frames": "720",
+      "duration": "29.999674",
+      "faststart": true
+    },
+    {
+      "file": "payvity-desktop-web.mp4",
+      "bytes": 16536117,
+      "codec_name": "h264",
+      "width": 1920,
+      "height": 1080,
+      "has_b_frames": 0,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "720",
+      "duration": "30.000000",
+      "maxKeyframeGapFrames": 6,
+      "maxKeyframeGapSeconds": 0.25,
+      "faststart": true
+    },
+    {
+      "file": "payvity-desktop-web.webm",
+      "bytes": 12746239,
+      "codec_name": "vp9",
+      "width": 1920,
+      "height": 1080,
+      "has_b_frames": 0,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "720",
+      "duration": "30.000000",
+      "maxKeyframeGapFrames": 6,
+      "maxKeyframeGapSeconds": 0.25
+    },
+    {
+      "file": "payvity-mobile-review-master-24fps.mp4",
+      "bytes": 11127906,
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1350,
+      "has_b_frames": 2,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "720",
+      "duration": "30.000000",
+      "faststart": true
+    },
+    {
+      "file": "payvity-mobile-web.mp4",
+      "bytes": 8751940,
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1350,
+      "has_b_frames": 0,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "720",
+      "duration": "30.000000",
+      "maxKeyframeGapFrames": 6,
+      "maxKeyframeGapSeconds": 0.25,
+      "faststart": true
+    },
+    {
+      "file": "payvity-mobile-web.webm",
+      "bytes": 7354390,
+      "codec_name": "vp9",
+      "width": 1080,
+      "height": 1350,
+      "has_b_frames": 0,
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "nb_read_frames": "720",
+      "duration": "30.000000",
+      "maxKeyframeGapFrames": 6,
+      "maxKeyframeGapSeconds": 0.25
+    }
+  ]
+}

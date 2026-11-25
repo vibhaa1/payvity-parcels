@@ -1,0 +1,54 @@
+{
+  "status": "awaiting_video_generation_connection_or_supplied_clips",
+  "master": {"durationSeconds": 30, "width": 1920, "height": 1080, "fps": 30},
+  "referenceImages": ["assets/05_human_scanning.png", "assets/06_human_handover.png"],
+  "additionalReference": "footage/existing-counter.mp4",
+  "continuity": "Same brown-haired customer in rust knitted sweater and blue jeans with muted green phone and patterned face covering; same blonde associate in beige long sleeves, red apron, black face covering and black phone. Preserve the white counter, black subway tiles, jars, equipment, Amazon Hub sign and original parcel proportions and Prime tape. Use the existing footage to match entrance geometry, masks and movement. Natural human anatomy and physical contact. No unmasked replacement faces, fictional app interfaces, generated barcodes, embedded captions or floating devices.",
+  "clipRequests": [
+    {
+      "id": "A",
+      "filename": "01_arrival.mp4",
+      "usableSeconds": 3,
+      "masterStart": 0,
+      "masterEnd": 3,
+      "prompt": "Photorealistic live-action commercial, wide view matching the glass entrance in the existing reference footage. The same customer opens the door, enters and approaches the Amazon Hub counter; the same associate acknowledges her warmly. Keep the shop architecture continuous with the original. Smooth restrained tracking, realistic walking and door handling. Preserve all continuity requirements. No added typography. Frame with portrait-safe action coverage as well as the 16:9 composition."
+    },
+    {
+      "id": "B",
+      "filename": "03_app_phone_plate.mp4",
+      "usableSeconds": 3,
+      "masterStart": 6,
+      "masterEnd": 9,
+      "compositeAsset": "assets/01_app_home.jpeg",
+      "prompt": "Over the shoulder of the same associate at the reference counter. Show her black smartphone display held steadily in portrait orientation. A natural finger tap lands at the pickup menu position indicated by the separate original screen reference. Provide a clean display plate for later compositing; do not synthesize an Amazon interface, logo, text or barcode. Keep fingers realistic, preserve their display occlusion and avoid glare covering the screen. Camera movement is minimal so the actual original screenshot can be tracked precisely."
+    },
+    {
+      "id": "C",
+      "filename": "06_parcel_retrieval.mp4",
+      "usableSeconds": 3,
+      "masterStart": 15,
+      "masterEnd": 18,
+      "prompt": "The same associate selects the same brown Amazon parcel from a small nearby parcel storage area and carries it to the original white counter while the same customer waits naturally. Conservatively extend the reference shop; preserve black tiles, lighting and counter equipment. Match parcel dimensions and Prime tape to the reference and source video. Show actual lifting, weight and walking. Match the return direction to the existing counter shot. No invented readable labels or new branding."
+    },
+    {
+      "id": "D",
+      "filename": "08_success_phone_plate.mp4",
+      "usableSeconds": 2,
+      "masterStart": 21,
+      "masterEnd": 23,
+      "compositeAsset": "assets/04_pickup_success.jpeg",
+      "prompt": "Close over-shoulder view of the same associate holding the same black smartphone over the original counter next to the unchanged parcel. Provide a stable readable portrait display plane with natural hand occlusion for compositing the original pickup-success screenshot in post. Do not generate the success UI or any text. Hold the phone still briefly. The parcel has not yet been given to the customer. Match the previous physical parcel scan and the following handover shot."
+    },
+    {
+      "id": "E",
+      "filename": "10_11_departure_and_exit.mp4",
+      "usableSeconds": 4,
+      "masterStart": 26,
+      "masterEnd": 30,
+      "prompt": "Continue the existing real handover ending seamlessly. The same customer already has the same parcel in both hands. She secures it in her arms, acknowledges the associate, turns and walks naturally to the established glass entrance, opens or passes through the door and visibly leaves carrying the parcel. The associate returns to work. Maintain walking direction, parcel grip, rust sweater, blue jeans, patterned mask, green phone continuity, and the associate's red apron and black mask. Use source entrance architecture rather than inventing a different exit. Smooth tracking, no cuts that hide receipt or departure. Reserve calm space for closing HTML overlays during the final second, with no generated captions or CTA."
+    }
+  ],
+  "totalUsableSeconds": 15,
+  "recommendedHandlesSecondsEachEnd": 0.5,
+  "paidGenerationStarted": false
+}

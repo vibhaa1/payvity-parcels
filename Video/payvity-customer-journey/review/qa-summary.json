@@ -1,0 +1,57 @@
+{
+  "desktopHyperframes": {
+    "ok": true,
+    "runtimeErrors": 0,
+    "layoutErrors": 0
+  },
+  "mobileHyperframes": {
+    "ok": true,
+    "runtimeErrors": 0,
+    "layoutErrors": 0
+  },
+  "browserPassed": true,
+  "browserCases": [
+    {
+      "mobile": false,
+      "format": "mp4",
+      "seekTargets": 11,
+      "meanSeekMs": 13.684455962069912,
+      "worstSeekMs": 158.9000000357628,
+      "noOverflow": true,
+      "noAutoplay": true
+    },
+    {
+      "mobile": false,
+      "format": "webm",
+      "seekTargets": 11,
+      "meanSeekMs": 17.459509203404735,
+      "worstSeekMs": 85.80000001192093,
+      "noOverflow": true,
+      "noAutoplay": true
+    },
+    {
+      "mobile": true,
+      "format": "mp4",
+      "seekTargets": 11,
+      "meanSeekMs": 10.155555555389988,
+      "worstSeekMs": 75.20000004768372,
+      "noOverflow": true,
+      "noAutoplay": true
+    },
+    {
+      "mobile": true,
+      "format": "webm",
+      "seekTargets": 11,
+      "meanSeekMs": 11.46767677110855,
+      "worstSeekMs": 75.09999996423721,
+      "noOverflow": true,
+      "noAutoplay": true
+    }
+  ],
+  "reviewedWarnings": [
+    "11-layer timeline kept together to match the single frame-based edit list.",
+    "Three-frame opening fade intentionally begins on charcoal; website poster supplies the initial visible still.",
+    "Silent film is intentional for bidirectional scroll playback; no supplied audio exists."
+  ],
+  "limitation": "Local Chromium emulation; actual Safari/iOS and final exit shot remain unverified."
+}
