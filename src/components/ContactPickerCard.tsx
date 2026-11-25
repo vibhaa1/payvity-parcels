@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CONTACT_EMAIL, CONTACT_LINKS, type Lang } from "@/lib/seo";
 
-type ChannelKey = "whatsapp" | "email" | "instagram" | "linkedin";
+type ChannelKey = "whatsapp" | "email" | "instagram" | "tiktok";
 
 interface ChannelCopy {
   name: string;
@@ -38,10 +38,10 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
         hint: "@payvityparcels",
         ariaLabel: "PAYVITY Parcels auf Instagram",
       },
-      linkedin: {
-        name: "LinkedIn",
-        hint: "PAYVITY Parcels auf LinkedIn",
-        ariaLabel: "PAYVITY Parcels auf LinkedIn",
+      tiktok: {
+        name: "TikTok",
+        hint: "@payvityparcels",
+        ariaLabel: "PAYVITY Parcels auf TikTok",
       },
     },
   },
@@ -65,10 +65,10 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
         hint: "@payvityparcels",
         ariaLabel: "PAYVITY Parcels on Instagram",
       },
-      linkedin: {
-        name: "LinkedIn",
-        hint: "PAYVITY Parcels on LinkedIn",
-        ariaLabel: "PAYVITY Parcels on LinkedIn",
+      tiktok: {
+        name: "TikTok",
+        hint: "@payvityparcels",
+        ariaLabel: "PAYVITY Parcels on TikTok",
       },
     },
   },
@@ -117,7 +117,7 @@ function ChannelIcon({ channel }: { channel: ChannelKey }) {
           <path d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z" />
         </svg>
       );
-    case "linkedin":
+    case "tiktok":
       return (
         <svg
           viewBox="0 0 24 24"
@@ -126,7 +126,7 @@ function ChannelIcon({ channel }: { channel: ChannelKey }) {
           fill="currentColor"
           aria-hidden="true"
         >
-          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1Z" />
         </svg>
       );
   }
@@ -179,7 +179,7 @@ export function ContactPickerCard({ lang }: { lang: Lang }) {
           {renderTile("whatsapp")}
           {renderTile("email")}
           {renderTile("instagram")}
-          {renderTile("linkedin")}
+          {renderTile("tiktok")}
         </div>
 
         <div className="contact-picker-caption" aria-live="polite">

@@ -12,6 +12,8 @@ interface PaketshopSectionProps {
   onSelectCta?: (interest: InterestOption) => void;
 }
 
+const BANNER_REPEATS = [0, 1, 2, 3] as const;
+
 export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
   const reduced = useReducedMotion();
   const data = HOME_CONTENT[lang].paketshop;
@@ -23,33 +25,61 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
         <h2>{data.title}</h2>
       </FadeUp>
 
-      <div className="solution-card">
-        <div className="solution-content">
-          <div>
-            <p className="solution-desc">{data.cardDesc}</p>
-
-            <ul className="solution-bullets">
-              {data.bullets.map((bullet) => (
-                <li key={bullet}>
-                  <span className="solution-check" aria-hidden="true">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <span>{bullet}</span>
-                </li>
+      <div className="paketshop-card">
+        <div className="paketshop-rotating-banner">
+          <div className="paketshop-rotating-track">
+            <div className="paketshop-rotating-half">
+              {BANNER_REPEATS.map((idx) => (
+                <img
+                  key={`a-${idx}`}
+                  src={data.imageSrc}
+                  alt={idx === 0 ? data.imageAlt : ""}
+                  aria-hidden={idx === 0 ? undefined : true}
+                  width={data.imageWidth}
+                  height={data.imageHeight}
+                  className="paketshop-rotating-img"
+                />
               ))}
-            </ul>
+            </div>
+            <div className="paketshop-rotating-half" aria-hidden="true">
+              {BANNER_REPEATS.map((idx) => (
+                <img
+                  key={`b-${idx}`}
+                  src={data.imageSrc}
+                  alt=""
+                  width={data.imageWidth}
+                  height={data.imageHeight}
+                  className="paketshop-rotating-img"
+                />
+              ))}
+            </div>
           </div>
+        </div>
+
+        <div className="paketshop-card-body">
+          <p className="paketshop-desc">{data.cardDesc}</p>
+
+          <ul className="paketshop-bullets">
+            {data.bullets.map((bullet) => (
+              <li key={bullet}>
+                <span className="solution-check" aria-hidden="true">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
 
           <div className="solution-actions">
             <motion.a
@@ -70,16 +100,6 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
               {data.secondaryLinkLabel}
             </Link>
           </div>
-        </div>
-
-        <div className="solution-media">
-          <img
-            src={data.imageSrc}
-            alt={data.imageAlt}
-            width={data.imageWidth}
-            height={data.imageHeight}
-            loading="lazy"
-          />
         </div>
       </div>
 

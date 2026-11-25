@@ -224,12 +224,10 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Kostenlose Standortprüfung anfragen",
       secondaryLinkLabel: "Auch an Amazon Locker interessiert?",
-      imageSrc:
-        "https://m.media-amazon.com/images/G/03/AmazonPickupLocations/ULP_Redesign/amazon-pickup-service.png",
-      imageWidth: 800,
-      imageHeight: 600,
-      imageAlt:
-        "Amazon Hub Counter Paketshop im lokalen Einzelhandel mit persönlicher Paketübergabe",
+      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageWidth: 1086,
+      imageHeight: 204,
+      imageAlt: "Amazon Abholort Banner",
       verticalsHeading: "Für welche Geschäfte eignet sich ein Paketshop?",
       verticals: [
         { icon: "kiosk", label: "Kiosk & Späti" },
@@ -545,12 +543,10 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Request free location check",
       secondaryLinkLabel: "Also looking at Amazon Lockers?",
-      imageSrc:
-        "https://m.media-amazon.com/images/G/03/AmazonPickupLocations/ULP_Redesign/amazon-pickup-service.png",
-      imageWidth: 800,
-      imageHeight: 600,
-      imageAlt:
-        "Amazon Hub Counter parcel shop handover inside a local German retail store",
+      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageWidth: 1086,
+      imageHeight: 204,
+      imageAlt: "Amazon Abholort pickup location banner",
       verticalsHeading: "Which businesses fit an Amazon Parcel Shop?",
       verticals: [
         { icon: "kiosk", label: "Kiosk & Späti" },

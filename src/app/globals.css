@@ -644,6 +644,104 @@ h2{
   .product-toggle-btn{padding:11px 12px;font-size:.84rem;}
 }
 
+/* ---------- Single-division Paketshop card + top rotating Abholort banner ---------- */
+.paketshop-card{
+  background:var(--bg-surface-white);
+  border:1px solid var(--card-border);
+  border-radius:var(--r-xl);
+  box-shadow:var(--shadow-card);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+.paketshop-rotating-banner{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#232f3e;
+  border-bottom:1px solid var(--card-border);
+}
+@keyframes payvity-banner-scroll{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(-50%,0,0);}
+}
+.paketshop-rotating-track{
+  display:flex;
+  width:max-content;
+  will-change:transform;
+  animation:payvity-banner-scroll 38s linear infinite;
+}
+.paketshop-rotating-banner:hover .paketshop-rotating-track{
+  animation-play-state:paused;
+}
+.paketshop-rotating-half{
+  display:flex;
+  flex:none;
+}
+.paketshop-rotating-img{
+  height:clamp(88px, 11.5vh, 144px);
+  width:auto;
+  max-width:none;
+  flex:none;
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.paketshop-card-body{
+  padding:clamp(24px, 3vw, 44px) clamp(24px, 3.6vw, 52px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(20px, 2.4vh, 30px);
+}
+.paketshop-desc{
+  color:var(--ink-soft);
+  font-size:clamp(1.02rem, .94rem + .28vw, 1.22rem);
+  line-height:1.58;
+  margin:0;
+  max-width:78ch;
+}
+.paketshop-bullets{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:clamp(14px, 1.8vw, 24px);
+}
+.paketshop-bullets li{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  padding:clamp(14px, 1.4vw, 20px);
+  border-radius:var(--r-md);
+  background:#f1f5f9;
+  border:1px solid rgba(15,23,42,.055);
+  color:var(--stone-dark);
+  font-size:clamp(.92rem, .86rem + .14vw, 1.02rem);
+  line-height:1.48;
+}
+@media (max-width:860px){
+  .paketshop-bullets{grid-template-columns:1fr;}
+  .paketshop-rotating-img{height:clamp(72px, 14vw, 104px);}
+}
+@media (prefers-reduced-motion:reduce){
+  .paketshop-rotating-track{
+    animation:none !important;
+    transform:none !important;
+    width:100%;
+  }
+  .paketshop-rotating-half[aria-hidden="true"]{display:none;}
+  .paketshop-rotating-half{width:100%;justify-content:center;}
+  .paketshop-rotating-img:not(:first-child){display:none;}
+  .paketshop-rotating-img:first-child{
+    width:100%;
+    height:auto;
+    max-height:160px;
+    object-fit:cover;
+  }
+}
+
 /* ---------- advantage cards (4-col wide grid) ---------- */
 .cards{display:grid;gap:clamp(16px, 1.4vw, 24px);grid-template-columns:repeat(4, minmax(0, 1fr));}
 .card{
@@ -1798,7 +1896,7 @@ footer .foot-links a:hover{color:var(--ink);}
   display:flex;
   flex-direction:column;
   align-items:stretch;
-  justify-content:space-between;
+  justify-content:flex-start;
   flex:1;
   width:100%;
   gap:clamp(18px, 2vw, 26px);
@@ -1815,7 +1913,7 @@ footer .foot-links a:hover{color:var(--ink);}
   width:100%;
   aspect-ratio:1 / 1;
   padding:clamp(4px, .5vw, 8px);
-  margin:auto 0;
+  margin:6px 0 0;
 }
 .contact-picker-tile{
   display:flex;
@@ -1888,17 +1986,17 @@ footer .foot-links a:hover{color:var(--ink);}
   scale:1.05;
   z-index:2;
 }
-.contact-picker-tile--linkedin{
+.contact-picker-tile--tiktok{
   border-radius:6px 6px 100% 6px;
-  color:#0A66C2;
+  color:#111827;
 }
-.contact-picker-tile--linkedin svg{
+.contact-picker-tile--tiktok svg{
   transform:translate(-16%, -16%);
 }
-.contact-picker-tile--linkedin:hover,
-.contact-picker-tile--linkedin:focus-visible{
-  background-color:#0A66C2;
-  border-color:#0A66C2;
+.contact-picker-tile--tiktok:hover,
+.contact-picker-tile--tiktok:focus-visible{
+  background-color:#111827;
+  border-color:#111827;
   color:#ffffff;
   scale:1.05;
   z-index:2;
