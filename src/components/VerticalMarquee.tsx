@@ -8,12 +8,12 @@ interface VerticalMarqueeProps {
 
 function VerticalIcon({ type }: { type: VerticalIconKey }) {
   const svgProps = {
-    width: 36,
-    height: 36,
+    width: 42,
+    height: 42,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 1.45,
+    strokeWidth: 1.5,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
@@ -182,26 +182,19 @@ function MarqueeRow({
   );
 }
 
-/** Seamless marquee of icon medallions + uppercase wordmark lockups with optional dual-plane parallax depth. */
+/** Seamless marquee of icon medallions + uppercase wordmark lockups. */
 export function VerticalMarquee({
   items,
   ariaLabel,
   variant = "compact",
 }: VerticalMarqueeProps) {
   if (variant === "featured") {
-    const offset = Math.floor(items.length / 2);
-    const depthItems =
-      items.length > 1
-        ? [...items.slice(offset), ...items.slice(0, offset)]
-        : items;
-
     return (
       <div
         className="vertical-marquee vertical-marquee--featured"
         aria-label={ariaLabel}
       >
         <MarqueeRow items={items} rowKey="front" depth="front" />
-        <MarqueeRow items={depthItems} rowKey="depth" depth="depth" ariaHidden />
       </div>
     );
   }

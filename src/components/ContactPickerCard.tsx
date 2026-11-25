@@ -165,25 +165,21 @@ export function ContactPickerCard({ lang }: { lang: Lang }) {
 
   return (
     <div className="contact-picker-wrap">
-      <div className="contact-picker-head">
-        <h2>{copy.heading}</h2>
-        <p>{copy.subtitle}</p>
-      </div>
-
       <div className="contact-picker-card">
+        <div className="contact-picker-head">
+          <h2>{copy.heading}</h2>
+          <p>{copy.subtitle}</p>
+        </div>
+
         <div
           className="contact-picker-wheel"
           role="group"
           aria-label={copy.heading}
         >
-          <div className="contact-picker-row">
-            {renderTile("whatsapp")}
-            {renderTile("email")}
-          </div>
-          <div className="contact-picker-row">
-            {renderTile("instagram")}
-            {renderTile("linkedin")}
-          </div>
+          {renderTile("whatsapp")}
+          {renderTile("email")}
+          {renderTile("instagram")}
+          {renderTile("linkedin")}
         </div>
 
         <div className="contact-picker-caption" aria-live="polite">

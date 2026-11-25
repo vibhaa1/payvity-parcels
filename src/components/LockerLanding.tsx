@@ -6,7 +6,6 @@ import { MotionConfig } from "framer-motion";
 import { InterestOption } from "@/data/content";
 import { LOCKER_CONTENT } from "@/data/lockerContent";
 import { Lang, localizedPath } from "@/lib/seo";
-import { ScrollProgressBar } from "./MotionPrimitives";
 import { Navbar } from "./Navbar";
 import { ProcessSection } from "./ProcessSection";
 import { FaqSection } from "./FaqSection";
@@ -35,7 +34,6 @@ export function LockerLanding({ lang }: { lang: Lang }) {
 
   return (
     <MotionConfig reducedMotion="user">
-      <ScrollProgressBar />
       <Navbar lang={lang} isHome={false} onScrollTo={scrollTo} />
 
       <main id="top">

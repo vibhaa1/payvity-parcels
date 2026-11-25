@@ -26,7 +26,6 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
       <div className="solution-card">
         <div className="solution-content">
           <div>
-            <h3>{data.cardHeading}</h3>
             <p className="solution-desc">{data.cardDesc}</p>
 
             <ul className="solution-bullets">

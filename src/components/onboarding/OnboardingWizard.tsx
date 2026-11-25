@@ -593,6 +593,7 @@ export function OnboardingWizard({
 
   return (
     <div className="wizard-shell">
+      <div className="wizard-card">
         <div className="wizard-header">
           <div className="wizard-header-copy">
             <h2>{copy.sectionHeader.title}</h2>
@@ -609,8 +610,7 @@ export function OnboardingWizard({
           )}
         </div>
 
-        <div className="wizard-card">
-          {submitState === "success" ? (
+        {submitState === "success" ? (
             <div className="wizard-success-panel" aria-live="polite">
               <span className="wizard-success-badge">{copy.success.badge}</span>
               <h3>{copy.success.title}</h3>

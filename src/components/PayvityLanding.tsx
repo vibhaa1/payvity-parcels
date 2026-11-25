@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { MotionConfig } from "framer-motion";
 import { HOME_CONTENT, InterestOption, SectionId } from "@/data/content";
 import type { Lang } from "@/lib/seo";
-import { ScrollProgressBar } from "./MotionPrimitives";
 import { Navbar } from "./Navbar";
 import { HeroSection } from "./HeroSection";
 import { PaketshopSection } from "./PaketshopSection";
@@ -71,7 +70,6 @@ export function PayvityLanding({ lang }: { lang: Lang }) {
 
   return (
     <MotionConfig reducedMotion="user">
-      <ScrollProgressBar />
       <Navbar
         lang={lang}
         activeSection={activeSection}
