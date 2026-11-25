@@ -51,6 +51,19 @@ export interface ProcessStepItem {
   alt: string;
 }
 
+export type HowItWorksIconKey = "app" | "select" | "code" | "parcel" | "done";
+
+export interface HowItWorksStepItem {
+  id: string;
+  icon: HowItWorksIconKey;
+  side: "left" | "right";
+  startFrame: number;
+  endFrame: number;
+  representativeFrame: number;
+  title: string;
+  desc: string;
+}
+
 export interface TrustRowItem {
   index: string;
   title: string;
@@ -103,6 +116,12 @@ export interface HomeLocaleContent {
   advantages: {
     title: string;
     cards: AdvantageCardItem[];
+  };
+  howItWorks: {
+    title: string;
+    lead: string;
+    scrollHint: string;
+    steps: HowItWorksStepItem[];
   };
   process: {
     title: string;
@@ -249,6 +268,63 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           icon: "network",
           title: "Persönliche Begleitung auf Deutsch",
           desc: "Von der ersten Eignungsprüfung über den Vertrag bis zur Einweisung Ihres Teams steht Ihnen das Team von PAYVITY direkt zur Seite.",
+        },
+      ],
+    },
+    howItWorks: {
+      title: "So funktioniert's",
+      lead: "Vom Öffnen der App bis zur Paketübergabe – jede Abholung dauert nur wenige Sekunden.",
+      scrollHint: "Scrollen Sie, um jeden Schritt live zu erleben",
+      steps: [
+        {
+          id: "app",
+          icon: "app",
+          side: "left",
+          startFrame: 0,
+          endFrame: 33,
+          representativeFrame: 20,
+          title: "Amazon Hub App öffnen",
+          desc: "Starten Sie die App auf Ihrem Smartphone oder Scanner.",
+        },
+        {
+          id: "select",
+          icon: "select",
+          side: "right",
+          startFrame: 34,
+          endFrame: 60,
+          representativeFrame: 45,
+          title: "„Abholung durch Kunden“ wählen",
+          desc: "Tippen Sie im Hauptmenü auf Kundenabholung.",
+        },
+        {
+          id: "code",
+          icon: "code",
+          side: "left",
+          startFrame: 61,
+          endFrame: 86,
+          representativeFrame: 78,
+          title: "Kunden-Abholcode scannen",
+          desc: "Scannen Sie den Barcode auf dem Smartphone des Kunden.",
+        },
+        {
+          id: "parcel",
+          icon: "parcel",
+          side: "right",
+          startFrame: 87,
+          endFrame: 127,
+          representativeFrame: 118,
+          title: "Paket scannen",
+          desc: "Scannen Sie das Versandetikett auf dem Paket.",
+        },
+        {
+          id: "done",
+          icon: "done",
+          side: "left",
+          startFrame: 128,
+          endFrame: 149,
+          representativeFrame: 148,
+          title: "Glückwunsch! Fertig.",
+          desc: "Paket übergeben – die Abholung ist in Sekunden abgeschlossen.",
         },
       ],
     },
@@ -513,6 +589,63 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           icon: "network",
           title: "Personal support through launch",
           desc: "From postcode suitability checks to contract setup and team onboarding, PAYVITY provides direct personal guidance.",
+        },
+      ],
+    },
+    howItWorks: {
+      title: "How it works",
+      lead: "From opening the app to handing over the parcel — every pickup takes just seconds.",
+      scrollHint: "Scroll to step through the live workflow",
+      steps: [
+        {
+          id: "app",
+          icon: "app",
+          side: "left",
+          startFrame: 0,
+          endFrame: 33,
+          representativeFrame: 20,
+          title: "Open app",
+          desc: "Launch the Amazon Hub App on your phone or scanner.",
+        },
+        {
+          id: "select",
+          icon: "select",
+          side: "right",
+          startFrame: 34,
+          endFrame: 60,
+          representativeFrame: 45,
+          title: 'Click "Abholung durch Kunden"',
+          desc: "Select customer pickup from the main menu.",
+        },
+        {
+          id: "code",
+          icon: "code",
+          side: "left",
+          startFrame: 61,
+          endFrame: 86,
+          representativeFrame: 78,
+          title: "Scan customer pickup code",
+          desc: "Scan the barcode on the customer's phone.",
+        },
+        {
+          id: "parcel",
+          icon: "parcel",
+          side: "right",
+          startFrame: 87,
+          endFrame: 127,
+          representativeFrame: 118,
+          title: "Scan the packet",
+          desc: "Scan the shipping label on the parcel.",
+        },
+        {
+          id: "done",
+          icon: "done",
+          side: "left",
+          startFrame: 128,
+          endFrame: 149,
+          representativeFrame: 148,
+          title: "Congratulations, it's done!",
+          desc: "Hand over the parcel — pickup completed in seconds.",
         },
       ],
     },

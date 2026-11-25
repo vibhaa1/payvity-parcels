@@ -82,7 +82,7 @@ export function PayvityLanding({ lang }: { lang: Lang }) {
         <HeroSection lang={lang} onScrollTo={scrollTo} />
         <PaketshopSection lang={lang} onSelectCta={handlePaketshopCta} />
         <AdvantagesSection lang={lang} />
-        <ProcessSection lang={lang} />
+        <ProcessSection lang={lang} showHowItWorks />
         <TrustSection lang={lang} />
         <FaqSection
           lang={lang}

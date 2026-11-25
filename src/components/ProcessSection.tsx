@@ -3,15 +3,22 @@
 import { useState } from "react";
 import { HOME_CONTENT, ProcessStepItem } from "@/data/content";
 import type { Lang } from "@/lib/seo";
+import { HowItWorksScrub } from "./HowItWorksScrub";
 import { FadeUp, StaggerGrid, StaggerItem } from "./MotionPrimitives";
 
 interface ProcessSectionProps {
   lang: Lang;
   title?: string;
   steps?: ProcessStepItem[];
+  showHowItWorks?: boolean;
 }
 
-export function ProcessSection({ lang, title, steps }: ProcessSectionProps) {
+export function ProcessSection({
+  lang,
+  title,
+  steps,
+  showHowItWorks = false,
+}: ProcessSectionProps) {
   const [activeStep, setActiveStep] = useState<number>(1);
   const defaults = HOME_CONTENT[lang].process;
   const heading = title ?? defaults.title;
@@ -19,7 +26,15 @@ export function ProcessSection({ lang, title, steps }: ProcessSectionProps) {
 
   return (
     <section className="wrap section" id="so-funktionierts">
-      <FadeUp className="section-head-single">
+      {showHowItWorks && <HowItWorksScrub lang={lang} />}
+
+      <FadeUp
+        className={
+          showHowItWorks
+            ? "section-head-single process-onboarding-head"
+            : "section-head-single"
+        }
+      >
         <h2>{heading}</h2>
       </FadeUp>
 
