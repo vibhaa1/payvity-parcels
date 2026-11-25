@@ -14,7 +14,6 @@ interface ChannelCopy {
 interface PickerLocaleCopy {
   heading: string;
   subtitle: string;
-  defaultHint: string;
   channels: Record<ChannelKey, ChannelCopy>;
 }
 
@@ -23,7 +22,6 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
     heading: "Kontakt aufnehmen",
     subtitle:
       "Haben Sie eine Frage oder möchten Sie Ihren Standort besprechen? Wählen Sie Ihren bevorzugten Kontaktweg.",
-    defaultHint: "WhatsApp · E-Mail · Instagram · LinkedIn",
     channels: {
       whatsapp: {
         name: "WhatsApp",
@@ -51,7 +49,6 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
     heading: "Get in touch",
     subtitle:
       "Have a question or want to discuss your location? Choose your preferred way to reach us.",
-    defaultHint: "WhatsApp · Email · Instagram · LinkedIn",
     channels: {
       whatsapp: {
         name: "WhatsApp",
@@ -190,13 +187,11 @@ export function ContactPickerCard({ lang }: { lang: Lang }) {
         </div>
 
         <div className="contact-picker-caption" aria-live="polite">
-          {activeCopy ? (
+          {activeCopy && (
             <>
               <strong>{activeCopy.name}</strong>
               <span>{activeCopy.hint}</span>
             </>
-          ) : (
-            <span>{copy.defaultHint}</span>
           )}
         </div>
       </div>

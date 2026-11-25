@@ -19,12 +19,7 @@ interface FaqSectionProps {
 
 export function FaqSection({
   lang,
-  onScrollTo,
   title,
-  lead,
-  helpTitle,
-  helpDesc,
-  helpCta,
   items,
 }: FaqSectionProps) {
   const defaults = HOME_CONTENT[lang].faq;
@@ -38,30 +33,7 @@ export function FaqSection({
         <h2>{title ?? defaults.title}</h2>
       </FadeUp>
 
-      <div className="faq-split">
-        <FadeUp className="faq-aside">
-          <p className="section-lead">{lead ?? defaults.lead}</p>
-          <div className="faq-help-box">
-            <h3>{helpTitle ?? defaults.helpTitle}</h3>
-            <p>{helpDesc ?? defaults.helpDesc}</p>
-            <motion.a
-              className="button"
-              href="#kontakt"
-              whileHover={reduced ? undefined : { y: -1 }}
-              whileTap={reduced ? undefined : { scale: 0.98 }}
-              onClick={(e) => {
-                if (onScrollTo) {
-                  e.preventDefault();
-                  onScrollTo("kontakt");
-                }
-              }}
-            >
-              {helpCta ?? defaults.helpCta}
-            </motion.a>
-          </div>
-        </FadeUp>
-
-        <div className="faq" id="faqList">
+      <div className="faq" id="faqList">
           {list.map((item) => {
             const isOpen = openId === item.id;
             const panelId = `${item.id}-panel`;
@@ -104,7 +76,6 @@ export function FaqSection({
               </div>
             );
           })}
-        </div>
       </div>
     </section>
   );
