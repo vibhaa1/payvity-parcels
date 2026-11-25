@@ -3,16 +3,17 @@ import type { VerticalIconKey, VerticalMarqueeItem } from "@/data/content";
 interface VerticalMarqueeProps {
   items: VerticalMarqueeItem[];
   ariaLabel: string;
+  variant?: "featured" | "compact";
 }
 
 function VerticalIcon({ type }: { type: VerticalIconKey }) {
   const svgProps = {
-    width: 26,
-    height: 26,
+    width: 36,
+    height: 36,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 1.6,
+    strokeWidth: 1.45,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
@@ -147,8 +148,64 @@ function MarqueeGroup({
   );
 }
 
-/** Seamless left-to-right marquee of monochrome icon + uppercase wordmark lockups. */
-export function VerticalMarquee({ items, ariaLabel }: VerticalMarqueeProps) {
+function MarqueeRow({
+  items,
+  rowKey,
+  depth,
+  ariaHidden,
+}: {
+  items: VerticalMarqueeItem[];
+  rowKey: string;
+  depth: "front" | "depth";
+  ariaHidden?: boolean;
+}) {
+  return (
+    <div
+      className={`vertical-marquee-row vertical-marquee-row--${depth}`}
+      aria-hidden={ariaHidden}
+    >
+      <div className="vertical-marquee-track">
+        <div className="vertical-marquee-half">
+          <MarqueeGroup
+            items={items}
+            groupKey={`${rowKey}-h1-a`}
+            ariaHidden={ariaHidden}
+          />
+          <MarqueeGroup items={items} groupKey={`${rowKey}-h1-b`} ariaHidden />
+        </div>
+        <div className="vertical-marquee-half" aria-hidden="true">
+          <MarqueeGroup items={items} groupKey={`${rowKey}-h2-a`} />
+          <MarqueeGroup items={items} groupKey={`${rowKey}-h2-b`} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Seamless marquee of icon medallions + uppercase wordmark lockups with optional dual-plane parallax depth. */
+export function VerticalMarquee({
+  items,
+  ariaLabel,
+  variant = "compact",
+}: VerticalMarqueeProps) {
+  if (variant === "featured") {
+    const offset = Math.floor(items.length / 2);
+    const depthItems =
+      items.length > 1
+        ? [...items.slice(offset), ...items.slice(0, offset)]
+        : items;
+
+    return (
+      <div
+        className="vertical-marquee vertical-marquee--featured"
+        aria-label={ariaLabel}
+      >
+        <MarqueeRow items={items} rowKey="front" depth="front" />
+        <MarqueeRow items={depthItems} rowKey="depth" depth="depth" ariaHidden />
+      </div>
+    );
+  }
+
   return (
     <div className="vertical-marquee" aria-label={ariaLabel}>
       <div className="vertical-marquee-track">

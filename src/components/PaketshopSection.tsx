@@ -92,6 +92,7 @@ export function PaketshopSection({ lang, onSelectCta }: PaketshopSectionProps) {
         <VerticalMarquee
           items={data.verticals}
           ariaLabel={data.verticalsHeading}
+          variant="featured"
         />
       </div>
     </section>
