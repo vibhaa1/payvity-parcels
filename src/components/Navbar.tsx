@@ -1,43 +1,56 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { I18N, Lang, NAV_ITEMS, SectionId } from "@/data/content";
+import { HOME_CONTENT, SectionId } from "@/data/content";
+import { Lang, localizedPath } from "@/lib/seo";
 import { EASE, SPRING } from "./MotionPrimitives";
 
 interface NavbarProps {
   lang: Lang;
-  onChangeLang: (lang: Lang) => void;
-  activeSection: SectionId | null;
-  onScrollTo: (target: string) => void;
+  activeSection?: SectionId | null;
+  isHome?: boolean;
+  onScrollTo?: (target: string) => void;
+}
+
+function buildSwitchHref(pathname: string | null, targetLang: Lang): string {
+  if (!pathname) return localizedPath(targetLang, "/");
+  const stripped = pathname.replace(/^\/(de|en)(?=\/|$)/, "");
+  const route = stripped === "" ? "/" : stripped;
+  return localizedPath(targetLang, route);
 }
 
 function LanguageSwitch({
   lang,
-  onChangeLang,
+  pathname,
   layoutId,
   className,
 }: {
   lang: Lang;
-  onChangeLang: (lang: Lang) => void;
+  pathname: string | null;
   layoutId: string;
   className?: string;
 }) {
+  const navCopy = HOME_CONTENT[lang].nav;
+
   return (
     <div
       className={className ? `switch ${className}` : "switch"}
       role="group"
-      aria-label={lang === "de" ? "Sprache wählen" : "Select language"}
+      aria-label={navCopy.ariaLang}
     >
       {(["de", "en"] as const).map((code) => {
         const isActive = lang === code;
+        const href = buildSwitchHref(pathname, code);
         return (
-          <button
+          <Link
             key={code}
-            type="button"
+            href={href}
+            hrefLang={code === "de" ? "de-DE" : "en"}
             className={`switch-opt${isActive ? " active" : ""}`}
-            aria-pressed={isActive}
-            onClick={() => onChangeLang(code)}
+            aria-current={isActive ? "true" : undefined}
           >
             {isActive && (
               <motion.span
@@ -48,7 +61,7 @@ function LanguageSwitch({
               />
             )}
             <span>{code.toUpperCase()}</span>
-          </button>
+          </Link>
         );
       })}
     </div>
@@ -57,13 +70,14 @@ function LanguageSwitch({
 
 export function Navbar({
   lang,
-  onChangeLang,
-  activeSection,
+  activeSection = null,
+  isHome = false,
   onScrollTo,
 }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const copy = I18N[lang];
+  const pathname = usePathname();
+  const navCopy = HOME_CONTENT[lang].nav;
 
   useEffect(() => {
     const syncScroll = () => setScrolled(window.scrollY > 32);
@@ -72,44 +86,57 @@ export function Navbar({
     return () => window.removeEventListener("scroll", syncScroll);
   }, []);
 
-  const handleNavClick = (targetId: string) => {
+  const isLockerPage = pathname?.includes("/amazon-locker");
+  const homeHref = localizedPath(lang, "/");
+  const lockerHref = localizedPath(lang, "/amazon-locker/");
+  const ctaHref = isHome || isLockerPage ? "#kontakt" : `${homeHref}#kontakt`;
+
+  const handleSectionLink = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
     setMobileOpen(false);
-    onScrollTo(targetId);
+    if (isHome && onScrollTo) {
+      e.preventDefault();
+      onScrollTo(targetId);
+    }
   };
 
   return (
     <div className={`nav-shell wrap${scrolled ? " scrolled" : ""}`}>
-      <nav
-        className="nav"
-        aria-label={lang === "de" ? "Hauptnavigation" : "Main navigation"}
-      >
-        <a
+      <nav className="nav" aria-label={navCopy.ariaMain}>
+        <Link
           className="brand"
-          href="#top"
-          aria-label="Payvity Parcels"
+          href={homeHref}
+          aria-label="PAYVITY Parcels"
           onClick={(e) => {
-            e.preventDefault();
-            handleNavClick("top");
+            if (isHome && onScrollTo) {
+              e.preventDefault();
+              setMobileOpen(false);
+              onScrollTo("top");
+            }
           }}
         >
           <img
             src="/images/payvity-logo.png"
-            alt="Payvity Parcels — Offizieller Partner von Amazon"
+            alt={navCopy.logoAlt}
+            width={240}
+            height={33}
             className="brand-logo"
           />
-        </a>
+        </Link>
 
         <div className="nav-links">
-          {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item.id;
+          {navCopy.items.map((item) => {
+            const isActive = isHome && activeSection === item.id;
             return (
-              <button
+              <Link
                 key={item.id}
-                type="button"
+                href={`${homeHref}#${item.id}`}
                 className={isActive ? "active" : undefined}
-                onClick={() => handleNavClick(item.id)}
+                onClick={(e) => handleSectionLink(e, item.id)}
               >
-                {copy[item.labelKey]}
+                {item.label}
                 {isActive && (
                   <motion.span
                     layoutId="nav-active-underline"
@@ -118,34 +145,49 @@ export function Navbar({
                     aria-hidden="true"
                   />
                 )}
-              </button>
+              </Link>
             );
           })}
+          <Link
+            href={lockerHref}
+            className={isLockerPage ? "active" : undefined}
+          >
+            {navCopy.lockerLinkLabel}
+            {isLockerPage && (
+              <motion.span
+                layoutId="nav-active-underline"
+                className="nav-active-line"
+                transition={SPRING}
+                aria-hidden="true"
+              />
+            )}
+          </Link>
         </div>
 
         <LanguageSwitch
           lang={lang}
-          onChangeLang={onChangeLang}
+          pathname={pathname}
           layoutId="lang-pill-desktop"
         />
 
-        <motion.a
+        <Link
           className="nav-cta"
-          href="#kontakt"
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.98 }}
+          href={ctaHref}
           onClick={(e) => {
-            e.preventDefault();
-            handleNavClick("kontakt");
+            if ((isHome || isLockerPage) && onScrollTo) {
+              e.preventDefault();
+              setMobileOpen(false);
+              onScrollTo("kontakt");
+            }
           }}
         >
-          {copy.nav_cta}
-        </motion.a>
+          {navCopy.ctaLabel}
+        </Link>
 
         <button
           type="button"
           className="nav-toggle"
-          aria-label={lang === "de" ? "Menü öffnen" : "Open menu"}
+          aria-label={navCopy.ariaMenuOpen}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((prev) => !prev)}
         >
@@ -164,27 +206,40 @@ export function Navbar({
             exit={{ opacity: 0, y: -8, scale: 0.985 }}
             transition={{ duration: 0.22, ease: EASE }}
           >
-            {NAV_ITEMS.map((item) => (
-              <button
+            {navCopy.items.map((item) => (
+              <Link
                 key={item.id}
-                type="button"
+                href={`${homeHref}#${item.id}`}
                 className="mobile-panel-item"
-                onClick={() => handleNavClick(item.id)}
+                onClick={(e) => handleSectionLink(e, item.id)}
               >
-                {copy[item.labelKey]}
-              </button>
+                {item.label}
+              </Link>
             ))}
-            <button
-              type="button"
+            <Link
+              href={lockerHref}
               className="mobile-panel-item"
-              onClick={() => handleNavClick("kontakt")}
+              onClick={() => setMobileOpen(false)}
             >
-              {copy.nav_cta}
-            </button>
+              {navCopy.lockerLinkLabel}
+            </Link>
+            <Link
+              href={ctaHref}
+              className="mobile-panel-item"
+              onClick={(e) => {
+                setMobileOpen(false);
+                if ((isHome || isLockerPage) && onScrollTo) {
+                  e.preventDefault();
+                  onScrollTo("kontakt");
+                }
+              }}
+            >
+              {navCopy.ctaLabel}
+            </Link>
             <div className="mobile-switch-wrap">
               <LanguageSwitch
                 lang={lang}
-                onChangeLang={onChangeLang}
+                pathname={pathname}
                 layoutId="lang-pill-mobile"
               />
             </div>

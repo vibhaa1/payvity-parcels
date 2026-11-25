@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { MotionConfig } from "framer-motion";
-import { InterestOption, Lang, SectionId, SolutionMode } from "@/data/content";
+import { HOME_CONTENT, InterestOption, SectionId } from "@/data/content";
+import type { Lang } from "@/lib/seo";
 import { ScrollProgressBar } from "./MotionPrimitives";
 import { Navbar } from "./Navbar";
 import { HeroSection } from "./HeroSection";
-import { HowItWorksSection } from "./HowItWorksSection";
-import { SolutionsSection } from "./SolutionsSection";
+import { PaketshopSection } from "./PaketshopSection";
 import { AdvantagesSection } from "./AdvantagesSection";
 import { ProcessSection } from "./ProcessSection";
 import { TrustSection } from "./TrustSection";
@@ -16,23 +16,16 @@ import { FinalCtaSection } from "./FinalCtaSection";
 import { Footer } from "./Footer";
 
 const SPY_IDS: SectionId[] = [
-  "how-it-works",
-  "loesungen",
-  "warum-uns",
+  "paketshop",
+  "vorteile",
   "so-funktionierts",
   "faq",
 ];
 
-export function PayvityLanding() {
-  const [lang, setLang] = useState<Lang>("de");
-  const [activeSolution, setActiveSolution] = useState<SolutionMode>("counter");
+export function PayvityLanding({ lang }: { lang: Lang }) {
   const [selectedInterest, setSelectedInterest] =
-    useState<InterestOption>("Paketshop");
+    useState<InterestOption>("Amazon Paketshop");
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -66,43 +59,48 @@ export function PayvityLanding() {
     }
   }, []);
 
-  const handleSolutionCta = useCallback(
-    (mode: SolutionMode) => {
-      setSelectedInterest(mode === "counter" ? "Paketshop" : "Amazon Locker");
+  const handlePaketshopCta = useCallback(
+    (interest: InterestOption) => {
+      setSelectedInterest(interest);
       scrollTo("kontakt");
     },
     [scrollTo]
   );
+
+  const faqCopy = HOME_CONTENT[lang].faq;
 
   return (
     <MotionConfig reducedMotion="user">
       <ScrollProgressBar />
       <Navbar
         lang={lang}
-        onChangeLang={setLang}
         activeSection={activeSection}
+        isHome={true}
         onScrollTo={scrollTo}
       />
       <main id="top">
         <HeroSection lang={lang} onScrollTo={scrollTo} />
-        <HowItWorksSection lang={lang} />
-        <SolutionsSection
-          lang={lang}
-          activeSolution={activeSolution}
-          onChangeSolution={setActiveSolution}
-          onSelectCta={handleSolutionCta}
-        />
+        <PaketshopSection lang={lang} onSelectCta={handlePaketshopCta} />
         <AdvantagesSection lang={lang} />
         <ProcessSection lang={lang} />
         <TrustSection lang={lang} />
-        <FaqSection lang={lang} onScrollTo={scrollTo} />
+        <FaqSection
+          lang={lang}
+          onScrollTo={scrollTo}
+          title={faqCopy.title}
+          lead={faqCopy.lead}
+          helpTitle={faqCopy.helpTitle}
+          helpDesc={faqCopy.helpDesc}
+          helpCta={faqCopy.helpCta}
+          items={faqCopy.items}
+        />
         <FinalCtaSection
           lang={lang}
           selectedInterest={selectedInterest}
           onChangeInterest={setSelectedInterest}
         />
-        <Footer lang={lang} />
       </main>
+      <Footer lang={lang} />
     </MotionConfig>
   );
 }
