@@ -194,7 +194,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 20000,
+          target: 50000,
           suffix: "+",
           label: "Pakete erfolgreich übergeben",
         },
@@ -224,7 +224,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Kostenlose Standortprüfung anfragen",
       secondaryLinkLabel: "Auch an Amazon Locker interessiert?",
-      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageSrc: "/images/amazon-abholort-banner.jpeg",
       imageWidth: 1086,
       imageHeight: 204,
       imageAlt: "Amazon Abholort Banner",
@@ -513,7 +513,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 20000,
+          target: 50000,
           suffix: "+",
           label: "Parcels handled",
         },
@@ -543,7 +543,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Request free location check",
       secondaryLinkLabel: "Also looking at Amazon Lockers?",
-      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageSrc: "/images/amazon-abholort-banner.jpeg",
       imageWidth: 1086,
       imageHeight: 204,
       imageAlt: "Amazon Abholort pickup location banner",
