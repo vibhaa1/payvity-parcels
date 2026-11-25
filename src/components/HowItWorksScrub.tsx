@@ -1,16 +1,39 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import {
   HOME_CONTENT,
   HowItWorksIconKey,
   HowItWorksStepItem,
 } from "@/data/content";
 import type { Lang } from "@/lib/seo";
-import { FadeUp } from "./MotionPrimitives";
+import { FadeUp, SPRING } from "./MotionPrimitives";
 
 const TOTAL_FRAMES = 150;
+
+interface NodeMetric {
+  top: number;
+  bottom: number;
+  center: number;
+}
+
+interface TimelineMetrics {
+  railTop: number;
+  railHeight: number;
+  nodes: NodeMetric[];
+}
+
+function clamp01(value: number): number {
+  return Math.min(1, Math.max(0, value));
+}
 
 function frameSrc(index: number): string {
   const clamped = Math.min(TOTAL_FRAMES - 1, Math.max(0, index));
@@ -41,7 +64,7 @@ function StepIcon({ icon }: { icon: HowItWorksIconKey }) {
             height="19.5"
             rx="2.75"
             fill="currentColor"
-            fillOpacity="0.1"
+            fillOpacity="0.12"
           />
           <path d="M10 5.25h4" />
           <rect x="8.5" y="7.5" width="7" height="7.5" rx="1.2" />
@@ -89,7 +112,7 @@ function StepIcon({ icon }: { icon: HowItWorksIconKey }) {
           <path
             d="M12 2.75 4 7.25v9.5l8 4.5 8-4.5v-9.5l-8-4.5Z"
             fill="currentColor"
-            fillOpacity="0.1"
+            fillOpacity="0.12"
           />
           <path d="m4 7.25 8 4.5 8-4.5" />
           <path d="M12 11.75v9.5" />
@@ -101,7 +124,7 @@ function StepIcon({ icon }: { icon: HowItWorksIconKey }) {
             height="2.5"
             rx="0.5"
             fill="currentColor"
-            fillOpacity="0.2"
+            fillOpacity="0.22"
           />
         </svg>
       );
@@ -120,38 +143,6 @@ function StepIcon({ icon }: { icon: HowItWorksIconKey }) {
         </svg>
       );
   }
-}
-
-function computeRailPercent(
-  frameFloat: number,
-  steps: HowItWorksStepItem[],
-  nodePercents: number[]
-): number {
-  const count = steps.length;
-  if (count <= 1) return 100;
-
-  const getAnchor = (idx: number) =>
-    nodePercents.length === count
-      ? nodePercents[idx]
-      : (idx / (count - 1)) * 100;
-
-  if (frameFloat <= steps[0].startFrame) return getAnchor(0);
-  const lastIndex = count - 1;
-  if (frameFloat >= steps[lastIndex].startFrame) return getAnchor(lastIndex);
-
-  for (let i = 0; i < lastIndex; i++) {
-    const start = steps[i].startFrame;
-    const nextStart = steps[i + 1].startFrame;
-    if (frameFloat >= start && frameFloat <= nextStart) {
-      const span = Math.max(1, nextStart - start);
-      const local = (frameFloat - start) / span;
-      const fromPct = getAnchor(i);
-      const toPct = getAnchor(i + 1);
-      return Math.min(100, Math.max(0, fromPct + local * (toPct - fromPct)));
-    }
-  }
-
-  return 100;
 }
 
 function findStepIndex(
@@ -180,52 +171,32 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
   const railFillRef = useRef<HTMLDivElement | null>(null);
   const railDotRef = useRef<HTMLSpanElement | null>(null);
   const nodeRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const nodePercentsRef = useRef<number[]>([]);
+  const nodeFillRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const metricsRef = useRef<TimelineMetrics | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const imagesRef = useRef<Array<HTMLImageElement | null>>([]);
   const loadStartedRef = useRef(false);
   const lastDrawnRef = useRef(-1);
 
-  const targetProgressRef = useRef(0);
-  const displayProgressRef = useRef(0);
-  const rafRef = useRef<number | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ["start start", "end end"],
+  });
 
-  const applyRailVisual = useCallback((pct: number) => {
-    const clamped = Math.min(100, Math.max(0, pct));
-    if (railFillRef.current) {
-      railFillRef.current.style.height = `${clamped}%`;
-    }
-    if (railDotRef.current) {
-      railDotRef.current.style.opacity =
-        clamped > 0.8 && clamped < 99.2 ? "1" : "0";
-    }
-  }, []);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 28,
+    mass: 0.45,
+    restDelta: 0.0005,
+  });
 
-  const measureRail = useCallback(() => {
-    const timelineEl = timelineRef.current;
-    const railEl = railRef.current;
-    if (!timelineEl || !railEl || steps.length < 2) return;
-
-    const timelineRect = timelineEl.getBoundingClientRect();
-    const centers: number[] = [];
-    for (let i = 0; i < steps.length; i++) {
-      const el = nodeRefs.current[i];
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      centers.push(rect.top + rect.height / 2 - timelineRect.top);
-    }
-
-    const first = centers[0];
-    const last = centers[centers.length - 1];
-    if (last <= first) return;
-
-    railEl.style.top = `${first}px`;
-    railEl.style.height = `${last - first}px`;
-    nodePercentsRef.current = centers.map(
-      (c) => ((c - first) / (last - first)) * 100
-    );
-  }, [steps.length]);
+  const mediaScale = useTransform(
+    smoothProgress,
+    [0, 0.08, 0.92, 1],
+    [0.95, 1, 1, 0.985]
+  );
+  const mediaY = useTransform(smoothProgress, [0, 1], [10, -10]);
 
   const drawFrame = useCallback((targetIndex: number) => {
     const canvas = canvasRef.current;
@@ -304,6 +275,142 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
     }
   }, [loadFrame]);
 
+  const applyStepVisuals = useCallback(
+    (nodeFills: number[], railPercent: number, showDot: boolean) => {
+      for (let i = 0; i < steps.length; i++) {
+        const fillEl = nodeFillRefs.current[i];
+        if (!fillEl) continue;
+        const fill = clamp01(nodeFills[i] ?? 0);
+        const bottomInset = ((1 - fill) * 100).toFixed(2);
+        fillEl.style.clipPath = `inset(0 0 ${bottomInset}% 0)`;
+      }
+
+      const clampedRail = Math.min(100, Math.max(0, railPercent));
+      if (railFillRef.current) {
+        railFillRef.current.style.height = `${clampedRail.toFixed(2)}%`;
+      }
+      if (railDotRef.current) {
+        railDotRef.current.style.opacity = showDot ? "1" : "0";
+      }
+    },
+    [steps.length]
+  );
+
+  const applyProgress = useCallback(
+    (progress: number) => {
+      const clampedProgress = clamp01(progress);
+      const frameFloat = clampedProgress * (TOTAL_FRAMES - 1);
+      const frameIndex = Math.round(frameFloat);
+
+      if (frameIndex !== lastDrawnRef.current) {
+        drawFrame(frameIndex);
+      }
+
+      const k = findStepIndex(frameIndex, steps);
+      if (k !== activeStepRef.current) {
+        activeStepRef.current = k;
+        setActiveStepIndex(k);
+      }
+
+      const step = steps[k];
+      const span = Math.max(1, step.endFrame - step.startFrame);
+      const local = clamp01((frameFloat - step.startFrame) / span);
+      const isLast = k === steps.length - 1;
+
+      const nodeFills = new Array<number>(steps.length).fill(0);
+      for (let i = 0; i < k; i++) {
+        nodeFills[i] = 1;
+      }
+
+      const metrics = metricsRef.current;
+      let railPercent =
+        steps.length > 1 ? (k / (steps.length - 1)) * 100 : 100;
+      let showDot = false;
+
+      if (!isLast) {
+        const split = 0.45;
+        if (local <= split) {
+          const fillT = local / split;
+          nodeFills[k] = fillT;
+          if (metrics && metrics.railHeight > 0) {
+            const node = metrics.nodes[k];
+            const y = node.top + fillT * (node.bottom - node.top);
+            railPercent = ((y - metrics.railTop) / metrics.railHeight) * 100;
+          }
+          showDot = false;
+        } else {
+          nodeFills[k] = 1;
+          const segT = (local - split) / (1 - split);
+          if (metrics && metrics.railHeight > 0) {
+            const fromY = metrics.nodes[k].bottom;
+            const toY = metrics.nodes[k + 1].top;
+            const y = fromY + segT * (toY - fromY);
+            railPercent = ((y - metrics.railTop) / metrics.railHeight) * 100;
+          } else {
+            railPercent =
+              ((k + segT) / Math.max(1, steps.length - 1)) * 100;
+          }
+          showDot = segT > 0.03 && segT < 0.97;
+        }
+      } else {
+        nodeFills[k] = clamp01(local / 0.85);
+        railPercent = 100;
+        showDot = false;
+      }
+
+      applyStepVisuals(nodeFills, railPercent, showDot);
+    },
+    [applyStepVisuals, drawFrame, steps]
+  );
+
+  const applyStaticStep = useCallback(
+    (idx: number) => {
+      const nodeFills = steps.map((_, i) => (i <= idx ? 1 : 0));
+      const metrics = metricsRef.current;
+      let railPercent =
+        steps.length > 1 ? (idx / (steps.length - 1)) * 100 : 100;
+      if (metrics && metrics.railHeight > 0 && metrics.nodes[idx]) {
+        railPercent =
+          ((metrics.nodes[idx].center - metrics.railTop) / metrics.railHeight) *
+          100;
+      }
+      applyStepVisuals(nodeFills, railPercent, false);
+    },
+    [applyStepVisuals, steps]
+  );
+
+  const measureRail = useCallback(() => {
+    const timelineEl = timelineRef.current;
+    const railEl = railRef.current;
+    if (!timelineEl || !railEl || steps.length < 2) return;
+
+    const timelineRect = timelineEl.getBoundingClientRect();
+    const nodes: NodeMetric[] = [];
+    for (let i = 0; i < steps.length; i++) {
+      const el = nodeRefs.current[i];
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const top = rect.top - timelineRect.top;
+      const bottom = rect.bottom - timelineRect.top;
+      nodes.push({ top, bottom, center: (top + bottom) / 2 });
+    }
+
+    const railTop = nodes[0].center;
+    const railBottom = nodes[nodes.length - 1].center;
+    const railHeight = railBottom - railTop;
+    if (railHeight <= 0) return;
+
+    railEl.style.top = `${railTop}px`;
+    railEl.style.height = `${railHeight}px`;
+    metricsRef.current = { railTop, railHeight, nodes };
+
+    if (reduced) {
+      applyStaticStep(activeStepRef.current);
+    } else {
+      applyProgress(smoothProgress.get());
+    }
+  }, [applyProgress, applyStaticStep, reduced, smoothProgress, steps.length]);
+
   useEffect(() => {
     if (imagesRef.current.length !== TOTAL_FRAMES) {
       imagesRef.current = new Array<HTMLImageElement | null>(TOTAL_FRAMES).fill(
@@ -357,90 +464,26 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
   }, [measureRail]);
 
   useEffect(() => {
-    const syncToProgress = (progress: number) => {
-      const frameFloat = progress * (TOTAL_FRAMES - 1);
-      const frameIndex = Math.round(frameFloat);
+    if (reduced) {
+      const rep = steps[activeStepRef.current]?.representativeFrame ?? 0;
+      drawFrame(rep);
+      applyStaticStep(activeStepRef.current);
+      return;
+    }
+    applyProgress(smoothProgress.get());
+  }, [applyProgress, applyStaticStep, drawFrame, reduced, smoothProgress, steps]);
 
-      if (frameIndex !== lastDrawnRef.current) {
-        drawFrame(frameIndex);
-      }
-
-      applyRailVisual(
-        computeRailPercent(frameFloat, steps, nodePercentsRef.current)
-      );
-
-      const nextStep = findStepIndex(frameIndex, steps);
-      if (nextStep !== activeStepRef.current) {
-        activeStepRef.current = nextStep;
-        setActiveStepIndex(nextStep);
-      }
-    };
-
-    const tick = () => {
-      const diff = targetProgressRef.current - displayProgressRef.current;
-      if (Math.abs(diff) < 0.0004) {
-        displayProgressRef.current = targetProgressRef.current;
-        syncToProgress(displayProgressRef.current);
-        rafRef.current = null;
-        return;
-      }
-
-      displayProgressRef.current += diff * 0.28;
-      syncToProgress(displayProgressRef.current);
-      rafRef.current = window.requestAnimationFrame(tick);
-    };
-
-    const updateTargetFromScroll = () => {
-      const trackEl = trackRef.current;
-      if (!trackEl) return;
-
-      measureRail();
-
-      if (reduced || window.innerWidth <= 960) {
-        if (rafRef.current !== null) {
-          window.cancelAnimationFrame(rafRef.current);
-          rafRef.current = null;
-        }
-        const rep = steps[activeStepRef.current]?.representativeFrame ?? 0;
-        drawFrame(rep);
-        const pct =
-          nodePercentsRef.current[activeStepRef.current] ??
-          (steps.length > 1
-            ? (activeStepRef.current / (steps.length - 1)) * 100
-            : 100);
-        applyRailVisual(pct);
-        return;
-      }
-
-      const rect = trackEl.getBoundingClientRect();
-      const scrollable = Math.max(1, trackEl.offsetHeight - window.innerHeight);
-      const raw = Math.min(1, Math.max(0, -rect.top / scrollable));
-      targetProgressRef.current = raw;
-
-      if (rafRef.current === null) {
-        rafRef.current = window.requestAnimationFrame(tick);
-      }
-    };
-
-    updateTargetFromScroll();
-    window.addEventListener("scroll", updateTargetFromScroll, { passive: true });
-    window.addEventListener("resize", updateTargetFromScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", updateTargetFromScroll);
-      window.removeEventListener("resize", updateTargetFromScroll);
-      if (rafRef.current !== null) {
-        window.cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-    };
-  }, [applyRailVisual, drawFrame, measureRail, reduced, steps]);
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
+    if (!reduced) {
+      applyProgress(latest);
+    }
+  });
 
   const handleStepClick = (idx: number) => {
     const targetStep = steps[idx];
     if (!targetStep) return;
 
-    if (!reduced && typeof window !== "undefined" && window.innerWidth > 960) {
+    if (!reduced && typeof window !== "undefined") {
       const trackEl = trackRef.current;
       if (trackEl) {
         const trackTop =
@@ -464,10 +507,7 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
       drawFrame(targetStep.representativeFrame)
     );
     drawFrame(targetStep.representativeFrame);
-    const pct =
-      nodePercentsRef.current[idx] ??
-      (steps.length > 1 ? (idx / (steps.length - 1)) * 100 : 100);
-    applyRailVisual(pct);
+    applyStaticStep(idx);
   };
 
   return (
@@ -502,14 +542,25 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
                       : "upcoming";
 
                 const card = (
-                  <button
+                  <motion.button
                     type="button"
                     className="hiw-step-card"
+                    animate={
+                      reduced
+                        ? undefined
+                        : {
+                            scale: status === "active" ? 1.025 : 1,
+                            y: status === "active" ? -2 : 0,
+                          }
+                    }
+                    whileHover={reduced ? undefined : { y: -3, scale: 1.03 }}
+                    whileTap={reduced ? undefined : { scale: 0.98 }}
+                    transition={SPRING}
                     onClick={() => handleStepClick(idx)}
                   >
                     <h3>{step.title}</h3>
                     <p>{step.desc}</p>
-                  </button>
+                  </motion.button>
                 );
 
                 return (
@@ -524,7 +575,7 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
                       <div className="hiw-step-spacer" aria-hidden="true" />
                     )}
 
-                    <button
+                    <motion.button
                       type="button"
                       ref={(el) => {
                         nodeRefs.current[idx] = el;
@@ -532,10 +583,29 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
                       className="hiw-step-node"
                       aria-label={step.title}
                       aria-current={status === "active" ? "step" : undefined}
+                      animate={
+                        reduced
+                          ? undefined
+                          : { scale: status === "active" ? 1.09 : 1 }
+                      }
+                      whileHover={reduced ? undefined : { scale: 1.12 }}
+                      whileTap={reduced ? undefined : { scale: 0.96 }}
+                      transition={SPRING}
                       onClick={() => handleStepClick(idx)}
                     >
-                      <StepIcon icon={step.icon} />
-                    </button>
+                      <span className="hiw-node-base" aria-hidden="true">
+                        <StepIcon icon={step.icon} />
+                      </span>
+                      <span
+                        className="hiw-node-fill"
+                        ref={(el) => {
+                          nodeFillRefs.current[idx] = el;
+                        }}
+                        aria-hidden="true"
+                      >
+                        <StepIcon icon={step.icon} />
+                      </span>
+                    </motion.button>
 
                     {step.side === "right" ? (
                       card
@@ -548,13 +618,16 @@ export function HowItWorksScrub({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          <div className="hiw-media-col">
+          <motion.div
+            className="hiw-media-col"
+            style={reduced ? undefined : { scale: mediaScale, y: mediaY }}
+          >
             <canvas
               ref={canvasRef}
               className="hiw-canvas"
               aria-label={steps[activeStepIndex]?.title ?? data.title}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import type { Lang } from "@/lib/seo";
+import { CONTACT_EMAIL, type Lang } from "@/lib/seo";
 import type {
   ContactLanguageCode,
   DayKey,
@@ -625,7 +625,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       submitButton: "Kostenlose Standortprüfung absenden",
       submittingButton: "Wird gesendet…",
       trustLine:
-        "Unverbindlich · Keine Startgebühren · Persönliche Betreuung · partner@payvityparcels.de",
+        `Unverbindlich · Keine Startgebühren · Persönliche Betreuung · ${CONTACT_EMAIL}`,
     },
     navButtons: {
       back: "Zurück",
@@ -661,7 +661,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       newApplicationBtn: "Weitere Anfrage erfassen",
     },
     errorFallback:
-      "Die Übermittlung ist fehlgeschlagen. Schreiben Sie uns direkt an partner@payvityparcels.de.",
+      `Die Übermittlung ist fehlgeschlagen. Schreiben Sie uns direkt an ${CONTACT_EMAIL}.`,
   },
   en: {
     sectionHeader: {
@@ -851,7 +851,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       submitButton: "Submit free location check",
       submittingButton: "Submitting…",
       trustLine:
-        "Non-binding · Zero signup fee · Personal support · partner@payvityparcels.de",
+        `Non-binding · Zero signup fee · Personal support · ${CONTACT_EMAIL}`,
     },
     navButtons: {
       back: "Back",
@@ -887,6 +887,6 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       newApplicationBtn: "Submit another location",
     },
     errorFallback:
-      "Submission failed right now. Please contact us at partner@payvityparcels.de.",
+      `Submission failed right now. Please contact us at ${CONTACT_EMAIL}.`,
   },
 };

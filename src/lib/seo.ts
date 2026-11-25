@@ -2,13 +2,84 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://payvityparcels.de";
 export const BRAND_NAME = "PAYVITY Parcels";
-export const CONTACT_EMAIL = "partner@payvityparcels.de";
+function normalizeEmail(raw: string | undefined, fallback: string): string {
+  const trimmed = raw?.trim();
+  if (!trimmed) return fallback;
+  return trimmed.replace(/^mailto:/i, "");
+}
+
+function normalizeWhatsAppUrl(
+  raw: string | undefined,
+  fallback: string
+): string {
+  const trimmed = raw?.trim();
+  if (!trimmed) return fallback;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  let digits = trimmed.replace(/[^\d]/g, "");
+  if (digits.startsWith("00")) {
+    digits = digits.slice(2);
+  }
+  return digits ? `https://wa.me/${digits}` : fallback;
+}
+
+function normalizeSocialUrl(
+  raw: string | undefined,
+  baseUrl: string,
+  prefixAt: boolean,
+  fallback: string
+): string {
+  const trimmed = raw?.trim();
+  if (!trimmed) return fallback;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  const handle = trimmed.replace(/^@+/, "");
+  if (!handle) return fallback;
+  return prefixAt ? `${baseUrl}/@${handle}` : `${baseUrl}/${handle}/`;
+}
+
+function extractSocialHandle(url: string, fallback: string): string {
+  try {
+    const pathname = new URL(url).pathname.replace(/^\/+|\/+$/g, "");
+    const first = pathname.split("/")[0];
+    if (!first) return fallback;
+    return first.startsWith("@") ? first : `@${first}`;
+  } catch {
+    return fallback;
+  }
+}
+
+export const CONTACT_EMAIL = normalizeEmail(
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL,
+  "partner@payvityparcels.de"
+);
+export const CONTACT_PHONE =
+  process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() ?? "";
+
+const instagramUrl = normalizeSocialUrl(
+  process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+  "https://www.instagram.com",
+  false,
+  "https://www.instagram.com/payvityparcels/"
+);
+const tiktokUrl = normalizeSocialUrl(
+  process.env.NEXT_PUBLIC_TIKTOK_URL,
+  "https://www.tiktok.com",
+  true,
+  "https://www.tiktok.com/@payvityparcels"
+);
+
 export const CONTACT_LINKS = {
-  // Update with final live WhatsApp number, Instagram handle, and TikTok profile URL
-  whatsapp: "https://wa.me/49",
+  whatsapp: normalizeWhatsAppUrl(
+    process.env.NEXT_PUBLIC_CONTACT_PHONE,
+    "https://wa.me/49"
+  ),
   email: `mailto:${CONTACT_EMAIL}`,
-  instagram: "https://www.instagram.com/payvityparcels/",
-  tiktok: "https://www.tiktok.com/@payvityparcels",
+  instagram: instagramUrl,
+  tiktok: tiktokUrl,
+} as const;
+
+export const CONTACT_HANDLES = {
+  instagram: extractSocialHandle(instagramUrl, "@payvityparcels"),
+  tiktok: extractSocialHandle(tiktokUrl, "@payvityparcels"),
 } as const;
 export const OG_IMAGE_PATH = "/images/og-payvity-paketshop.jpg";
 export const LOGO_PATH = "/images/payvity-logo.png";

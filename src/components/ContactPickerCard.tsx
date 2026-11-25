@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CONTACT_EMAIL, CONTACT_LINKS, type Lang } from "@/lib/seo";
+import {
+  CONTACT_EMAIL,
+  CONTACT_HANDLES,
+  CONTACT_LINKS,
+  type Lang,
+} from "@/lib/seo";
 
 type ChannelKey = "whatsapp" | "email" | "instagram" | "tiktok";
 
@@ -35,12 +40,12 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
       },
       instagram: {
         name: "Instagram",
-        hint: "@payvityparcels",
+        hint: CONTACT_HANDLES.instagram,
         ariaLabel: "PAYVITY Parcels auf Instagram",
       },
       tiktok: {
         name: "TikTok",
-        hint: "@payvityparcels",
+        hint: CONTACT_HANDLES.tiktok,
         ariaLabel: "PAYVITY Parcels auf TikTok",
       },
     },
@@ -62,12 +67,12 @@ const PICKER_COPY: Record<Lang, PickerLocaleCopy> = {
       },
       instagram: {
         name: "Instagram",
-        hint: "@payvityparcels",
+        hint: CONTACT_HANDLES.instagram,
         ariaLabel: "PAYVITY Parcels on Instagram",
       },
       tiktok: {
         name: "TikTok",
-        hint: "@payvityparcels",
+        hint: CONTACT_HANDLES.tiktok,
         ariaLabel: "PAYVITY Parcels on TikTok",
       },
     },

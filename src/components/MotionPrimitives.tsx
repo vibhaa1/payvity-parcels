@@ -40,15 +40,17 @@ interface FadeUpProps {
  * Keeps initial opacity at 1 so prerendered SSR HTML and non-scrolled sections
  * are always crawlable and immediately readable.
  */
-export function FadeUp({ children, delay = 0, y = 10, className }: FadeUpProps) {
+export function FadeUp({ children, delay = 0, y = 22, className }: FadeUpProps) {
   const reduced = useReducedMotion();
   return (
     <motion.div
       className={className}
       initial={false}
-      whileInView={reduced ? undefined : { y: [y, 0] }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.45, delay, ease: EASE }}
+      whileInView={
+        reduced ? undefined : { opacity: [0.35, 1], y: [y, 0], scale: [0.985, 1] }
+      }
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6, delay, ease: EASE }}
     >
       {children}
     </motion.div>
@@ -61,11 +63,49 @@ interface StaggerGridProps {
   id?: string;
 }
 
+const GRID_VARIANTS = {
+  visible: {},
+  enter: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const ITEM_VARIANTS = {
+  visible: {},
+  enter: {
+    opacity: [0.35, 1],
+    y: [24, 0],
+    scale: [0.98, 1],
+    transition: {
+      duration: 0.58,
+      ease: EASE,
+    },
+  },
+};
+
 export function StaggerGrid({ children, className, id }: StaggerGridProps) {
+  const reduced = useReducedMotion();
+  if (reduced) {
+    return (
+      <div id={id} className={className}>
+        {children}
+      </div>
+    );
+  }
   return (
-    <div id={id} className={className}>
+    <motion.div
+      id={id}
+      className={className}
+      variants={GRID_VARIANTS}
+      initial="visible"
+      whileInView="enter"
+      viewport={{ once: true, amount: 0.12 }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -75,7 +115,15 @@ interface StaggerItemProps {
 }
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
-  return <div className={className}>{children}</div>;
+  const reduced = useReducedMotion();
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+  return (
+    <motion.div className={className} variants={ITEM_VARIANTS}>
+      {children}
+    </motion.div>
+  );
 }
 
 interface AnimatedCounterProps {
