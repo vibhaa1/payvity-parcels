@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { HOME_CONTENT } from "@/data/content";
-import type { Lang } from "@/lib/seo";
-import { AnimatedCounter } from "./MotionPrimitives";
+import { I18N, Lang, STATS } from "@/data/content";
+import { AnimatedCounter, EASE } from "./MotionPrimitives";
 
 interface HeroSectionProps {
   lang: Lang;
@@ -16,7 +15,7 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const reduced = useReducedMotion();
   const [statTriggers, setStatTriggers] = useState<Record<string, number>>({});
-  const hero = HOME_CONTENT[lang].hero;
+  const copy = I18N[lang];
 
   useEffect(() => {
     const videoEl = videoRef.current;
@@ -57,7 +56,10 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
   };
 
   return (
-    <section className="hero-shell" aria-label={hero.ariaLabel}>
+    <section
+      className="hero-shell"
+      aria-label="Payvity Amazon Locker und Paketshops"
+    >
       <div
         className="hero"
         id="hero"
@@ -73,7 +75,7 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/video/amazon-hero-poster.jpg"
           aria-hidden="true"
           tabIndex={-1}
@@ -84,10 +86,28 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
         <div className="hero-content wrap">
           <div className="hero-inner">
             <div className="hero-copy">
-              <h1>{hero.title}</h1>
-              <p>{hero.subtitle}</p>
+              <motion.h1
+                initial={reduced ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: EASE }}
+              >
+                {copy.hero_title}
+              </motion.h1>
 
-              <div className="hero-actions">
+              <motion.p
+                initial={reduced ? false : { opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.08, ease: EASE }}
+              >
+                {copy.hero_sub}
+              </motion.p>
+
+              <motion.div
+                className="hero-actions"
+                initial={reduced ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.16, ease: EASE }}
+              >
                 <motion.a
                   className="button"
                   href="#kontakt"
@@ -98,26 +118,32 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
                     onScrollTo("kontakt");
                   }}
                 >
-                  {hero.ctaPrimary}
+                  {copy.hero_cta_primary}
                 </motion.a>
                 <motion.a
                   className="button ghost"
-                  href="#paketshop"
+                  href="#loesungen"
                   whileHover={reduced ? undefined : { y: -2 }}
                   whileTap={reduced ? undefined : { scale: 0.98 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    onScrollTo("paketshop");
+                    onScrollTo("loesungen");
                   }}
                 >
-                  {hero.ctaSecondary}
+                  {copy.hero_cta_secondary}
                 </motion.a>
-              </div>
+              </motion.div>
             </div>
           </div>
 
-          <div className="stats" id="stats">
-            {hero.stats.map((stat) => (
+          <motion.div
+            className="stats"
+            id="stats"
+            initial={reduced ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.22, ease: EASE }}
+          >
+            {STATS.map((stat) => (
               <div
                 key={stat.id}
                 className="stat"
@@ -130,10 +156,10 @@ export function HeroSection({ lang, onScrollTo }: HeroSectionProps) {
                   suffix={stat.suffix}
                   triggerKey={statTriggers[stat.id] ?? 0}
                 />
-                <span className="stat-label">{stat.label}</span>
+                <span className="stat-label">{copy[stat.labelKey]}</span>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

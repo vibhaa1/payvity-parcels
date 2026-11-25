@@ -1,39 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { HOME_CONTENT } from "@/data/content";
-import type { Lang } from "@/lib/seo";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { I18N, Lang, TRUST_IMAGE, TRUST_ITEMS } from "@/data/content";
 import { EASE, FadeUp } from "./MotionPrimitives";
 
 export function TrustSection({ lang }: { lang: Lang }) {
   const [openIndex, setOpenIndex] = useState<string | null>("01");
   const reduced = useReducedMotion();
-  const trust = HOME_CONTENT[lang].trust;
+  const copy = I18N[lang];
 
   return (
-    <section className="wrap section" id="warum-uns">
+    <section className="wrap section">
       <div className="trust-split">
         <FadeUp className="trust-visual">
-          <img
-            src={trust.imageSrc}
-            alt={trust.imageAlt}
-            width={trust.imageWidth}
-            height={trust.imageHeight}
-            loading="lazy"
-          />
+          {/* Static image */}
+          <img src={TRUST_IMAGE} alt={copy.trust_alt} loading="lazy" />
         </FadeUp>
 
         <div className="trust-content">
           <FadeUp>
-            <h2>{trust.title}</h2>
-            <p className="section-lead">{trust.lead}</p>
+            <h2>{copy.trust_title}</h2>
+            <p className="section-lead">{copy.trust_lead}</p>
           </FadeUp>
 
           <div className="why-list" id="whyList">
-            {trust.items.map((item) => {
+            {TRUST_ITEMS.map((item) => {
               const isOpen = openIndex === item.index;
-              const panelId = `trust-panel-${item.index}`;
               return (
                 <div
                   key={item.index}
@@ -43,16 +36,15 @@ export function TrustSection({ lang }: { lang: Lang }) {
                     type="button"
                     className="why-row-head"
                     aria-expanded={isOpen}
-                    aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : item.index)}
                   >
                     <div className="why-row-left">
                       <span className="why-index">{item.index}</span>
-                      <h3>{item.title}</h3>
+                      <h3>{copy[item.titleKey]}</h3>
                     </div>
                     <motion.span
                       className="why-plus"
-                      animate={reduced ? undefined : { rotate: isOpen ? 45 : 0 }}
+                      animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.24, ease: EASE }}
                       aria-hidden="true"
                     >
@@ -60,17 +52,19 @@ export function TrustSection({ lang }: { lang: Lang }) {
                     </motion.span>
                   </button>
 
-                  <div
-                    id={panelId}
-                    className="accordion-panel"
-                    data-open={isOpen ? "true" : "false"}
-                  >
-                    <div className="accordion-panel-inner">
-                      <div className="why-body">
-                        <p>{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        className="why-body"
+                        initial={reduced ? false : { height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={reduced ? undefined : { height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: EASE }}
+                      >
+                        <p>{copy[item.descKey]}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}

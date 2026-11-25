@@ -36,19 +36,15 @@ interface FadeUpProps {
   className?: string;
 }
 
-/**
- * Keeps initial opacity at 1 so prerendered SSR HTML and non-scrolled sections
- * are always crawlable and immediately readable.
- */
-export function FadeUp({ children, delay = 0, y = 10, className }: FadeUpProps) {
+export function FadeUp({ children, delay = 0, y = 20, className }: FadeUpProps) {
   const reduced = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={false}
-      whileInView={reduced ? undefined : { y: [y, 0] }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.45, delay, ease: EASE }}
+      initial={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.16 }}
+      transition={{ duration: 0.55, delay, ease: EASE }}
     >
       {children}
     </motion.div>
@@ -62,10 +58,25 @@ interface StaggerGridProps {
 }
 
 export function StaggerGrid({ children, className, id }: StaggerGridProps) {
+  const reduced = useReducedMotion();
   return (
-    <div id={id} className={className}>
+    <motion.div
+      id={id}
+      className={className}
+      initial={reduced ? "visible" : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.14 }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.07,
+          },
+        },
+      }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -75,7 +86,22 @@ interface StaggerItemProps {
 }
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
-  return <div className={className}>{children}</div>;
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        hidden: reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.5, ease: EASE },
+        },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
 interface AnimatedCounterProps {

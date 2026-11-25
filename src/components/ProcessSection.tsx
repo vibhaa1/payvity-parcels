@@ -1,30 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { HOME_CONTENT, ProcessStepItem } from "@/data/content";
-import type { Lang } from "@/lib/seo";
+import { I18N, Lang, PROCESS_STEPS } from "@/data/content";
 import { FadeUp, StaggerGrid, StaggerItem } from "./MotionPrimitives";
 
-interface ProcessSectionProps {
-  lang: Lang;
-  title?: string;
-  steps?: ProcessStepItem[];
-}
-
-export function ProcessSection({ lang, title, steps }: ProcessSectionProps) {
+export function ProcessSection({ lang }: { lang: Lang }) {
   const [activeStep, setActiveStep] = useState<number>(1);
-  const defaults = HOME_CONTENT[lang].process;
-  const heading = title ?? defaults.title;
-  const list = steps ?? defaults.steps;
+  const copy = I18N[lang];
 
   return (
     <section className="wrap section" id="so-funktionierts">
-      <FadeUp className="section-head-single">
-        <h2>{heading}</h2>
+      <FadeUp className="section-head-split">
+        <div>
+          <h2>{copy.proc_title}</h2>
+        </div>
+        <p className="section-lead">{copy.proc_lead}</p>
       </FadeUp>
 
       <StaggerGrid className="steps-grid" id="stepper">
-        {list.map((step) => {
+        {PROCESS_STEPS.map((step) => {
           const isActive = activeStep === step.step;
           return (
             <StaggerItem key={step.step}>
@@ -42,17 +36,12 @@ export function ProcessSection({ lang, title, steps }: ProcessSectionProps) {
                 }}
               >
                 <div className="step-media">
-                  <img
-                    src={step.img}
-                    alt={step.alt}
-                    width={step.width}
-                    height={step.height}
-                    loading="lazy"
-                  />
+                  {/* Static illustration — anchored in surface container */}
+                  <img src={step.img} alt={step.alt[lang]} loading="lazy" />
                 </div>
                 <div className="step-body">
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
+                  <h3>{copy[step.titleKey]}</h3>
+                  <p>{copy[step.descKey]}</p>
                 </div>
               </div>
             </StaggerItem>
