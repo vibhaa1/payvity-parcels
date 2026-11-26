@@ -2,15 +2,18 @@ import type { Lang } from "@/lib/seo";
 
 export interface LegalSection {
   heading: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  bullets?: string[];
+  afterBullets?: string[];
 }
 
 export interface LegalDocumentContent {
   metaTitle: string;
   metaDescription: string;
   breadcrumbHome: string;
+  backHomeLabel: string;
   title: string;
-  notice: string;
+  notice?: string;
   sections: LegalSection[];
 }
 
@@ -18,101 +21,115 @@ export const IMPRESSUM_CONTENT: Record<Lang, LegalDocumentContent> = {
   de: {
     metaTitle: "Impressum | PAYVITY Parcels",
     metaDescription:
-      "Gesetzliche Pflichtangaben gemäß § 5 DDG für die Website payvityparcels.de der PAYVITY Parcels.",
+      "Impressum und gesetzliche Pflichtangaben gemäß §5 TMG der Payvity UG (haftungsbeschränkt).",
     breadcrumbHome: "Startseite",
+    backHomeLabel: "Zurück zur Startseite",
     title: "Impressum",
-    notice:
-      "Hinweis für den Betreiber: Bitte ersetzen Sie die gekennzeichneten Platzhalter [BITTE ERGÄNZEN: ...] vor dem produktiven Go-live durch Ihre vollständigen Handelsregister- und Unternehmensangaben gemäß § 5 DDG.",
     sections: [
       {
-        heading: "Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)",
+        heading: "Angaben gemäß §5 TMG",
         paragraphs: [
-          "PAYVITY Parcels",
-          "[BITTE ERGÄNZEN: Vollständiger Firmenname und Rechtsform, z. B. GmbH oder UG (haftungsbeschränkt)]",
-          "[BITTE ERGÄNZEN: Straße und Hausnummer]",
-          "[BITTE ERGÄNZEN: Postleitzahl und Ort, Deutschland]",
+          "Payvity UG (haftungsbeschränkt)",
+          "Merzhausener Straße 12",
+          "61389 Schmitten am Taunus",
+          "Deutschland",
         ],
+      },
+      {
+        heading: "Vertreten durch",
+        paragraphs: ["Deepak Arora (Geschäftsführer)"],
       },
       {
         heading: "Kontakt",
         paragraphs: [
-          "E-Mail: partner@payvityparcels.de",
-          "Telefon: [BITTE ERGÄNZEN: Offizielle geschäftliche Telefonnummer]",
-          "Website: https://payvityparcels.de",
+          "Telefon: +49 1577 7777441",
+          "E-Mail: sales@payvity-amazon.de",
         ],
       },
       {
-        heading: "Vertretungsberechtigte Person(en)",
+        heading: "Registereintrag",
         paragraphs: [
-          "Vertreten durch: [BITTE ERGÄNZEN: Vor- und Nachname der Geschäftsführung / Inhaber]",
+          "Eintragung im Handelsregister.",
+          "Registergericht: [Registergericht]",
+          "Registernummer: [Registernummer]",
         ],
       },
       {
-        heading: "Registereintrag & Umsatzsteuer-ID",
+        heading: "Umsatzsteuer-ID",
         paragraphs: [
-          "Registergericht: [BITTE ERGÄNZEN: Amtsgericht, falls eingetragen]",
-          "Registernummer: [BITTE ERGÄNZEN: HRB / HRA Nummer, falls eingetragen]",
-          "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: [BITTE ERGÄNZEN: DE...]",
+          "Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:",
+          "[USt-IdNr.]",
         ],
       },
       {
-        heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+        heading: "Verantwortlich für den Inhalt nach §18 Abs. 2 MStV",
         paragraphs: [
-          "[BITTE ERGÄNZEN: Name und Anschrift der inhaltlich verantwortlichen Person]",
+          "Deepak Arora",
+          "Merzhausener Straße 12, 61389 Schmitten am Taunus",
         ],
       },
       {
-        heading: "Markenhinweis",
+        heading: "Streitschlichtung",
         paragraphs: [
-          "Amazon, Amazon Hub Counter und Amazon Hub Locker sind eingetragene Marken der Amazon Technologies, Inc. oder verbundener Unternehmen. PAYVITY Parcels agiert als Partnerunternehmen zur Gewinnung und Betreuung von Paketshop- und Locker-Standorten in Deutschland.",
+          "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
         ],
       },
     ],
   },
   en: {
-    metaTitle: "Legal Notice (Impressum) | PAYVITY Parcels",
+    metaTitle: "Legal Notice | PAYVITY Parcels",
     metaDescription:
-      "Statutory corporate disclosures under Section 5 of the German Digital Services Act (DDG) for payvityparcels.de.",
+      "Statutory corporate disclosures pursuant to §5 TMG for Payvity UG (haftungsbeschränkt).",
     breadcrumbHome: "Home",
-    title: "Legal Notice (Impressum)",
-    notice:
-      "Operator notice: Please replace every [PLEASE COMPLETE: ...] placeholder with your verified German corporate registration details pursuant to § 5 DDG before live deployment.",
+    backHomeLabel: "Back to homepage",
+    title: "Legal Notice",
     sections: [
       {
-        heading: "Information pursuant to § 5 DDG (Germany)",
+        heading: "Information pursuant to §5 TMG",
         paragraphs: [
-          "PAYVITY Parcels",
-          "[PLEASE COMPLETE: Full legal company name and legal form, e.g. GmbH / UG]",
-          "[PLEASE COMPLETE: Street address and house number]",
-          "[PLEASE COMPLETE: Postal code and city, Germany]",
+          "Payvity UG (haftungsbeschränkt)",
+          "Merzhausener Straße 12",
+          "61389 Schmitten am Taunus",
+          "Germany",
         ],
+      },
+      {
+        heading: "Represented by",
+        paragraphs: ["Deepak Arora (Managing Director)"],
       },
       {
         heading: "Contact",
         paragraphs: [
-          "Email: partner@payvityparcels.de",
-          "Phone: [PLEASE COMPLETE: Business telephone number]",
-          "Website: https://payvityparcels.de",
+          "Phone: +49 1577 7777441",
+          "Email: sales@payvity-amazon.de",
         ],
       },
       {
-        heading: "Authorized Representative(s)",
+        heading: "Commercial Register",
         paragraphs: [
-          "Represented by: [PLEASE COMPLETE: Managing Director / Owner name]",
+          "Entry in the Commercial Register.",
+          "Register Court: [Register Court]",
+          "Registration Number: [Registration Number]",
         ],
       },
       {
-        heading: "Commercial Register & VAT ID",
+        heading: "VAT ID",
         paragraphs: [
-          "Register Court: [PLEASE COMPLETE: Local Court / Amtsgericht, if applicable]",
-          "Registration Number: [PLEASE COMPLETE: HRB / HRA number, if applicable]",
-          "VAT Identification Number pursuant to § 27a UStG: [PLEASE COMPLETE: DE...]",
+          "VAT Identification Number pursuant to §27a of the German VAT Act (Umsatzsteuergesetz):",
+          "[VAT ID]",
         ],
       },
       {
-        heading: "Trademark Notice",
+        heading: "Responsible for content pursuant to §18 Abs. 2 MStV",
         paragraphs: [
-          "Amazon, Amazon Hub Counter, and Amazon Hub Locker are trademarks of Amazon Technologies, Inc. or its affiliates. PAYVITY Parcels operates as a partner onboarding and supporting local Pickup & Locker sites in Germany.",
+          "Deepak Arora",
+          "Merzhausener Straße 12, 61389 Schmitten am Taunus",
+        ],
+      },
+      {
+        heading: "Dispute Resolution",
+        paragraphs: [
+          "The European Commission provides a platform for Online Dispute Resolution (ODR): https://ec.europa.eu/consumers/odr/. We are neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.",
         ],
       },
     ],
@@ -123,51 +140,76 @@ export const DATENSCHUTZ_CONTENT: Record<Lang, LegalDocumentContent> = {
   de: {
     metaTitle: "Datenschutzerklärung | PAYVITY Parcels",
     metaDescription:
-      "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der Standortanfrage über payvityparcels.de.",
+      "Datenschutzerklärung der Payvity UG (haftungsbeschränkt) gemäß DSGVO.",
     breadcrumbHome: "Startseite",
+    backHomeLabel: "Zurück zur Startseite",
     title: "Datenschutzerklärung",
-    notice:
-      "Hinweis für den Betreiber: Bitte ergänzen Sie im Abschnitt „Verantwortlicher“ Ihre vollständige Geschäftsadresse und prüfen Sie die Hinweise zu Ihrem E-Mail-Versand und Google-Sheets-Auftragsverarbeitungsvertrag (AVV).",
     sections: [
       {
-        heading: "1. Verantwortlicher im Sinne der DSGVO",
+        heading: "1. Verantwortliche Stelle",
         paragraphs: [
-          "PAYVITY Parcels",
-          "[BITTE ERGÄNZEN: Vollständiger Firmenname, Straße, Hausnummer, PLZ, Ort, Deutschland]",
-          "E-Mail: partner@payvityparcels.de",
-          "Telefon: [BITTE ERGÄNZEN: Telefonnummer]",
+          "Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:",
+          "Payvity UG (haftungsbeschränkt)",
+          "Merzhausener Straße 12, 61389 Schmitten am Taunus",
+          "Telefon: +49 1577 7777441",
+          "E-Mail: sales@payvity-amazon.de",
         ],
       },
       {
-        heading: "2. Bereitstellung der Website und Server-Logfiles (Cloudflare Pages)",
+        heading: "2. Welche Daten wir erheben",
         paragraphs: [
-          "Diese Website wird als statische Webanwendung über Cloudflare Pages (Cloudflare, Inc.) bereitgestellt. Beim Aufruf der Seiten werden technisch erforderliche Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt des Zugriffs, aufgerufene URL, Browsertyp) verarbeitet, um Auslieferung, Stabilität und IT-Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO).",
+          "Im Rahmen unseres Kontakt- und Bewerbungsformulars für Gegenpartner erheben wir insbesondere folgende Kategorien personenbezogener Daten:",
+        ],
+        bullets: [
+          "Persönliche Angaben (z. B. Name, Anschrift, Kontaktdaten)",
+          "Unternehmensangaben (z. B. Firmenname, Rechtsform, Handelsregisternummer)",
+          "Bankverbindung / Zahlungsdaten",
+          "Hochgeladene Dokumente (z. B. Nachweise, Gewerbeanmeldung)",
+          "Unterschrift",
+        ],
+        afterBullets: ["[Platzhalter — vollständige Liste vor Launch ergänzen.]"],
+      },
+      {
+        heading: "3. Zweck der Verarbeitung",
+        paragraphs: [
+          "Die erhobenen Daten werden verarbeitet, um [Anfragen zur Gegenpartnerschaft zu bearbeiten, Verträge vorzubereiten und abzuschließen, gesetzliche Prüf- und Sorgfaltspflichten zu erfüllen]. [Platzhalter — vor Launch konkretisieren.]",
         ],
       },
       {
-        heading: "3. Verarbeitung von Partneranfragen (Digitales Partner-Onboarding)",
+        heading: "4. Rechtsgrundlage",
         paragraphs: [
-          "Wenn Sie unser digitales Onboarding-Formular absenden, verarbeiten wir die von Ihnen angegebenen Daten: gewünschtes Modell (Amazon Paketshop, Amazon Locker oder Beides), Rechtsform (Einzelunternehmen oder Gesellschaft), bevorzugte Kontaktsprache, Ansprechpartner, Mobilnummer, optionale E-Mail-Adresse, Unternehmens- und Standortdaten (Firmenname, Branche, optionale USt-IdNr., freiwillig angegebene IBAN, Adresse, PLZ, Ort, Bundesland), Geschäftsdaten (Schaufenstername, Website, geschätzte Paketkapazität, bestehende Paketdienste, Öffnungszeiten), optional hochgeladene Nachweisdokumente sowie technische Herkunftsparameter (Landing Page, Referrer, UTM-Parameter).",
-          "Zweck der Verarbeitung ist die kostenlose Prüfung der Standort-Eignung sowie die telefonische oder elektronische Kontaktaufnahme in Ihrer gewählten Kontaktsprache zur Vorbereitung einer möglichen Partnerschaft (Art. 6 Abs. 1 lit. b DSGVO bzw. Art. 6 Abs. 1 lit. f DSGVO). Ihre Angaben werden zur internen Nachverfolgung per E-Mail an unser Partner-Team übermittelt, in einer geschützten Google-Sheets-Übersicht erfasst und – sofern Sie freiwillig Dokumente hochladen – im geschützten Dokumentenspeicher hinterlegt.",
-        ],
-      },
-      {
-        heading: "4. Cookies und Tracking",
-        paragraphs: [
-          "Auf payvityparcels.de setzen wir keine Werbe- oder Marketing-Cookies ein. Es erfolgt kein seitenübergreifendes Nutzer-Tracking zu Werbezwecken.",
+          "Die Verarbeitung erfolgt auf Grundlage von [Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/-erfüllung), Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung) und/oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)]. [Platzhalter — vor Launch prüfen.]",
         ],
       },
       {
         heading: "5. Speicherdauer",
         paragraphs: [
-          "Anfragedaten werden gespeichert, solange dies für die Standortprüfung, die Anbahnung oder Durchführung einer Partnerschaft sowie zur Einhaltung gesetzlicher Aufbewahrungsfristen erforderlich ist.",
+          "Personenbezogene Daten werden nur so lange gespeichert, wie dies für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen dies vorschreiben. Handelsrechtlich relevante Unterlagen werden gemäß §257 HGB in der Regel 6 Jahre aufbewahrt, steuerrechtlich relevante Unterlagen gemäß §147 AO bis zu 10 Jahre. [Platzhalter — vor Launch von einem Anwalt prüfen lassen.]",
         ],
       },
       {
-        heading: "6. Ihre Rechte nach der DSGVO",
+        heading: "6. Ihre Rechte als betroffene Person",
         paragraphs: [
-          "Sie haben jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Zudem steht Ihnen ein Beschwerderecht bei einer zuständigen Datenschutzaufsichtsbehörde zu.",
-          "Zur Ausübung Ihrer Rechte genügt eine Nachricht an partner@payvityparcels.de.",
+          "Sie haben im Rahmen der gesetzlichen Vorgaben das Recht auf:",
+        ],
+        bullets: [
+          "Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)",
+          "Berichtigung unrichtiger Daten (Art. 16 DSGVO)",
+          "Löschung Ihrer Daten (Art. 17 DSGVO)",
+          "Einschränkung der Verarbeitung (Art. 18 DSGVO)",
+          "Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)",
+          "Datenübertragbarkeit (Art. 20 DSGVO)",
+        ],
+        afterBullets: [
+          "Ihnen steht zudem ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu.",
+        ],
+      },
+      {
+        heading: "7. Kontakt für Datenschutzanfragen",
+        paragraphs: [
+          "Bei Fragen zur Verarbeitung Ihrer personenbezogenen Daten wenden Sie sich bitte an:",
+          "Payvity UG (haftungsbeschränkt)",
+          "E-Mail: info@payvity.de",
         ],
       },
     ],
@@ -175,44 +217,171 @@ export const DATENSCHUTZ_CONTENT: Record<Lang, LegalDocumentContent> = {
   en: {
     metaTitle: "Privacy Policy | PAYVITY Parcels",
     metaDescription:
-      "GDPR information on how PAYVITY Parcels processes personal and business contact details submitted via payvityparcels.de.",
+      "Privacy Policy of Payvity UG (haftungsbeschränkt) pursuant to the GDPR.",
     breadcrumbHome: "Home",
+    backHomeLabel: "Back to homepage",
     title: "Privacy Policy",
-    notice:
-      "Operator notice: Please fill in your full registered address under Controller Details and verify your email/Google Workspace DPA setup.",
     sections: [
       {
-        heading: "1. Controller under GDPR",
+        heading: "1. Controller",
         paragraphs: [
-          "PAYVITY Parcels",
-          "[PLEASE COMPLETE: Full legal entity name, street address, postal code, city, Germany]",
-          "Email: partner@payvityparcels.de",
-          "Phone: [PLEASE COMPLETE: Telephone number]",
+          "The controller responsible for processing personal data on this website is:",
+          "Payvity UG (haftungsbeschränkt)",
+          "Merzhausener Straße 12, 61389 Schmitten am Taunus",
+          "Phone: +49 1577 7777441",
+          "Email: sales@payvity-amazon.de",
         ],
       },
       {
-        heading: "2. Hosting & Technical Server Logs (Cloudflare Pages)",
+        heading: "2. What Data We Collect",
         paragraphs: [
-          "This website is delivered as a static application via Cloudflare Pages. When accessing pages, technically necessary connection metadata (such as IP address, timestamp, requested URL, and user agent) is processed to ensure delivery, availability, and security (Art. 6(1)(f) GDPR).",
+          "As part of our contact and application form for counter partners, we collect in particular the following categories of personal data:",
+        ],
+        bullets: [
+          "Personal details (e.g., name, address, contact details)",
+          "Company details (e.g., company name, legal form, commercial register number)",
+          "Bank details / payment data",
+          "Uploaded documents (e.g., verification records, trade registration)",
+          "Signature",
+        ],
+        afterBullets: ["[Placeholder — complete full list prior to launch.]"],
+      },
+      {
+        heading: "3. Purpose of Processing",
+        paragraphs: [
+          "The collected data is processed in order to [process counter partnership inquiries, prepare and conclude contracts, and fulfill statutory verification and due diligence obligations]. [Placeholder — specify prior to launch.]",
         ],
       },
       {
-        heading: "3. Partner Onboarding & Location Check Inquiries",
+        heading: "4. Legal Basis",
         paragraphs: [
-          "When you submit our digital partner onboarding wizard, we process the details provided: selected model (Amazon Parcel Shop, Amazon Locker, or Both), legal entity form, preferred callback language, contact person, mobile phone number, optional email address, company and site details (company name, category, optional VAT ID, optional IBAN, street address, postal code, city, federal state), storefront metadata (display name, website, estimated parcel capacity, existing parcel carriers, opening hours), any voluntarily uploaded verification files, and optional referral/UTM context.",
-          "Processing takes place solely to evaluate location suitability and contact you in your chosen language regarding a partnership (Art. 6(1)(b) and Art. 6(1)(f) GDPR). Inquiries are routed to our onboarding team via email, recorded in Google Sheets, and any voluntarily uploaded files are stored securely for verification.",
+          "Processing is carried out on the basis of [Art. 6(1)(b) GDPR (performance of a contract or pre-contractual steps), Art. 6(1)(c) GDPR (legal obligation), and/or Art. 6(1)(f) GDPR (legitimate interest)]. [Placeholder — verify prior to launch.]",
         ],
       },
       {
-        heading: "4. Cookies",
+        heading: "5. Storage Period",
         paragraphs: [
-          "This website does not deploy advertising or cross-site marketing cookies.",
+          "Personal data is stored only for as long as necessary for the stated purposes or as required by statutory retention periods. Commercial documents are generally retained for 6 years pursuant to §257 HGB, and tax-relevant documents for up to 10 years pursuant to §147 AO. [Placeholder — have reviewed by legal counsel prior to launch.]",
         ],
       },
       {
-        heading: "5. Retention & Your GDPR Rights",
+        heading: "6. Your Rights as a Data Subject",
         paragraphs: [
-          "Inquiry records are retained only for as long as needed to evaluate and manage partner onboarding or fulfill statutory retention duties. Under GDPR you have rights of access, rectification, erasure, restriction, data portability, objection, and complaint to a supervisory authority. Contact partner@payvityparcels.de for any request.",
+          "Within the scope of applicable law, you have the right to:",
+        ],
+        bullets: [
+          "Access to your stored data (Art. 15 GDPR)",
+          "Rectification of inaccurate data (Art. 16 GDPR)",
+          "Erasure of your data (Art. 17 GDPR)",
+          "Restriction of processing (Art. 18 GDPR)",
+          "Object to processing (Art. 21 GDPR)",
+          "Data portability (Art. 20 GDPR)",
+        ],
+        afterBullets: [
+          "You also have the right to lodge a complaint with a data protection supervisory authority.",
+        ],
+      },
+      {
+        heading: "7. Contact for Privacy Inquiries",
+        paragraphs: [
+          "If you have any questions regarding the processing of your personal data, please contact:",
+          "Payvity UG (haftungsbeschränkt)",
+          "Email: info@payvity.de",
+        ],
+      },
+    ],
+  },
+};
+
+export const AGB_CONTENT: Record<Lang, LegalDocumentContent> = {
+  de: {
+    metaTitle: "Allgemeine Geschäftsbedingungen | PAYVITY Parcels",
+    metaDescription:
+      "Allgemeine Geschäftsbedingungen (AGB) der Payvity UG (haftungsbeschränkt).",
+    breadcrumbHome: "Startseite",
+    backHomeLabel: "Zurück zur Startseite",
+    title: "Allgemeine Geschäftsbedingungen",
+    sections: [
+      {
+        heading: "1. Geltungsbereich",
+        paragraphs: [
+          "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für [alle Verträge zwischen Payvity UG (haftungsbeschränkt) und den als Gegenpartner teilnehmenden Geschäftspartnern im Rahmen des Betriebs von Paketstationen]. [Platzhalter — vor Launch konkretisieren.]",
+        ],
+      },
+      {
+        heading: "2. Vertragsschluss",
+        paragraphs: [
+          "Ein Vertrag kommt zustande durch [Antrag des Gegenpartners über das Kontaktformular und schriftliche Bestätigung durch Payvity UG (haftungsbeschränkt)]. [Platzhalter — vor Launch konkretisieren.]",
+        ],
+      },
+      {
+        heading: "3. Pflichten der Vertragspartner",
+        paragraphs: [
+          "[Beschreibung der Pflichten von Payvity UG (haftungsbeschränkt) und des Gegenpartners, z. B. Bereitstellung der Paketstation, Annahme/Ausgabe von Sendungen, Einhaltung der Sicherheitsvorgaben.] [Platzhalter — vor Launch konkretisieren.]",
+        ],
+      },
+      {
+        heading: "4. Haftung",
+        paragraphs: [
+          "[Regelungen zur Haftung von Payvity UG (haftungsbeschränkt), insbesondere Haftungsausschlüsse und -beschränkungen im gesetzlich zulässigen Rahmen.] [Platzhalter — vor Launch von einem Anwalt prüfen lassen.]",
+        ],
+      },
+      {
+        heading: "5. Laufzeit und Kündigung",
+        paragraphs: [
+          "[Angaben zur Vertragslaufzeit, ordentlichen und außerordentlichen Kündigungsfristen sowie -formen.] [Platzhalter — vor Launch konkretisieren.]",
+        ],
+      },
+      {
+        heading: "6. Schlussbestimmungen",
+        paragraphs: [
+          "Es gilt das Recht der Bundesrepublik Deutschland. Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.",
+        ],
+      },
+    ],
+  },
+  en: {
+    metaTitle: "Terms and Conditions | PAYVITY Parcels",
+    metaDescription:
+      "General Terms and Conditions of Payvity UG (haftungsbeschränkt).",
+    breadcrumbHome: "Home",
+    backHomeLabel: "Back to homepage",
+    title: "Terms and Conditions",
+    sections: [
+      {
+        heading: "1. Scope",
+        paragraphs: [
+          "These General Terms and Conditions apply to [all contracts between Payvity UG (haftungsbeschränkt) and business partners participating as counter partners in connection with operating parcel stations]. [Placeholder — specify prior to launch.]",
+        ],
+      },
+      {
+        heading: "2. Conclusion of Contract",
+        paragraphs: [
+          "A contract is concluded upon [application by the counter partner via the contact form and written confirmation by Payvity UG (haftungsbeschränkt)]. [Placeholder — specify prior to launch.]",
+        ],
+      },
+      {
+        heading: "3. Obligations of the Contracting Parties",
+        paragraphs: [
+          "[Description of the obligations of Payvity UG (haftungsbeschränkt) and the counter partner, e.g., provision of the parcel station, acceptance/handover of shipments, and compliance with security requirements.] [Placeholder — specify prior to launch.]",
+        ],
+      },
+      {
+        heading: "4. Liability",
+        paragraphs: [
+          "[Provisions on the liability of Payvity UG (haftungsbeschränkt), in particular exclusions and limitations of liability to the extent permitted by law.] [Placeholder — have reviewed by legal counsel prior to launch.]",
+        ],
+      },
+      {
+        heading: "5. Term and Termination",
+        paragraphs: [
+          "[Details on contract term, ordinary and extraordinary notice periods, and termination formalities.] [Placeholder — specify prior to launch.]",
+        ],
+      },
+      {
+        heading: "6. Final Provisions",
+        paragraphs: [
+          "The laws of the Federal Republic of Germany shall apply. Should individual provisions of these Terms and Conditions be invalid, the validity of the remaining provisions shall remain unaffected.",
         ],
       },
     ],

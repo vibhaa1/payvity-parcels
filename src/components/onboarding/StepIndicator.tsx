@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import type { OnboardingLocaleCopy } from "@/data/onboardingContent";
 
 interface StepIndicatorProps {
@@ -16,22 +15,8 @@ export function StepIndicator({
   maxVisitedStep,
   onSelectStep,
 }: StepIndicatorProps) {
-  const reduced = useReducedMotion();
-  const progressPct = ((currentStep - 1) / (steps.length - 1)) * 100;
-
   return (
     <div className="wizard-stepper-wrap">
-      <div className="wizard-progress-track" aria-hidden="true">
-        <motion.div
-          className="wizard-progress-fill"
-          initial={false}
-          animate={{ width: `${progressPct}%` }}
-          transition={
-            reduced ? { duration: 0 } : { duration: 0.3, ease: [0.19, 1, 0.22, 1] }
-          }
-        />
-      </div>
-
       <ol className="wizard-stepper">
         {steps.map((step) => {
           const isActive = step.number === currentStep;

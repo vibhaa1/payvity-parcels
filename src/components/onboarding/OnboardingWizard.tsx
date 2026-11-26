@@ -15,14 +15,22 @@ import {
   computeScheduleMetrics,
   ContactLanguageCode,
   createDefaultSchedule,
+  DAY_ORDER,
+  DEFAULT_DIAL_CODE,
   estimateShelfSpace,
+  findScheduleErrors,
   formatIban,
   formatScheduleSummary,
   GERMAN_STATES,
   IdDocType,
   inferGermanStateFromPlz,
+  isValidCity,
+  isValidFullName,
   LegalForm,
+  parseLegacyPhone,
   Salutation,
+  sanitizeAlphaSpace,
+  sanitizePhoneDigits,
   UploadedDocMeta,
   validateIban,
   WeeklySchedule,
@@ -30,6 +38,7 @@ import {
 import { Lang, localizedPath } from "@/lib/seo";
 import { EASE, SPRING } from "../MotionPrimitives";
 import { DocumentUploadRow } from "./DocumentUploadRow";
+import { PhoneInput } from "./PhoneInput";
 import { ScheduleEditor } from "./ScheduleEditor";
 import { StepIndicator } from "./StepIndicator";
 
@@ -56,6 +65,7 @@ interface PersistedDraft {
   contactLanguage: ContactLanguageCode;
   salutation: Salutation;
   contactName: string;
+  phoneDialCode: string;
   phone: string;
   email: string;
   companyName: string;
@@ -69,6 +79,7 @@ interface PersistedDraft {
   city: string;
   state: string;
   stateManual: boolean;
+  businessPhoneDialCode: string;
   businessPhone: string;
   deferDocs: boolean;
   idDocType: IdDocType;
@@ -109,6 +120,7 @@ export function OnboardingWizard({
     useState<ContactLanguageCode>(lang === "en" ? "en" : "de");
   const [salutation, setSalutation] = useState<Salutation>("");
   const [contactName, setContactName] = useState("");
+  const [phoneDialCode, setPhoneDialCode] = useState(DEFAULT_DIAL_CODE);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
@@ -125,6 +137,8 @@ export function OnboardingWizard({
   const [state, setState] = useState("");
   const [stateManual, setStateManual] = useState(false);
   const [autoDetectedState, setAutoDetectedState] = useState(false);
+  const [businessPhoneDialCode, setBusinessPhoneDialCode] =
+    useState(DEFAULT_DIAL_CODE);
   const [businessPhone, setBusinessPhone] = useState("");
 
   // Step 4
@@ -200,10 +214,22 @@ export function OnboardingWizard({
           setMaxVisitedStep(d.maxVisitedStep);
         }
         if (d.legalForm) setLegalForm(d.legalForm);
-        if (d.contactLanguage) setContactLanguage(d.contactLanguage);
+        if (
+          d.contactLanguage &&
+          CONTACT_LANGUAGES.some((l) => l.code === d.contactLanguage)
+        ) {
+          setContactLanguage(d.contactLanguage);
+        }
         if (d.salutation !== undefined) setSalutation(d.salutation);
-        if (d.contactName) setContactName(d.contactName);
-        if (d.phone) setPhone(d.phone);
+        if (d.contactName) setContactName(sanitizeAlphaSpace(d.contactName));
+        if (d.phoneDialCode) {
+          setPhoneDialCode(d.phoneDialCode);
+          if (d.phone) setPhone(sanitizePhoneDigits(d.phone));
+        } else if (d.phone) {
+          const parsedPhone = parseLegacyPhone(d.phone);
+          setPhoneDialCode(parsedPhone.dialCode);
+          setPhone(parsedPhone.digits);
+        }
         if (d.email) setEmail(d.email);
         if (d.companyName) setCompanyName(d.companyName);
         if (d.industry) setIndustry(d.industry);
@@ -213,10 +239,19 @@ export function OnboardingWizard({
         if (d.street) setStreet(d.street);
         if (d.addressExtra) setAddressExtra(d.addressExtra);
         if (d.postalCode) setPostalCode(d.postalCode);
-        if (d.city) setCity(d.city);
+        if (d.city) setCity(sanitizeAlphaSpace(d.city));
         if (d.state) setState(d.state);
         if (d.stateManual !== undefined) setStateManual(d.stateManual);
-        if (d.businessPhone) setBusinessPhone(d.businessPhone);
+        if (d.businessPhoneDialCode) {
+          setBusinessPhoneDialCode(d.businessPhoneDialCode);
+          if (d.businessPhone) {
+            setBusinessPhone(sanitizePhoneDigits(d.businessPhone));
+          }
+        } else if (d.businessPhone) {
+          const parsedBiz = parseLegacyPhone(d.businessPhone);
+          setBusinessPhoneDialCode(parsedBiz.dialCode);
+          setBusinessPhone(parsedBiz.digits);
+        }
         if (d.deferDocs !== undefined) setDeferDocs(d.deferDocs);
         if (d.idDocType) setIdDocType(d.idDocType);
         if (d.storeName) setStoreName(d.storeName);
@@ -243,6 +278,7 @@ export function OnboardingWizard({
         contactLanguage,
         salutation,
         contactName,
+        phoneDialCode,
         phone,
         email,
         companyName,
@@ -256,6 +292,7 @@ export function OnboardingWizard({
         city,
         state,
         stateManual,
+        businessPhoneDialCode,
         businessPhone,
         deferDocs,
         idDocType,
@@ -279,6 +316,7 @@ export function OnboardingWizard({
     contactLanguage,
     salutation,
     contactName,
+    phoneDialCode,
     phone,
     email,
     companyName,
@@ -292,6 +330,7 @@ export function OnboardingWizard({
     city,
     state,
     stateManual,
+    businessPhoneDialCode,
     businessPhone,
     deferDocs,
     idDocType,
@@ -383,8 +422,8 @@ export function OnboardingWizard({
       if (!interest || !legalForm) return copy.validation.selectProgram;
     }
     if (targetStep === 2) {
-      if (!contactName.trim()) return copy.validation.contactName;
-      if (phone.replace(/\D/g, "").length < 6) return copy.validation.phone;
+      if (!isValidFullName(contactName)) return copy.validation.contactName;
+      if (sanitizePhoneDigits(phone).length < 6) return copy.validation.phone;
       if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
         return copy.validation.email;
       }
@@ -395,7 +434,10 @@ export function OnboardingWizard({
       if (!/^[A-Za-z0-9\s-]{4,10}$/.test(postalCode.trim())) {
         return copy.validation.plz;
       }
-      if (!city.trim()) return copy.validation.city;
+      if (!isValidCity(city)) return copy.validation.city;
+      if (businessPhone && sanitizePhoneDigits(businessPhone).length < 6) {
+        return copy.validation.businessPhone;
+      }
       if (iban.trim() && ibanCheck && !ibanCheck.valid) {
         return copy.validation.ibanInvalid;
       }
@@ -405,6 +447,23 @@ export function OnboardingWizard({
     }
     if (targetStep === 6) {
       if (scheduleMetrics.openDays === 0) return copy.validation.openHoursRequired;
+      const scheduleErrors = findScheduleErrors(schedule);
+      const overlapDays = DAY_ORDER.filter(
+        (d) => scheduleErrors[d] === "overlap"
+      );
+      if (overlapDays.length > 0) {
+        return `${copy.validation.scheduleOverlap} ${overlapDays
+          .map((d) => copy.step6.days[d])
+          .join(", ")}.`;
+      }
+      const invalidDays = DAY_ORDER.filter(
+        (d) => scheduleErrors[d] === "invalid_range"
+      );
+      if (invalidDays.length > 0) {
+        return `${copy.validation.scheduleInvalidRange} ${invalidDays
+          .map((d) => copy.step6.days[d])
+          .join(", ")}.`;
+      }
     }
     return null;
   };
@@ -440,6 +499,7 @@ export function OnboardingWizard({
     setContactLanguage(lang === "en" ? "en" : "de");
     setSalutation("");
     setContactName("");
+    setPhoneDialCode(DEFAULT_DIAL_CODE);
     setPhone("");
     setEmail("");
     setCompanyName("");
@@ -454,6 +514,7 @@ export function OnboardingWizard({
     setState("");
     setStateManual(false);
     setAutoDetectedState(false);
+    setBusinessPhoneDialCode(DEFAULT_DIAL_CODE);
     setBusinessPhone("");
     setDeferDocs(false);
     setIdDocType("id_card");
@@ -501,6 +562,12 @@ export function OnboardingWizard({
       copy.step6.closedLabel
     );
 
+    const formattedPhone = `${phoneDialCode} ${sanitizePhoneDigits(phone)}`;
+    const cleanBizDigits = sanitizePhoneDigits(businessPhone);
+    const formattedBusinessPhone = cleanBizDigits
+      ? `${businessPhoneDialCode} ${cleanBizDigits}`
+      : "";
+
     const formData = new FormData();
     formData.set("interest", interest);
     formData.set("legalForm", legalForm);
@@ -508,7 +575,7 @@ export function OnboardingWizard({
     formData.set("contactLanguageLabel", contactLanguageLabel);
     formData.set("salutation", salutation);
     formData.set("contactName", contactName.trim());
-    formData.set("phone", phone.trim());
+    formData.set("phone", formattedPhone);
     formData.set("email", email.trim());
     formData.set("companyName", companyName.trim());
     formData.set("businessName", (storeName || companyName).trim());
@@ -520,7 +587,7 @@ export function OnboardingWizard({
     formData.set("postalCode", postalCode.trim());
     formData.set("city", city.trim());
     formData.set("state", state.trim());
-    formData.set("businessPhone", businessPhone.trim());
+    formData.set("businessPhone", formattedBusinessPhone);
     formData.set("storeName", storeName.trim());
     formData.set("websiteUrl", websiteUrl.trim());
     formData.set("parcelCapacity", String(parcelCapacity));
@@ -588,8 +655,6 @@ export function OnboardingWizard({
   const selectedLangMeta = CONTACT_LANGUAGES.find(
     (l) => l.code === contactLanguage
   );
-  const showReset =
-    step > 1 || Boolean(contactName.trim() || companyName.trim() || phone.trim());
 
   return (
     <div className="wizard-shell">
@@ -599,15 +664,6 @@ export function OnboardingWizard({
             <h2>{copy.sectionHeader.title}</h2>
             <p>{copy.sectionHeader.lead}</p>
           </div>
-          {submitState !== "success" && showReset && (
-            <button
-              type="button"
-              className="wizard-reset-btn"
-              onClick={handleReset}
-            >
-              {copy.sectionHeader.resetDraft}
-            </button>
-          )}
         </div>
 
         {submitState === "success" ? (
@@ -849,7 +905,9 @@ export function OnboardingWizard({
                               id="wiz-contact-name"
                               type="text"
                               value={contactName}
-                              onChange={(e) => setContactName(e.target.value)}
+                              onChange={(e) =>
+                                setContactName(sanitizeAlphaSpace(e.target.value))
+                              }
                               placeholder={copy.step2.fullNamePlaceholder}
                             />
                           </div>
@@ -858,12 +916,13 @@ export function OnboardingWizard({
                             <label htmlFor="wiz-phone">
                               {copy.step2.phoneLabel}
                             </label>
-                            <input
+                            <PhoneInput
                               id="wiz-phone"
-                              type="tel"
-                              value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
+                              dialCode={phoneDialCode}
+                              number={phone}
                               placeholder={copy.step2.phonePlaceholder}
+                              onDialCodeChange={setPhoneDialCode}
+                              onNumberChange={setPhone}
                             />
                             <span className="wizard-field-hint">
                               {copy.step2.phoneHint}
@@ -1031,7 +1090,9 @@ export function OnboardingWizard({
                               id="wiz-city"
                               type="text"
                               value={city}
-                              onChange={(e) => setCity(e.target.value)}
+                              onChange={(e) =>
+                                setCity(sanitizeAlphaSpace(e.target.value))
+                              }
                               placeholder={copy.step3.cityPlaceholder}
                             />
                           </div>
@@ -1077,18 +1138,22 @@ export function OnboardingWizard({
                                 <button
                                   type="button"
                                   className="wizard-inline-action"
-                                  onClick={() => setBusinessPhone(phone)}
+                                  onClick={() => {
+                                    setBusinessPhoneDialCode(phoneDialCode);
+                                    setBusinessPhone(phone);
+                                  }}
                                 >
                                   {copy.step3.copyMobileLabel}
                                 </button>
                               )}
                             </div>
-                            <input
+                            <PhoneInput
                               id="wiz-biz-phone"
-                              type="tel"
-                              value={businessPhone}
-                              onChange={(e) => setBusinessPhone(e.target.value)}
+                              dialCode={businessPhoneDialCode}
+                              number={businessPhone}
                               placeholder={copy.step3.businessPhonePlaceholder}
+                              onDialCodeChange={setBusinessPhoneDialCode}
+                              onNumberChange={setBusinessPhone}
                             />
                           </div>
                         </div>
@@ -1302,7 +1367,7 @@ export function OnboardingWizard({
                             </div>
                             <p>{contactName}</p>
                             <p className="review-muted">
-                              {phone}
+                              {`${phoneDialCode} ${phone}`}
                               {email ? ` · ${email}` : ""}
                             </p>
                             <p className="review-muted">

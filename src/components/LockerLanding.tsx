@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import Link from "next/link";
-import { MotionConfig } from "framer-motion";
 import { InterestOption } from "@/data/content";
 import { LOCKER_CONTENT } from "@/data/lockerContent";
 import { Lang, localizedPath } from "@/lib/seo";
@@ -33,7 +32,7 @@ export function LockerLanding({ lang }: { lang: Lang }) {
   }, []);
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <Navbar lang={lang} isHome={false} onScrollTo={scrollTo} />
 
       <main id="top">
@@ -191,6 +190,6 @@ export function LockerLanding({ lang }: { lang: Lang }) {
       </main>
 
       <Footer lang={lang} />
-    </MotionConfig>
+    </>
   );
 }

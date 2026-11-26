@@ -80,7 +80,7 @@ const VALID_INTERESTS = new Set([
 ]);
 
 const VALID_LEGAL_FORMS = new Set(["einzelunternehmen", "gesellschaft"]);
-const VALID_LANG_CODES = new Set(["de", "tr", "ku", "hi", "en", "af"]);
+const VALID_LANG_CODES = new Set(["de", "ku", "hi", "en", "af"]);
 const MAX_SINGLE_FILE_BYTES = 10 * 1024 * 1024;
 const MAX_TOTAL_FILE_BYTES = 40 * 1024 * 1024;
 const MAX_DRIVE_INLINE_BYTES = 15 * 1024 * 1024;
@@ -348,14 +348,49 @@ export async function onRequestPost(
     );
   }
 
-  if (phone.replace(/\D/g, "").length < 6) {
+  const isAlphaSpace = (val: string, minLetters: number) => {
+    const trimmed = val.trim();
+    if (!trimmed || !/^[\p{L} ]+$/u.test(trimmed)) return false;
+    return (trimmed.match(/\p{L}/gu) ?? []).length >= minLetters;
+  };
+
+  if (!isAlphaSpace(contactName, 3)) {
     return jsonResponse(
       {
         ok: false,
         error:
           lang === "de"
-            ? "Bitte geben Sie eine gültige Telefonnummer an."
-            : "Please provide a valid telephone number.",
+            ? "Bitte geben Sie einen gültigen Namen mit mindestens 3 Buchstaben an."
+            : "Please provide a valid full name with at least 3 letters.",
+      },
+      400
+    );
+  }
+
+  if (!isAlphaSpace(city, 2)) {
+    return jsonResponse(
+      {
+        ok: false,
+        error:
+          lang === "de"
+            ? "Bitte geben Sie einen gültigen Ort an (nur Buchstaben und Leerzeichen)."
+            : "Please provide a valid city (letters and spaces only).",
+      },
+      400
+    );
+  }
+
+  const isPhoneDigits = (val: string) =>
+    /^(?:\+\d{1,4}\s*)?\d{6,15}$/.test(val.trim());
+
+  if (!isPhoneDigits(phone) || (businessPhone && !isPhoneDigits(businessPhone))) {
+    return jsonResponse(
+      {
+        ok: false,
+        error:
+          lang === "de"
+            ? "Bitte geben Sie eine gültige Telefonnummer (nur Ziffern) an."
+            : "Please provide a valid telephone number (digits only).",
       },
       400
     );

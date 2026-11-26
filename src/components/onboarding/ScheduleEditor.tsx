@@ -7,6 +7,7 @@ import {
   createPresetSchedule,
   DAY_ORDER,
   DayKey,
+  findScheduleErrors,
   TIME_OPTIONS,
   WeeklySchedule,
 } from "@/lib/onboardingUtils";
@@ -24,6 +25,7 @@ export function ScheduleEditor({
 }: ScheduleEditorProps) {
   const [copiedDay, setCopiedDay] = useState<DayKey | null>(null);
   const metrics = computeScheduleMetrics(schedule);
+  const dayErrors = findScheduleErrors(schedule);
 
   const toggleDay = (day: DayKey) => {
     const prev = schedule[day];
@@ -94,8 +96,6 @@ export function ScheduleEditor({
 
   return (
     <div className="schedule-editor">
-      <p className="wizard-hint">{stepCopy.hint}</p>
-
       <div className="schedule-presets">
         <span className="schedule-presets-label">{stepCopy.presetsLabel}</span>
         <div className="schedule-preset-pills">
@@ -115,10 +115,13 @@ export function ScheduleEditor({
       <div className="schedule-rows">
         {DAY_ORDER.map((day) => {
           const entry = schedule[day];
+          const dayError = dayErrors[day];
           return (
             <div
               key={day}
-              className={`schedule-row${entry.open ? " is-open" : ""}`}
+              className={`schedule-row${entry.open ? " is-open" : ""}${
+                dayError ? " has-error" : ""
+              }`}
             >
               <div className="schedule-day-col">
                 <button
@@ -187,6 +190,14 @@ export function ScheduleEditor({
                     >
                       {stepCopy.addSplitLabel}
                     </button>
+                  )}
+
+                  {dayError && (
+                    <p className="schedule-day-error" role="alert">
+                      {dayError === "overlap"
+                        ? stepCopy.overlapError
+                        : stepCopy.invalidRangeError}
+                    </p>
                   )}
                 </div>
               ) : (

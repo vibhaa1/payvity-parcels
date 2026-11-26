@@ -158,6 +158,7 @@ export interface HomeLocaleContent {
     lockerLabel: string;
     privacyLabel: string;
     imprintLabel: string;
+    termsLabel: string;
   };
 }
 
@@ -194,7 +195,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 20000,
+          target: 50000,
           suffix: "+",
           label: "Pakete erfolgreich übergeben",
         },
@@ -224,7 +225,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Kostenlose Standortprüfung anfragen",
       secondaryLinkLabel: "Auch an Amazon Locker interessiert?",
-      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageSrc: "/images/amazon-abholort-banner.jpeg",
       imageWidth: 1086,
       imageHeight: 204,
       imageAlt: "Amazon Abholort Banner",
@@ -477,8 +478,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner für Deutschland.",
       contactLabel: "Kontakt",
       lockerLabel: "Amazon Locker",
-      privacyLabel: "Datenschutz",
+      privacyLabel: "Datenschutzerklärung",
       imprintLabel: "Impressum",
+      termsLabel: "AGB",
     },
   },
   en: {
@@ -513,7 +515,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       stats: [
         {
           id: "packages",
-          target: 20000,
+          target: 50000,
           suffix: "+",
           label: "Parcels handled",
         },
@@ -543,7 +545,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       ],
       ctaLabel: "Request free location check",
       secondaryLinkLabel: "Also looking at Amazon Lockers?",
-      imageSrc: "/images/amazon-abholort-banner.jpg",
+      imageSrc: "/images/amazon-abholort-banner.jpeg",
       imageWidth: 1086,
       imageHeight: 204,
       imageAlt: "Amazon Abholort pickup location banner",
@@ -790,8 +792,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner for Germany.",
       contactLabel: "Contact",
       lockerLabel: "Amazon Lockers",
-      privacyLabel: "Privacy",
-      imprintLabel: "Legal notice",
+      privacyLabel: "Privacy Policy",
+      imprintLabel: "Legal Notice",
+      termsLabel: "Terms & Conditions",
     },
   },
 };

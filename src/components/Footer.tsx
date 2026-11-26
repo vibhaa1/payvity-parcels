@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HOME_CONTENT } from "@/data/content";
-import { CONTACT_EMAIL, Lang, localizedPath } from "@/lib/seo";
+import { Lang, localizedPath } from "@/lib/seo";
 
 export function Footer({ lang }: { lang: Lang }) {
   const footer = HOME_CONTENT[lang].footer;
@@ -10,15 +10,17 @@ export function Footer({ lang }: { lang: Lang }) {
       <div className="wrap">
         <span>{footer.copy}</span>
         <div className="foot-links">
-          <a href={`mailto:${CONTACT_EMAIL}`}>{footer.contactLabel}</a>
           <Link href={localizedPath(lang, "/amazon-locker/")}>
             {footer.lockerLabel}
+          </Link>
+          <Link href={localizedPath(lang, "/impressum/")}>
+            {footer.imprintLabel}
           </Link>
           <Link href={localizedPath(lang, "/datenschutz/")}>
             {footer.privacyLabel}
           </Link>
-          <Link href={localizedPath(lang, "/impressum/")}>
-            {footer.imprintLabel}
+          <Link href={localizedPath(lang, "/agb/")}>
+            {footer.termsLabel}
           </Link>
         </div>
       </div>
