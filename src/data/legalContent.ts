@@ -50,15 +50,15 @@ export const IMPRESSUM_CONTENT: Record<Lang, LegalDocumentContent> = {
         heading: "Registereintrag",
         paragraphs: [
           "Eintragung im Handelsregister.",
-          "Registergericht: [Registergericht]",
-          "Registernummer: [Registernummer]",
+          "Registergericht: Königstein im Taunus",
+          "Registernummer: HRB 12212",
         ],
       },
       {
         heading: "Umsatzsteuer-ID",
         paragraphs: [
           "Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:",
-          "[USt-IdNr.]",
+          "003 241 10035",
         ],
       },
       {
@@ -108,15 +108,15 @@ export const IMPRESSUM_CONTENT: Record<Lang, LegalDocumentContent> = {
         heading: "Commercial Register",
         paragraphs: [
           "Entry in the Commercial Register.",
-          "Register Court: [Register Court]",
-          "Registration Number: [Registration Number]",
+          "Register Court: Königstein im Taunus",
+          "Registration Number: HRB 12212",
         ],
       },
       {
         heading: "VAT ID",
         paragraphs: [
           "VAT Identification Number pursuant to §27a of the German VAT Act (Umsatzsteuergesetz):",
-          "[VAT ID]",
+          "003 241 10035",
         ],
       },
       {
@@ -167,24 +167,23 @@ export const DATENSCHUTZ_CONTENT: Record<Lang, LegalDocumentContent> = {
           "Hochgeladene Dokumente (z. B. Nachweise, Gewerbeanmeldung)",
           "Unterschrift",
         ],
-        afterBullets: ["[Platzhalter — vollständige Liste vor Launch ergänzen.]"],
       },
       {
         heading: "3. Zweck der Verarbeitung",
         paragraphs: [
-          "Die erhobenen Daten werden verarbeitet, um [Anfragen zur Gegenpartnerschaft zu bearbeiten, Verträge vorzubereiten und abzuschließen, gesetzliche Prüf- und Sorgfaltspflichten zu erfüllen]. [Platzhalter — vor Launch konkretisieren.]",
+          "Die erhobenen Daten werden verarbeitet, um Anfragen zur Gegenpartnerschaft zu bearbeiten, Verträge vorzubereiten und abzuschließen, gesetzliche Prüf- und Sorgfaltspflichten zu erfüllen.",
         ],
       },
       {
         heading: "4. Rechtsgrundlage",
         paragraphs: [
-          "Die Verarbeitung erfolgt auf Grundlage von [Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/-erfüllung), Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung) und/oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)]. [Platzhalter — vor Launch prüfen.]",
+          "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/-erfüllung), Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung) und/oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).",
         ],
       },
       {
         heading: "5. Speicherdauer",
         paragraphs: [
-          "Personenbezogene Daten werden nur so lange gespeichert, wie dies für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen dies vorschreiben. Handelsrechtlich relevante Unterlagen werden gemäß §257 HGB in der Regel 6 Jahre aufbewahrt, steuerrechtlich relevante Unterlagen gemäß §147 AO bis zu 10 Jahre. [Platzhalter — vor Launch von einem Anwalt prüfen lassen.]",
+          "Personenbezogene Daten werden nur so lange gespeichert, wie dies für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen dies vorschreiben. Handelsrechtlich relevante Unterlagen werden gemäß §257 HGB in der Regel 6 Jahre aufbewahrt, steuerrechtlich relevante Unterlagen gemäß §147 AO bis zu 10 Jahre.",
         ],
       },
       {
@@ -244,24 +243,24 @@ export const DATENSCHUTZ_CONTENT: Record<Lang, LegalDocumentContent> = {
           "Uploaded documents (e.g., verification records, trade registration)",
           "Signature",
         ],
-        afterBullets: ["[Placeholder — complete full list prior to launch.]"],
+       
       },
       {
         heading: "3. Purpose of Processing",
         paragraphs: [
-          "The collected data is processed in order to [process counter partnership inquiries, prepare and conclude contracts, and fulfill statutory verification and due diligence obligations]. [Placeholder — specify prior to launch.]",
+          "The collected data is processed in order to process counter partnership inquiries, prepare and conclude contracts, and fulfill statutory verification and due diligence obligations.",
         ],
       },
       {
         heading: "4. Legal Basis",
         paragraphs: [
-          "Processing is carried out on the basis of [Art. 6(1)(b) GDPR (performance of a contract or pre-contractual steps), Art. 6(1)(c) GDPR (legal obligation), and/or Art. 6(1)(f) GDPR (legitimate interest)]. [Placeholder — verify prior to launch.]",
+          "Processing is carried out on the basis of Art. 6(1)(b) GDPR (performance of a contract or pre-contractual steps), Art. 6(1)(c) GDPR (legal obligation), and/or Art. 6(1)(f) GDPR (legitimate interest).",
         ],
       },
       {
         heading: "5. Storage Period",
         paragraphs: [
-          "Personal data is stored only for as long as necessary for the stated purposes or as required by statutory retention periods. Commercial documents are generally retained for 6 years pursuant to §257 HGB, and tax-relevant documents for up to 10 years pursuant to §147 AO. [Placeholder — have reviewed by legal counsel prior to launch.]",
+          "Personal data is stored only for as long as necessary for the stated purposes or as required by statutory retention periods. Commercial documents are generally retained for 6 years pursuant to §257 HGB, and tax-relevant documents for up to 10 years pursuant to §147 AO. ",
         ],
       },
       {
@@ -305,31 +304,31 @@ export const AGB_CONTENT: Record<Lang, LegalDocumentContent> = {
       {
         heading: "1. Geltungsbereich",
         paragraphs: [
-          "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für [alle Verträge zwischen Payvity UG (haftungsbeschränkt) und den als Gegenpartner teilnehmenden Geschäftspartnern im Rahmen des Betriebs von Paketstationen]. [Platzhalter — vor Launch konkretisieren.]",
+          "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Payvity UG (haftungsbeschränkt) und den als Gegenpartner teilnehmenden Geschäftspartnern im Rahmen des Betriebs von Paketstationen.",
         ],
       },
       {
         heading: "2. Vertragsschluss",
         paragraphs: [
-          "Ein Vertrag kommt zustande durch [Antrag des Gegenpartners über das Kontaktformular und schriftliche Bestätigung durch Payvity UG (haftungsbeschränkt)]. [Platzhalter — vor Launch konkretisieren.]",
+          "Ein Vertrag kommt zustande durch Antrag des Gegenpartners über das Kontaktformular und schriftliche Bestätigung durch Payvity UG (haftungsbeschränkt).",
         ],
       },
       {
         heading: "3. Pflichten der Vertragspartner",
         paragraphs: [
-          "[Beschreibung der Pflichten von Payvity UG (haftungsbeschränkt) und des Gegenpartners, z. B. Bereitstellung der Paketstation, Annahme/Ausgabe von Sendungen, Einhaltung der Sicherheitsvorgaben.] [Platzhalter — vor Launch konkretisieren.]",
+          "Beschreibung der Pflichten von Payvity UG (haftungsbeschränkt) und des Gegenpartners, z. B. Bereitstellung der Paketstation, Annahme/Ausgabe von Sendungen, Einhaltung der Sicherheitsvorgaben.",
         ],
       },
       {
         heading: "4. Haftung",
         paragraphs: [
-          "[Regelungen zur Haftung von Payvity UG (haftungsbeschränkt), insbesondere Haftungsausschlüsse und -beschränkungen im gesetzlich zulässigen Rahmen.] [Platzhalter — vor Launch von einem Anwalt prüfen lassen.]",
+          "Regelungen zur Haftung von Payvity UG (haftungsbeschränkt), insbesondere Haftungsausschlüsse und -beschränkungen im gesetzlich zulässigen Rahmen.",
         ],
       },
       {
         heading: "5. Laufzeit und Kündigung",
         paragraphs: [
-          "[Angaben zur Vertragslaufzeit, ordentlichen und außerordentlichen Kündigungsfristen sowie -formen.] [Platzhalter — vor Launch konkretisieren.]",
+          "Angaben zur Vertragslaufzeit, ordentlichen und außerordentlichen Kündigungsfristen sowie -formen.",
         ],
       },
       {
@@ -351,31 +350,31 @@ export const AGB_CONTENT: Record<Lang, LegalDocumentContent> = {
       {
         heading: "1. Scope",
         paragraphs: [
-          "These General Terms and Conditions apply to [all contracts between Payvity UG (haftungsbeschränkt) and business partners participating as counter partners in connection with operating parcel stations]. [Placeholder — specify prior to launch.]",
+          "These General Terms and Conditions apply to all contracts between Payvity UG (haftungsbeschränkt) and business partners participating as counter partners in connection with operating parcel stations.",
         ],
       },
       {
         heading: "2. Conclusion of Contract",
         paragraphs: [
-          "A contract is concluded upon [application by the counter partner via the contact form and written confirmation by Payvity UG (haftungsbeschränkt)]. [Placeholder — specify prior to launch.]",
+          "A contract is concluded upon application by the counter partner via the contact form and written confirmation by Payvity UG (haftungsbeschränkt).",
         ],
       },
       {
         heading: "3. Obligations of the Contracting Parties",
         paragraphs: [
-          "[Description of the obligations of Payvity UG (haftungsbeschränkt) and the counter partner, e.g., provision of the parcel station, acceptance/handover of shipments, and compliance with security requirements.] [Placeholder — specify prior to launch.]",
+          "Description of the obligations of Payvity UG (haftungsbeschränkt) and the counter partner, e.g., provision of the parcel station, acceptance/handover of shipments, and compliance with security requirements.",
         ],
       },
       {
         heading: "4. Liability",
         paragraphs: [
-          "[Provisions on the liability of Payvity UG (haftungsbeschränkt), in particular exclusions and limitations of liability to the extent permitted by law.] [Placeholder — have reviewed by legal counsel prior to launch.]",
+          "Provisions on the liability of Payvity UG (haftungsbeschränkt), in particular exclusions and limitations of liability to the extent permitted by law.",
         ],
       },
       {
         heading: "5. Term and Termination",
         paragraphs: [
-          "[Details on contract term, ordinary and extraordinary notice periods, and termination formalities.] [Placeholder — specify prior to launch.]",
+          "Details on contract term, ordinary and extraordinary notice periods, and termination formalities.",
         ],
       },
       {
