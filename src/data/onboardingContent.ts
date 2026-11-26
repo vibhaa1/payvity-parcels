@@ -364,7 +364,6 @@ export interface OnboardingLocaleCopy {
     carriersHint: string;
   };
   step6: {
-    hint: string;
     presetsLabel: string;
     presets: Array<{ id: "standard" | "kiosk" | "split"; label: string }>;
     days: Record<DayKey, string>;
@@ -377,6 +376,8 @@ export interface OnboardingLocaleCopy {
     statusReadyPrefix: string;
     statusReadySuffix: string;
     statusWarnSuffix: string;
+    overlapError: string;
+    invalidRangeError: string;
   };
   step7: {
     editLabel: string;
@@ -407,6 +408,7 @@ export interface OnboardingLocaleCopy {
     selectProgram: string;
     contactName: string;
     phone: string;
+    businessPhone: string;
     email: string;
     companyName: string;
     street: string;
@@ -415,6 +417,8 @@ export interface OnboardingLocaleCopy {
     ibanInvalid: string;
     storeName: string;
     openHoursRequired: string;
+    scheduleOverlap: string;
+    scheduleInvalidRange: string;
   };
   success: {
     badge: string;
@@ -501,7 +505,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       fullNamePlaceholder: "Vor- und Nachname",
       phoneLabel: "Mobilnummer *",
       phoneHint: "Für Ihren Rückruf sowie die Einrichtung der Amazon Hub App.",
-      phonePlaceholder: "z. B. +49 171 1234567",
+      phonePlaceholder: "z. B. 1711234567",
       emailLabel: "E-Mail-Adresse (optional)",
       emailPlaceholder: "name@geschaeft.de",
     },
@@ -529,7 +533,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       stateLabel: "Bundesland",
       statePlaceholder: "Bundesland wählen",
       businessPhoneLabel: "Geschäftstelefon (optional)",
-      businessPhonePlaceholder: "+49 ...",
+      businessPhonePlaceholder: "z. B. 69123456",
       copyMobileLabel: "Mobilnummer übernehmen",
     },
     step4: {
@@ -564,7 +568,6 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       carriersHint: "Falls Sie bereits einen Paketshop betreiben.",
     },
     step6: {
-      hint: "Übliche Handelszeiten sind vorausgefüllt und lassen sich jederzeit anpassen.",
       presetsLabel: "Vorlagen:",
       presets: [
         { id: "standard", label: "Standard (Mo–Sa)" },
@@ -598,6 +601,8 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       statusReadySuffix: "Std./Woche · Erfüllt typische Standort-Empfehlungen",
       statusWarnSuffix:
         "Std./Woche · Hinweis: Längere Öffnungszeiten verbessern die Standorteignung",
+      overlapError: "Zeitfenster überschneiden sich am selben Tag.",
+      invalidRangeError: "Die Endzeit muss nach der Startzeit liegen.",
     },
     step7: {
       editLabel: "Bearbeiten",
@@ -617,8 +622,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       privacySuffix: " verarbeitet.",
       submitButton: "Kostenlose Standortprüfung absenden",
       submittingButton: "Wird gesendet…",
-      trustLine:
-        `Unverbindlich · Keine Startgebühren · Persönliche Betreuung · ${CONTACT_EMAIL}`,
+      trustLine: "Unverbindlich · Keine Startgebühren",
     },
     navButtons: {
       back: "Zurück",
@@ -628,16 +632,24 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
     },
     validation: {
       selectProgram: "Bitte wählen Sie ein Modell und eine Rechtsform.",
-      contactName: "Bitte geben Sie den Namen des Ansprechpartners an.",
-      phone: "Bitte geben Sie eine gültige Telefonnummer (mind. 6 Ziffern) an.",
+      contactName:
+        "Bitte geben Sie einen gültigen Namen mit mindestens 3 Buchstaben an (nur Buchstaben und Leerzeichen).",
+      phone:
+        "Bitte geben Sie eine gültige Mobilnummer mit mindestens 6 Ziffern an (nur Zahlen).",
+      businessPhone:
+        "Bitte geben Sie eine gültige Geschäftsnummer mit mindestens 6 Ziffern an (nur Zahlen) oder lassen Sie das Feld leer.",
       email: "Bitte prüfen Sie das Format Ihrer E-Mail-Adresse.",
       companyName: "Bitte geben Sie Ihren Firmen- bzw. Gewerbenamen an.",
       street: "Bitte geben Sie Straße und Hausnummer des Standorts an.",
       plz: "Bitte geben Sie eine gültige Postleitzahl an.",
-      city: "Bitte geben Sie den Ort bzw. die Stadt an.",
+      city:
+        "Bitte geben Sie einen gültigen Ort an (nur Buchstaben und Leerzeichen).",
       ibanInvalid: "Bitte prüfen Sie Ihre IBAN oder lassen Sie das optionale Feld leer.",
       storeName: "Bitte geben Sie den Namen Ihres Geschäfts am Schaufenster an.",
       openHoursRequired: "Bitte aktivieren Sie mindestens einen Öffnungstag.",
+      scheduleOverlap:
+        "Überschneidende Öffnungszeiten am selben Tag. Bitte korrigieren Sie:",
+      scheduleInvalidRange: "Die Endzeit muss nach der Startzeit liegen:",
     },
     success: {
       badge: "Anfrage eingegangen",
@@ -727,7 +739,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       fullNamePlaceholder: "First and last name",
       phoneLabel: "Mobile Number *",
       phoneHint: "Used for your callback and Amazon Hub App verification.",
-      phonePlaceholder: "e.g. +49 171 1234567",
+      phonePlaceholder: "e.g. 1711234567",
       emailLabel: "Email Address (optional)",
       emailPlaceholder: "owner@store.de",
     },
@@ -755,7 +767,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       stateLabel: "Federal State (Bundesland)",
       statePlaceholder: "Select state",
       businessPhoneLabel: "Store Telephone (optional)",
-      businessPhonePlaceholder: "+49 ...",
+      businessPhonePlaceholder: "e.g. 69123456",
       copyMobileLabel: "Use mobile number",
     },
     step4: {
@@ -790,7 +802,6 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       carriersHint: "Select any carriers you already host.",
     },
     step6: {
-      hint: "Standard German retail hours are pre-filled and can be adjusted anytime.",
       presetsLabel: "Presets:",
       presets: [
         { id: "standard", label: "Standard (Mon–Sat)" },
@@ -824,6 +835,8 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       statusReadySuffix: "hrs/week · Meets typical location recommendations",
       statusWarnSuffix:
         "hrs/week · Tip: Longer hours improve location eligibility",
+      overlapError: "Time slots overlap on the same day.",
+      invalidRangeError: "End time must be after start time.",
     },
     step7: {
       editLabel: "Edit",
@@ -843,8 +856,7 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
       privacySuffix: ".",
       submitButton: "Submit free location check",
       submittingButton: "Submitting…",
-      trustLine:
-        `Non-binding · Zero signup fee · Personal support · ${CONTACT_EMAIL}`,
+      trustLine: "Non-binding · Zero signup fee",
     },
     navButtons: {
       back: "Back",
@@ -854,16 +866,22 @@ export const ONBOARDING_COPY: Record<Lang, OnboardingLocaleCopy> = {
     },
     validation: {
       selectProgram: "Please select a partner model and legal form.",
-      contactName: "Please enter the contact person's full name.",
-      phone: "Please enter a valid mobile number (at least 6 digits).",
+      contactName:
+        "Please enter a valid full name with at least 3 letters (letters and spaces only).",
+      phone:
+        "Please enter a valid mobile number with at least 6 digits (numbers only).",
+      businessPhone:
+        "Please enter a valid telephone number with at least 6 digits (numbers only) or leave it blank.",
       email: "Please check your email address format.",
       companyName: "Please enter your official business name.",
       street: "Please enter the street address of your location.",
       plz: "Please enter a valid postal code.",
-      city: "Please enter the city.",
+      city: "Please enter a valid city (letters and spaces only).",
       ibanInvalid: "Please verify your IBAN or leave the optional field blank.",
       storeName: "Please enter the storefront name customers recognize.",
       openHoursRequired: "Please enable at least one open day.",
+      scheduleOverlap: "Opening hours overlap on the same day. Please fix:",
+      scheduleInvalidRange: "End time must be after start time:",
     },
     success: {
       badge: "Application Received",

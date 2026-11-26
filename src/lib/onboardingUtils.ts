@@ -24,6 +24,77 @@ export interface UploadedDocMeta {
   previewUrl: string | null;
 }
 
+export interface DialCountryOption {
+  iso: string;
+  dialCode: string;
+  label: string;
+}
+
+export const DEFAULT_DIAL_CODE = "+49";
+
+export const DIAL_COUNTRIES: DialCountryOption[] = [
+  { iso: "DE", dialCode: "+49", label: "Germany" },
+  { iso: "AT", dialCode: "+43", label: "Austria" },
+  { iso: "CH", dialCode: "+41", label: "Switzerland" },
+  { iso: "NL", dialCode: "+31", label: "Netherlands" },
+  { iso: "BE", dialCode: "+32", label: "Belgium" },
+  { iso: "FR", dialCode: "+33", label: "France" },
+  { iso: "LU", dialCode: "+352", label: "Luxembourg" },
+  { iso: "PL", dialCode: "+48", label: "Poland" },
+  { iso: "CZ", dialCode: "+420", label: "Czechia" },
+  { iso: "DK", dialCode: "+45", label: "Denmark" },
+  { iso: "IT", dialCode: "+39", label: "Italy" },
+  { iso: "ES", dialCode: "+34", label: "Spain" },
+  { iso: "GB", dialCode: "+44", label: "United Kingdom" },
+];
+
+export function sanitizePhoneDigits(raw: string): string {
+  return raw.replace(/\D/g, "").slice(0, 15);
+}
+
+export function sanitizeAlphaSpace(raw: string): string {
+  return raw.replace(/[^\p{L} ]/gu, "");
+}
+
+export function countLetters(value: string): number {
+  return (value.match(/\p{L}/gu) ?? []).length;
+}
+
+export function isValidFullName(value: string): boolean {
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  return /^[\p{L} ]+$/u.test(trimmed) && countLetters(trimmed) >= 3;
+}
+
+export function isValidCity(value: string): boolean {
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  return /^[\p{L} ]+$/u.test(trimmed) && countLetters(trimmed) >= 2;
+}
+
+const DIAL_COUNTRIES_BY_LENGTH = [...DIAL_COUNTRIES].sort(
+  (a, b) => b.dialCode.length - a.dialCode.length
+);
+
+export function parseLegacyPhone(
+  raw: string,
+  fallbackDialCode = DEFAULT_DIAL_CODE
+): { dialCode: string; digits: string } {
+  const trimmed = raw.trim();
+  for (const country of DIAL_COUNTRIES_BY_LENGTH) {
+    if (trimmed.startsWith(country.dialCode)) {
+      return {
+        dialCode: country.dialCode,
+        digits: sanitizePhoneDigits(trimmed.slice(country.dialCode.length)),
+      };
+    }
+  }
+  return {
+    dialCode: fallbackDialCode,
+    digits: sanitizePhoneDigits(trimmed),
+  };
+}
+
 export const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 export const ACCEPTED_FILE_TYPES = [
   "application/pdf",
@@ -203,6 +274,38 @@ export function computeScheduleMetrics(schedule: WeeklySchedule): {
     weeklyHours,
     meetsAmazonTarget: openDays >= 5 && weeklyHours >= 40,
   };
+}
+
+export type ScheduleDayError = "overlap" | "invalid_range";
+
+export function findScheduleErrors(
+  schedule: WeeklySchedule
+): Partial<Record<DayKey, ScheduleDayError>> {
+  const errors: Partial<Record<DayKey, ScheduleDayError>> = {};
+
+  for (const day of DAY_ORDER) {
+    const entry = schedule[day];
+    if (!entry.open) continue;
+
+    if (entry.slots.some((slot) => toMinutes(slot.end) <= toMinutes(slot.start))) {
+      errors[day] = "invalid_range";
+      continue;
+    }
+
+    if (entry.slots.length > 1) {
+      const sorted = [...entry.slots].sort(
+        (a, b) => toMinutes(a.start) - toMinutes(b.start)
+      );
+      for (let i = 1; i < sorted.length; i++) {
+        if (toMinutes(sorted[i].start) < toMinutes(sorted[i - 1].end)) {
+          errors[day] = "overlap";
+          break;
+        }
+      }
+    }
+  }
+
+  return errors;
 }
 
 export function formatScheduleSummary(

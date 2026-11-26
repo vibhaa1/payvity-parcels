@@ -94,13 +94,11 @@ function computeTargetScrollY(saved: SavedLangScroll): number {
 function LanguageSwitch({
   lang,
   pathname,
-  layoutId,
   className,
   onSwitch,
 }: {
   lang: Lang;
   pathname: string | null;
-  layoutId: string;
   className?: string;
   onSwitch?: () => void;
 }) {
@@ -112,6 +110,10 @@ function LanguageSwitch({
       role="group"
       aria-label={navCopy.ariaLang}
     >
+      <span
+        className={`switch-pill${lang === "en" ? " is-en" : ""}`}
+        aria-hidden="true"
+      />
       {(["de", "en"] as const).map((code) => {
         const isActive = lang === code;
         const href = buildSwitchHref(pathname, code);
@@ -132,14 +134,6 @@ function LanguageSwitch({
               onSwitch?.();
             }}
           >
-            {isActive && (
-              <motion.span
-                layoutId={layoutId}
-                className="switch-pill"
-                transition={SPRING}
-                aria-hidden="true"
-              />
-            )}
             <span>{code.toUpperCase()}</span>
           </Link>
         );
@@ -272,7 +266,7 @@ export function Navbar({
                 {item.label}
                 {isActive && (
                   <motion.span
-                    layoutId="nav-active-underline"
+                    layoutId={`nav-active-underline-${lang}`}
                     className="nav-active-line"
                     transition={SPRING}
                     aria-hidden="true"
@@ -288,7 +282,7 @@ export function Navbar({
             {navCopy.lockerLinkLabel}
             {isLockerPage && (
               <motion.span
-                layoutId="nav-active-underline"
+                layoutId={`nav-active-underline-${lang}`}
                 className="nav-active-line"
                 transition={SPRING}
                 aria-hidden="true"
@@ -300,7 +294,6 @@ export function Navbar({
         <LanguageSwitch
           lang={lang}
           pathname={pathname}
-          layoutId="lang-pill-desktop"
         />
 
         <Link
@@ -373,7 +366,6 @@ export function Navbar({
               <LanguageSwitch
                 lang={lang}
                 pathname={pathname}
-                layoutId="lang-pill-mobile"
                 onSwitch={() => setMobileOpen(false)}
               />
             </div>
