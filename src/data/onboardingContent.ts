@@ -23,13 +23,6 @@ export const CONTACT_LANGUAGES: ContactLanguageOption[] = [
     enLabel: "German",
   },
   {
-    code: "tr",
-    badge: "TR",
-    nativeLabel: "Türkçe",
-    deLabel: "Türkisch",
-    enLabel: "Turkish",
-  },
-  {
     code: "ku",
     badge: "KU",
     nativeLabel: "Kurdî",

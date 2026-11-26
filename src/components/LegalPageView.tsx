@@ -4,6 +4,26 @@ import { Lang, localizedPath } from "@/lib/seo";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
+const URL_SPLIT_REGEX = /(https?:\/\/[^\s]+?)(?=[.,;)]?(?:\s|$))/g;
+
+function renderTextWithLinks(text: string) {
+  const parts = text.split(URL_SPLIT_REGEX);
+  return parts.map((part, idx) =>
+    /^https?:\/\//.test(part) ? (
+      <a
+        key={`link-${idx}`}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    )
+  );
+}
+
 export function LegalPageView({
   lang,
   content,
@@ -26,16 +46,36 @@ export function LegalPageView({
 
           <article className="legal-card">
             <h1>{content.title}</h1>
-            <p className="legal-notice">{content.notice}</p>
+            {content.notice && <p className="legal-notice">{content.notice}</p>}
 
             {content.sections.map((section) => (
               <section key={section.heading} className="legal-section">
                 <h2>{section.heading}</h2>
-                {section.paragraphs.map((paragraph, idx) => (
-                  <p key={`${section.heading}-${idx}`}>{paragraph}</p>
+                {section.paragraphs?.map((paragraph, idx) => (
+                  <p key={`${section.heading}-p-${idx}`}>
+                    {renderTextWithLinks(paragraph)}
+                  </p>
+                ))}
+                {section.bullets && section.bullets.length > 0 && (
+                  <ul className="legal-list">
+                    {section.bullets.map((bullet, idx) => (
+                      <li key={`${section.heading}-li-${idx}`}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+                {section.afterBullets?.map((paragraph, idx) => (
+                  <p key={`${section.heading}-ab-${idx}`}>
+                    {renderTextWithLinks(paragraph)}
+                  </p>
                 ))}
               </section>
             ))}
+
+            <div className="legal-back-wrap">
+              <Link href={homeHref} className="legal-back-link">
+                {content.backHomeLabel}
+              </Link>
+            </div>
           </article>
         </div>
       </main>

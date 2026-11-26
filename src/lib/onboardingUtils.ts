@@ -1,7 +1,7 @@
 import type { Lang } from "@/lib/seo";
 
 export type LegalForm = "einzelunternehmen" | "gesellschaft";
-export type ContactLanguageCode = "de" | "tr" | "ku" | "hi" | "en" | "af";
+export type ContactLanguageCode = "de" | "ku" | "hi" | "en" | "af";
 export type Salutation = "" | "frau" | "herr" | "divers";
 export type IdDocType = "id_card" | "passport";
 export type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";

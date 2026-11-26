@@ -44,6 +44,7 @@ export default async function LocalizedRootLayout({
   }
 
   const orgGraph = buildOrganizationWebsiteGraph(lang);
+  const langScrollRestoreScript = `(function(){try{var k="payvity:lang-scroll";var raw=sessionStorage.getItem(k);if(!raw)return;var d=JSON.parse(raw);if(!d||typeof d.ts!=="number"||Date.now()-d.ts>10000){sessionStorage.removeItem(k);return;}var p=location.pathname.replace(/^\\/(de|en)(?=\\/|$)/,"");if(!p||p==="/"){p="/";}else{if(p[0]!=="/")p="/"+p;if(p[p.length-1]!=="/")p+="/";}if(d.targetLang!==${JSON.stringify(lang)}||d.route!==p)return;var y=typeof d.y==="number"?d.y:0;if(d.anchorId){var el=document.getElementById(d.anchorId);if(el)y=el.getBoundingClientRect().top+window.scrollY+(typeof d.anchorOffset==="number"?d.anchorOffset:0);}var r=document.documentElement;var prev=r.style.scrollBehavior;r.style.scrollBehavior="auto";window.scrollTo(0,Math.max(0,Math.round(y)));r.style.scrollBehavior=prev;}catch(e){}})();`;
 
   return (
     <html lang={lang}>
@@ -53,6 +54,9 @@ export default async function LocalizedRootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
         />
         {children}
+        <script
+          dangerouslySetInnerHTML={{ __html: langScrollRestoreScript }}
+        />
       </body>
     </html>
   );

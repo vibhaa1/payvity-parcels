@@ -3,7 +3,13 @@ import { absoluteLocalizedUrl } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
-const ROUTE_PATHS = ["/", "/amazon-locker/", "/impressum/", "/datenschutz/"] as const;
+const ROUTE_PATHS = [
+  "/",
+  "/amazon-locker/",
+  "/impressum/",
+  "/datenschutz/",
+  "/agb/",
+] as const;
 const LAST_MODIFIED = new Date("2026-11-24");
 
 export default function sitemap(): MetadataRoute.Sitemap {

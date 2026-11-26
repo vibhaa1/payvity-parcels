@@ -80,7 +80,7 @@ const VALID_INTERESTS = new Set([
 ]);
 
 const VALID_LEGAL_FORMS = new Set(["einzelunternehmen", "gesellschaft"]);
-const VALID_LANG_CODES = new Set(["de", "tr", "ku", "hi", "en", "af"]);
+const VALID_LANG_CODES = new Set(["de", "ku", "hi", "en", "af"]);
 const MAX_SINGLE_FILE_BYTES = 10 * 1024 * 1024;
 const MAX_TOTAL_FILE_BYTES = 40 * 1024 * 1024;
 const MAX_DRIVE_INLINE_BYTES = 15 * 1024 * 1024;

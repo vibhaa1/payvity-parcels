@@ -200,7 +200,12 @@ export function OnboardingWizard({
           setMaxVisitedStep(d.maxVisitedStep);
         }
         if (d.legalForm) setLegalForm(d.legalForm);
-        if (d.contactLanguage) setContactLanguage(d.contactLanguage);
+        if (
+          d.contactLanguage &&
+          CONTACT_LANGUAGES.some((l) => l.code === d.contactLanguage)
+        ) {
+          setContactLanguage(d.contactLanguage);
+        }
         if (d.salutation !== undefined) setSalutation(d.salutation);
         if (d.contactName) setContactName(d.contactName);
         if (d.phone) setPhone(d.phone);

@@ -158,6 +158,7 @@ export interface HomeLocaleContent {
     lockerLabel: string;
     privacyLabel: string;
     imprintLabel: string;
+    termsLabel: string;
   };
 }
 
@@ -477,8 +478,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner für Deutschland.",
       contactLabel: "Kontakt",
       lockerLabel: "Amazon Locker",
-      privacyLabel: "Datenschutz",
+      privacyLabel: "Datenschutzerklärung",
       imprintLabel: "Impressum",
+      termsLabel: "AGB",
     },
   },
   en: {
@@ -790,8 +792,9 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
       copy: "© 2026 PAYVITY Parcels — Amazon Hub Counter & Locker Partner for Germany.",
       contactLabel: "Contact",
       lockerLabel: "Amazon Lockers",
-      privacyLabel: "Privacy",
-      imprintLabel: "Legal notice",
+      privacyLabel: "Privacy Policy",
+      imprintLabel: "Legal Notice",
+      termsLabel: "Terms & Conditions",
     },
   },
 };

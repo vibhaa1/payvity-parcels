@@ -14,11 +14,14 @@ export function Footer({ lang }: { lang: Lang }) {
           <Link href={localizedPath(lang, "/amazon-locker/")}>
             {footer.lockerLabel}
           </Link>
+          <Link href={localizedPath(lang, "/impressum/")}>
+            {footer.imprintLabel}
+          </Link>
           <Link href={localizedPath(lang, "/datenschutz/")}>
             {footer.privacyLabel}
           </Link>
-          <Link href={localizedPath(lang, "/impressum/")}>
-            {footer.imprintLabel}
+          <Link href={localizedPath(lang, "/agb/")}>
+            {footer.termsLabel}
           </Link>
         </div>
       </div>

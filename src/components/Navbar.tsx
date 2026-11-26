@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,11 +15,80 @@ interface NavbarProps {
   onScrollTo?: (target: string) => void;
 }
 
-function buildSwitchHref(pathname: string | null, targetLang: Lang): string {
-  if (!pathname) return localizedPath(targetLang, "/");
+const LANG_SCROLL_STORAGE_KEY = "payvity:lang-scroll";
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+interface SavedLangScroll {
+  route: string;
+  targetLang: Lang;
+  y: number;
+  anchorId: string | null;
+  anchorOffset: number;
+  ts: number;
+}
+
+function normalizeRouteWithoutLang(pathname: string | null): string {
+  if (!pathname) return "/";
   const stripped = pathname.replace(/^\/(de|en)(?=\/|$)/, "");
-  const route = stripped === "" ? "/" : stripped;
-  return localizedPath(targetLang, route);
+  if (!stripped || stripped === "/") return "/";
+  const withLeading = stripped.startsWith("/") ? stripped : `/${stripped}`;
+  return withLeading.endsWith("/") ? withLeading : `${withLeading}/`;
+}
+
+function buildSwitchHref(pathname: string | null, targetLang: Lang): string {
+  return localizedPath(targetLang, normalizeRouteWithoutLang(pathname));
+}
+
+function scrollInstant(top: number): void {
+  const root = document.documentElement;
+  const prev = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  window.scrollTo(0, Math.max(0, Math.round(top)));
+  root.style.scrollBehavior = prev;
+}
+
+function saveScrollPositionForLangSwitch(
+  pathname: string | null,
+  targetLang: Lang
+): void {
+  try {
+    let anchorId: string | null = null;
+    let anchorOffset = 0;
+    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+    sections.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top <= 120) {
+        anchorId = el.id;
+        anchorOffset = Math.round(-top);
+      }
+    });
+
+    const payload: SavedLangScroll = {
+      route: normalizeRouteWithoutLang(pathname),
+      targetLang,
+      y: Math.round(window.scrollY),
+      anchorId,
+      anchorOffset,
+      ts: Date.now(),
+    };
+    window.sessionStorage.setItem(
+      LANG_SCROLL_STORAGE_KEY,
+      JSON.stringify(payload)
+    );
+  } catch {
+    // Ignore storage quota/privacy-mode errors
+  }
+}
+
+function computeTargetScrollY(saved: SavedLangScroll): number {
+  if (saved.anchorId) {
+    const el = document.getElementById(saved.anchorId);
+    if (el) {
+      return el.getBoundingClientRect().top + window.scrollY + saved.anchorOffset;
+    }
+  }
+  return saved.y;
 }
 
 function LanguageSwitch({
@@ -27,11 +96,13 @@ function LanguageSwitch({
   pathname,
   layoutId,
   className,
+  onSwitch,
 }: {
   lang: Lang;
   pathname: string | null;
   layoutId: string;
   className?: string;
+  onSwitch?: () => void;
 }) {
   const navCopy = HOME_CONTENT[lang].nav;
 
@@ -49,8 +120,17 @@ function LanguageSwitch({
             key={code}
             href={href}
             hrefLang={code === "de" ? "de-DE" : "en"}
+            scroll={false}
             className={`switch-opt${isActive ? " active" : ""}`}
             aria-current={isActive ? "true" : undefined}
+            onClick={(e) => {
+              if (isActive) {
+                e.preventDefault();
+                return;
+              }
+              saveScrollPositionForLangSwitch(pathname, code);
+              onSwitch?.();
+            }}
           >
             {isActive && (
               <motion.span
@@ -86,7 +166,56 @@ export function Navbar({
     return () => window.removeEventListener("scroll", syncScroll);
   }, []);
 
+  useIsomorphicLayoutEffect(() => {
+    let saved: SavedLangScroll | null = null;
+    try {
+      const raw = window.sessionStorage.getItem(LANG_SCROLL_STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as Partial<SavedLangScroll>;
+      if (
+        !parsed ||
+        typeof parsed.ts !== "number" ||
+        Date.now() - parsed.ts > 10_000
+      ) {
+        window.sessionStorage.removeItem(LANG_SCROLL_STORAGE_KEY);
+        return;
+      }
+      if (
+        parsed.targetLang !== lang ||
+        parsed.route !== normalizeRouteWithoutLang(pathname)
+      ) {
+        return;
+      }
+      saved = {
+        route: parsed.route,
+        targetLang: parsed.targetLang,
+        y: typeof parsed.y === "number" ? parsed.y : 0,
+        anchorId: typeof parsed.anchorId === "string" ? parsed.anchorId : null,
+        anchorOffset:
+          typeof parsed.anchorOffset === "number" ? parsed.anchorOffset : 0,
+        ts: parsed.ts,
+      };
+      window.sessionStorage.removeItem(LANG_SCROLL_STORAGE_KEY);
+    } catch {
+      return;
+    }
+
+    if (!saved) return;
+    const target = saved;
+
+    const restore = () => {
+      scrollInstant(computeTargetScrollY(target));
+      setScrolled(window.scrollY > 32);
+      window.dispatchEvent(new Event("scroll"));
+    };
+
+    restore();
+    const raf = window.requestAnimationFrame(restore);
+    return () => window.cancelAnimationFrame(raf);
+  }, [lang, pathname]);
+
   const isLockerPage = pathname?.includes("/amazon-locker");
+  const isHeroPage = isHome || Boolean(isLockerPage);
   const homeHref = localizedPath(lang, "/");
   const lockerHref = localizedPath(lang, "/amazon-locker/");
   const ctaHref = isHome || isLockerPage ? "#kontakt" : `${homeHref}#kontakt`;
@@ -103,7 +232,11 @@ export function Navbar({
   };
 
   return (
-    <div className={`nav-shell wrap${scrolled ? " scrolled" : ""}`}>
+    <div
+      className={`nav-shell wrap${isHeroPage ? " is-hero" : ""}${
+        scrolled ? " scrolled" : ""
+      }`}
+    >
       <nav className="nav" aria-label={navCopy.ariaMain}>
         <Link
           className="brand"
@@ -241,6 +374,7 @@ export function Navbar({
                 lang={lang}
                 pathname={pathname}
                 layoutId="lang-pill-mobile"
+                onSwitch={() => setMobileOpen(false)}
               />
             </div>
           </motion.div>
