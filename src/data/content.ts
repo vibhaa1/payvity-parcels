@@ -463,7 +463,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           id: "faq-9",
           question: "Was passiert, nachdem ich das Formular abgeschickt habe?",
           answer:
-            "Wir rufen Sie werktags innerhalb von 24 Stunden an, um Ihr Gebiet zu prüfen, Ihren Standort zu besprechen und den Vertrag abzuschließen. Nach Vertragsunterzeichnung dauert die Freischaltung 48–72 Stunden.",
+            "Wir rufen Sie werktags innerhalb von 24 Stunden an, um Ihr Gebiet zu prüfen, Ihren Standort zu besprechen und den Vertrag abzuschließen. Die Freischaltung erfolgt unmittelbar nach Einreichung der Unterlagen und Vertragsunterzeichnung.",
         },
       ],
     },
@@ -777,7 +777,7 @@ export const HOME_CONTENT: Record<Lang, HomeLocaleContent> = {
           id: "faq-9",
           question: "What happens after I submit the form?",
           answer:
-            "We call you within 24 working hours to validate your area, review your location and sign the contract. Activation takes 48–72 hours once signed.",
+            "We call you within 24 working hours to validate your area, review your location and sign the contract. Activation is done immediately after the documents are submitted and the contract is signed.",
         },
       ],
     },

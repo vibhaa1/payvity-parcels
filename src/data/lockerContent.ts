@@ -179,6 +179,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           answer:
             "Tragen Sie Ihre Kontaktdaten im Anfrageformular weiter unten ein (Auswahl „Amazon Locker“ oder „Beides“). Unser Team ruft Sie zurück und prüft Ihre Adresse.",
         },
+        {
+          id: "locker-faq-6",
+          question: "Was passiert, nachdem ich das Formular abgeschickt habe?",
+          answer:
+            "Wir rufen Sie werktags innerhalb von 24 Stunden an, um Ihr Gebiet zu prüfen, Ihren Standort zu besprechen und den Vertrag abzuschließen. Die Freischaltung erfolgt unmittelbar nach Einreichung der Unterlagen und Vertragsunterzeichnung.",
+        },
       ],
     },
   },
@@ -311,6 +317,12 @@ export const LOCKER_CONTENT: Record<Lang, LockerLocaleContent> = {
           question: "How do I request a location review?",
           answer:
             "Complete the inquiry form below with your business name, postal code, city, and phone number. Select Amazon Locker or Both and our team will call you.",
+        },
+        {
+          id: "locker-faq-6",
+          question: "What happens after I submit the form?",
+          answer:
+            "We call you within 24 working hours to validate your area, review your location and sign the contract. Activation is done immediately after the documents are submitted and the contract is signed.",
         },
       ],
     },
