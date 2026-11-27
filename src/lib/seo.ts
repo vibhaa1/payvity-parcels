@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://payvityparcels.de";
 export const BRAND_NAME = "PAYVITY Parcels";
+export const SITE_VERIFICATION: Metadata["verification"] = {
+  google: "Iy5_3XhGnWWDWfW1bst8JtCPgbG_3PtmSf1aBUXC3z8",
+  other: {
+    "msvalidate.01": "368D836D0BD0AC2FF1AFE84C29973186",
+  },
+};
 function normalizeEmail(raw: string | undefined, fallback: string): string {
   const trimmed = raw?.trim();
   if (!trimmed) return fallback;
