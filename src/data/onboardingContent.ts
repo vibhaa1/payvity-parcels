@@ -50,6 +50,13 @@ export const CONTACT_LANGUAGES: ContactLanguageOption[] = [
     deLabel: "Afghanisch",
     enLabel: "Afghan (Dari / Pashto)",
   },
+  {
+    code: "ar",
+    badge: "AR",
+    nativeLabel: "العربية",
+    deLabel: "Arabisch",
+    enLabel: "Arabic",
+  },
 ];
 
 export const CARRIER_OPTIONS = ["DHL", "Hermes", "DPD", "GLS", "UPS"] as const;

@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, SITE_VERIFICATION } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "PAYVITY Parcels — Weiterleitung zur deutschen Startseite",
+  verification: SITE_VERIFICATION,
   robots: {
     index: false,
     follow: true,

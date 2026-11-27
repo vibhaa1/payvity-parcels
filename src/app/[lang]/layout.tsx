@@ -6,6 +6,7 @@ import {
   buildOrganizationWebsiteGraph,
   isValidLang,
   SITE_URL,
+  SITE_VERIFICATION,
   SUPPORTED_LANGS,
 } from "@/lib/seo";
 
@@ -17,6 +18,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: SITE_VERIFICATION,
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
